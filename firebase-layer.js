@@ -310,7 +310,8 @@
   FBL.saveTheft = async function (rec, isNew) {
     const ref = db.collection(CASE_COL).doc(String(rec.id));
     const data = clean(Object.assign({}, rec, {
-      items: asJsonString(rec.items)
+      items: asJsonString(rec.items),
+      interrogations: asJsonString(rec.interrogations)
     }));
     let before = {};
     if (!isNew) before = await readBefore(ref);
@@ -501,6 +502,7 @@
       policeOfficer: toStr(r.policeOfficer), policePhone: toStr(r.policePhone),
       suspectStatus: toStr(r.suspectStatus), suspectName: toStr(r.suspectName),
       items: JSON.stringify(items),
+      interrogations: JSON.stringify(parseJsonArr(r.interrogations).map(function (it) { return { date: toDateStr(it.date), note: toStr(it.note) }; })),
       materialsTotal: total, totalPrice: total,
       status: status, closedDate: status === 'ปิดคดี' ? toDateStr(r.closedDate) : '', note: toStr(r.note),
       assignedBy: toStr(r.assignedBy), assignLetterNo: toStr(r.assignLetterNo), assignDate: toDateStr(r.assignDate),

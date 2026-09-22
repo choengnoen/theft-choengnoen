@@ -995,7 +995,68 @@ tr.route-editable:hover td{background:var(--amber-glow)}
     </div>
 
     <div class="card" id="fsec2">
-      <div class="section-title"><span class="num">2</span> การแจ้งความและผู้ต้องสงสัย</div>
+      <div class="section-title" style="justify-content:space-between">
+        <span style="display:flex;align-items:center;gap:8px"><span class="num">2</span> รายการทรัพย์สินที่ถูกขโมย (ประเมินค่าเสียหาย) <span class="sub">ไม่รวมค่าแรง / ค่าเครื่องจักร</span></span>
+      </div>
+
+      <div class="it-toolbar">
+        <div class="it-search">
+          <input type="text" id="itemSearch" placeholder="🔍 พิมพ์ชื่อวัสดุเพื่อเพิ่ม เช่น สายไฟ, การ์ดเรล, น็อต…" autocomplete="off">
+          <div class="it-dd" id="itemSearchDd" style="display:none"></div>
+        </div>
+        <select id="f_materialCategory" class="it-preset" title="เพิ่มรายการวัสดุทั้งชุดพร้อมราคามาตรฐาน">
+          <option value="">ดึงชุดวัสดุ…</option>
+        </select>
+        <button class="btn btn-outline btn-sm" id="btnAddItem" type="button">＋ รายการอื่น</button>
+      </div>
+
+      <div class="items-head" id="itemsHead" style="display:none">
+        <span>รายการทรัพย์สิน</span><span>จำนวน</span><span>หน่วย</span><span>ราคา/หน่วย</span><span>เป็นเงิน (บาท)</span><span></span>
+      </div>
+      <div id="itemsContainer"></div>
+
+      <div class="it-bottom">
+        <div></div>
+        <div class="it-receipt">
+          <div class="ln grand"><b>มูลค่าความเสียหายรวม</b><i></i><input type="text" id="f_totalPrice" readonly placeholder="0"><span class="u">บาท</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="fsec3">
+      <div class="section-title"><span class="num">3</span> การมอบหมายแจ้งความ <span class="sub">กรอกก่อนนำไปลงบันทึกประจำวันที่ สภ.</span></div>
+      <div class="grid grid-3">
+        <div class="field">
+          <label>มอบโดย</label>
+          <input type="text" id="f_assignedBy" value="แขวงทางหลวงระยอง">
+        </div>
+        <div class="field">
+          <label>หนังสือเลขที่</label>
+          <input type="text" id="f_assignLetterNo" value="ที่ คค 06087/ส.3/">
+        </div>
+        <div class="field">
+          <label>ลงวันที่</label>
+          <input type="date" id="f_assignDate">
+        </div>
+      </div>
+      <div class="grid grid-3" style="margin-top:12px">
+        <div class="field">
+          <label>มอบให้ (ชื่อ-นามสกุล)</label>
+          <input type="text" id="f_assignedToName">
+        </div>
+        <div class="field">
+          <label>ตำแหน่ง</label>
+          <input type="text" id="f_assignedToPosition">
+        </div>
+        <div class="field">
+          <label>เบอร์โทร</label>
+          <input type="text" id="f_assignedToPhone">
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="fsec4">
+      <div class="section-title"><span class="num">4</span> การแจ้งความและผู้ต้องสงสัย</div>
 
       <div class="party-block" data-role="main">
         <div class="party-block-title"><span>การแจ้งความ</span></div>
@@ -1044,37 +1105,8 @@ tr.route-editable:hover td{background:var(--amber-glow)}
       </div>
     </div>
 
-    <div class="card" id="fsec3">
-      <div class="section-title" style="justify-content:space-between">
-        <span style="display:flex;align-items:center;gap:8px"><span class="num">3</span> รายการทรัพย์สินที่ถูกขโมย <span class="sub">ไม่รวมค่าแรง / ค่าเครื่องจักร</span></span>
-      </div>
-
-      <div class="it-toolbar">
-        <div class="it-search">
-          <input type="text" id="itemSearch" placeholder="🔍 พิมพ์ชื่อวัสดุเพื่อเพิ่ม เช่น สายไฟ, การ์ดเรล, น็อต…" autocomplete="off">
-          <div class="it-dd" id="itemSearchDd" style="display:none"></div>
-        </div>
-        <select id="f_materialCategory" class="it-preset" title="เพิ่มรายการวัสดุทั้งชุดพร้อมราคามาตรฐาน">
-          <option value="">ดึงชุดวัสดุ…</option>
-        </select>
-        <button class="btn btn-outline btn-sm" id="btnAddItem" type="button">＋ รายการอื่น</button>
-      </div>
-
-      <div class="items-head" id="itemsHead" style="display:none">
-        <span>รายการทรัพย์สิน</span><span>จำนวน</span><span>หน่วย</span><span>ราคา/หน่วย</span><span>เป็นเงิน (บาท)</span><span></span>
-      </div>
-      <div id="itemsContainer"></div>
-
-      <div class="it-bottom">
-        <div></div>
-        <div class="it-receipt">
-          <div class="ln grand"><b>มูลค่าความเสียหายรวม</b><i></i><input type="text" id="f_totalPrice" readonly placeholder="0"><span class="u">บาท</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card" id="fsec4">
-      <div class="section-title"><span class="num">4</span> ผลการติดตามคดีและการมอบหมาย (กรอกภายหลังได้)</div>
+    <div class="card" id="fsec5">
+      <div class="section-title"><span class="num">5</span> ผลการติดตามคดี <span class="sub">กรอกภายหลังได้</span></div>
       <div class="grid grid-3">
         <div class="field">
           <label>สถานะคดี</label>
@@ -1095,36 +1127,10 @@ tr.route-editable:hover td{background:var(--amber-glow)}
         </div>
       </div>
 
-      <div class="party-block" data-role="assign" style="margin-top:14px">
-        <div class="party-block-title"><span>การมอบหมายแจ้งความ</span></div>
-        <div class="grid grid-3">
-          <div class="field">
-            <label>มอบโดย</label>
-            <input type="text" id="f_assignedBy" value="แขวงทางหลวงระยอง">
-          </div>
-          <div class="field">
-            <label>หนังสือเลขที่</label>
-            <input type="text" id="f_assignLetterNo" value="ที่ คค 06087/ส.3/">
-          </div>
-          <div class="field">
-            <label>ลงวันที่</label>
-            <input type="date" id="f_assignDate">
-          </div>
-        </div>
-        <div class="grid grid-3" style="margin-top:12px">
-          <div class="field">
-            <label>มอบให้ (ชื่อ-นามสกุล)</label>
-            <input type="text" id="f_assignedToName">
-          </div>
-          <div class="field">
-            <label>ตำแหน่ง</label>
-            <input type="text" id="f_assignedToPosition">
-          </div>
-          <div class="field">
-            <label>เบอร์โทร</label>
-            <input type="text" id="f_assignedToPhone">
-          </div>
-        </div>
+      <div class="party-block" data-role="interrogation" style="margin-top:14px">
+        <div class="party-block-title"><span>บันทึกการเรียกสอบปากคำ (ถ้ามี — สภ.เรียกผู้รับมอบหมายเข้าให้ปากคำ)</span></div>
+        <div id="interrogationsContainer"></div>
+        <button class="btn btn-outline btn-sm" id="btnAddInterrogation" type="button">＋ เพิ่มบันทึกการสอบปากคำ</button>
       </div>
     </div>
 
@@ -1810,6 +1816,7 @@ function mapCaseDoc(r){
   return Object.assign(rest, {
     id: r.id || r.__id,
     items: parseJsonField(r.items),
+    interrogations: parseJsonField(r.interrogations),
     dateIncident: normalizeDateStr(r.dateIncident),
     dateFound: normalizeDateStr(r.dateFound),
     closedDate: normalizeDateStr(r.closedDate),
@@ -2616,6 +2623,32 @@ function collectItems(){
   });
   return items;
 }
+/* ===== บันทึกการเรียกสอบปากคำ (สภ.เรียกผู้รับมอบหมายเข้าให้ปากคำ — เรียกได้หลายครั้ง จึงเก็บเป็นรายการ) ===== */
+function addInterrogationRow(data){
+  data = data || { date: '', note: '' };
+  const wrap = document.getElementById('interrogationsContainer');
+  const row = document.createElement('div');
+  row.className = 'grid grid-3 interrogation-row';
+  row.style.marginBottom = '8px';
+  row.innerHTML = `
+    <div class="field"><label>วันที่เรียกสอบปากคำ</label><input type="date" class="irg-date" value="${escapeHtml(data.date || '')}"></div>
+    <div class="field"><label>หมายเหตุ</label><input type="text" class="irg-note" placeholder="เช่น ครั้งที่ 1" value="${escapeHtml(data.note || '')}"></div>
+    <div class="field"><label>&nbsp;</label><button type="button" class="btn btn-outline btn-sm del-item">ลบ</button></div>
+  `;
+  wrap.appendChild(row);
+  row.querySelector('.del-item').addEventListener('click', () => row.remove());
+}
+function collectInterrogations(){
+  const rows = document.querySelectorAll('#interrogationsContainer .interrogation-row');
+  const list = [];
+  rows.forEach(row => {
+    const date = row.querySelector('.irg-date').value;
+    const note = row.querySelector('.irg-note').value.trim();
+    if (date || note) list.push({ date, note });
+  });
+  return list;
+}
+
 // งานโจรกรรม: มูลค่าความเสียหายรวม = ผลรวมมูลค่าทรัพย์สินที่ถูกขโมย (ไม่รวมค่าแรง/ค่าเครื่องจักร/ค่าดำเนินการ)
 function updateItemsSum(){
   const items = collectItems();
@@ -2883,6 +2916,7 @@ function clearForm(){
   document.getElementById('f_assignedToPhone').value = DEFAULT_ASSIGNEE.phone;
   currentFallbackTotal = null;
   document.getElementById('itemsContainer').innerHTML = '';
+  document.getElementById('interrogationsContainer').innerHTML = '';
   zoneLastAuto = null;
   mooLastAuto = null;
   updateSuspectNameVisibility();
@@ -2945,6 +2979,8 @@ function loadRecordIntoForm(rec){
     addItemRow(it);
   });
   updateItemsSum();
+  document.getElementById('interrogationsContainer').innerHTML = '';
+  (rec.interrogations || []).forEach(it => addInterrogationRow(it));
   updateKmHint();
   document.querySelector('.tab-btn[data-view="form"]').click();
   window.scrollTo({top:0, behavior:'smooth'});
@@ -3037,6 +3073,7 @@ async function saveForm(){
     totalPrice: isNaN(totalPrice) ? null : totalPrice,
     status, closedDate,
     note: document.getElementById('f_note').value.trim(),
+    interrogations: collectInterrogations(),
     assignedBy: document.getElementById('f_assignedBy').value.trim(),
     assignLetterNo: document.getElementById('f_assignLetterNo').value.trim(),
     assignDate: document.getElementById('f_assignDate').value,
@@ -3622,6 +3659,10 @@ function openCaseDetailModal(id){
                   <dt>หมายเหตุ</dt><dd>${escapeHtml(rec.note) || '-'}</dd>
                   <dt>ผู้บันทึก</dt><dd>${escapeHtml(rec.recordedBy) || '-'}</dd>
                 </dl></div>
+              ${(rec.interrogations && rec.interrogations.length) ? `<div class="cd-card"><div class="cd-sec">บันทึกการเรียกสอบปากคำ</div>
+                <dl class="cd-dl">
+                  ${rec.interrogations.map((it, i) => `<dt>ครั้งที่ ${i + 1}</dt><dd>${escapeHtml(formatThaiDate(it.date)) || '-'}${it.note ? ' — ' + escapeHtml(it.note) : ''}</dd>`).join('')}
+                </dl></div>` : ''}
             </div>
             <div>
               <div class="cd-card"><div class="cd-sec">รายการทรัพย์สินที่ถูกขโมย <span class="cd-count">${items.length} รายการ</span></div>
@@ -4188,6 +4229,7 @@ function buildCasesSheet(wb, rows, seqMap){
     ['ตำแหน่งผู้รับมอบ', 5, 20, 'text', r => r.assignedToPosition || ''],
     ['เบอร์โทรผู้รับมอบ', 5, 14, 'text', r => r.assignedToPhone || ''],
     ['หมายเหตุ', 5, 30, 'text', r => r.note || ''],
+    ['การสอบปากคำ', 5, 30, 'text', r => (r.interrogations || []).map(it => (it.date ? formatThaiDate(it.date) : '') + (it.note ? ' (' + it.note + ')' : '')).join('; ')],
     ['ผู้บันทึก', 5, 20, 'text', r => r.recordedBy || '']
   ];
   const GROUPS = ['เหตุการณ์', 'เขตพื้นที่', 'การแจ้งความและผู้ต้องสงสัย', 'ความเสียหาย (บาท)', 'สถานะ', 'การมอบหมายและอ้างอิง'];
@@ -4213,7 +4255,7 @@ function buildCasesSheet(wb, rows, seqMap){
   });
   ws.getRow(1).height = 20; ws.getRow(2).height = 32;
 
-  const wrapCols = new Set(['ตอน', 'บริเวณที่ถูกโจรกรรม', 'หมายเหตุ', 'ชื่อผู้ต้องสงสัย', 'ตำรวจผู้ลงบันทึก']);
+  const wrapCols = new Set(['ตอน', 'บริเวณที่ถูกโจรกรรม', 'หมายเหตุ', 'ชื่อผู้ต้องสงสัย', 'ตำรวจผู้ลงบันทึก', 'การสอบปากคำ']);
   const centerCols = new Set(['เลขที่เคส', 'ทล.', 'กม.', 'เวลา', 'หมู่ที่', 'ผู้ต้องสงสัย']);
   rows.forEach((rec, ri) => {
     const rowNo = ri + 3;
@@ -5339,6 +5381,7 @@ async function init(){
   });
 
   document.getElementById('btnAddItem').addEventListener('click', () => addItemRow());
+  document.getElementById('btnAddInterrogation').addEventListener('click', () => addInterrogationRow());
   document.getElementById('btnClearForm').addEventListener('click', clearForm);
   document.getElementById('btnSave').addEventListener('click', saveForm);
   // เลือก ทล./กม. → เติมเขตพื้นที่ (สภ./ตำบล/อำเภอ/หมู่) อัตโนมัติ
