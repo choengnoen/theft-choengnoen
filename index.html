@@ -3028,12 +3028,8 @@ function clearForm(){
   document.getElementById('f_status').value = 'แจ้งความเบื้องต้น';
   document.getElementById('f_assignedBy').value = 'แขวงทางหลวงระยอง';
   document.getElementById('f_assignLetterNo').value = 'ที่ คค 06087/ส.3/'; // เลขหนังสือมอบหมายแจ้งความขึ้นต้นแบบนี้เสมอ เจ้าหน้าที่พิมพ์ต่อท้ายแค่เลขที่/ปี
-  // เติมผู้รับมอบหมายแจ้งความประจำหมวดให้อัตโนมัติจากค่าเริ่มต้นในตั้งค่า (แก้ทับรายเคสได้) — เคสเก่าที่แก้ไขจะไม่ถูกทับด้วยค่านี้ (ดู loadRecordIntoForm)
-  document.getElementById('f_assignedToName').value = DEFAULT_ASSIGNEE.name;
-  document.getElementById('f_assignedToPosition').value = DEFAULT_ASSIGNEE.position;
-  document.getElementById('f_assignedToPhone').value = DEFAULT_ASSIGNEE.phone;
-  // จำไว้ว่าตำแหน่ง/เบอร์โทรตอนนี้เป็นค่าที่เติมอัตโนมัติ — ถ้าลบช่องชื่อทิ้งจะเคลียร์ 2 ช่องนี้ตามไปด้วย (ยกเว้นแก้เองแล้ว)
-  assignedToLastAuto = DEFAULT_ASSIGNEE.name ? { position: DEFAULT_ASSIGNEE.position, phone: DEFAULT_ASSIGNEE.phone } : null;
+  // ไม่เติมชื่อผู้รับมอบหมายให้อัตโนมัติ — ให้ทีมงานเป็นคนกดเลือกเองจากรายชื่อ (ปุ่ม/ดรอปดาวน์ในช่องนี้)
+  assignedToLastAuto = null;
   currentFallbackTotal = null;
   document.getElementById('itemsContainer').innerHTML = '';
   document.getElementById('interrogationsContainer').innerHTML = '';
