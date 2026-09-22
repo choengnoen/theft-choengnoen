@@ -1326,7 +1326,6 @@ tr.route-editable:hover td{background:var(--amber-glow)}
     </div>
     <div class="card" id="cardAssignee" style="display:none">
       <div class="section-title">📇 รายชื่อผู้รับมอบหมายแจ้งความ</div>
-      <p class="hint" style="margin-bottom:12px">เพิ่มรายชื่อเจ้าหน้าที่ที่เคย/กำลังรับมอบหมายแจ้งความไว้ที่นี่ — เลือกใช้ได้จากฟอร์มบันทึกเคส (ปุ่มเลือกชื่อจะเติมตำแหน่ง/เบอร์โทรให้อัตโนมัติ) ติ๊ก "ใช้งานอยู่" ไว้ที่คนปัจจุบัน 1 คน จะถูกเติมให้อัตโนมัติทุกครั้งที่เปิดฟอร์มบันทึกเคสใหม่ — คนเก่าที่เคยรับมอบหมายในปีที่ผ่านมา เก็บไว้ในรายชื่อได้เรื่อยๆ ไม่ต้องลบ</p>
       <div id="assigneesContainer"></div>
       <div style="display:flex;gap:8px;margin-top:8px">
         <button class="btn btn-outline btn-sm" id="btnAddAssignee" type="button">+ เพิ่มรายชื่อ</button>
@@ -1337,18 +1336,15 @@ tr.route-editable:hover td{background:var(--amber-glow)}
     <div class="settings-row">
       <div class="card" id="cardTrash">
         <div class="section-title">🗑 ถังขยะ</div>
-        <p class="hint">เคสที่ลบไว้ กู้คืนหรือลบถาวรได้</p>
         <button class="btn btn-outline" id="btnOpenTrash">เปิดถังขยะ</button>
       </div>
       <div class="card" id="cardSeed" style="display:none">
         <div class="section-title">🌱 ข้อมูลอ้างอิงตั้งต้น</div>
-        <p class="hint">เติมสายทางของหมวดฯ และราคากลางทรัพย์สินตั้งต้น (ข้ามรายการที่มีอยู่แล้ว ไม่ทับที่แก้ไว้) ใช้ครั้งแรกหลังตั้งค่าระบบ</p>
         <button class="btn btn-outline" id="btnSeed" type="button">เติมข้อมูลตั้งต้น</button>
         <div id="seedLog" class="import-log"></div>
       </div>
       <div class="card" id="cardImport" style="display:none">
         <div class="section-title">⬆ นำเข้าจากระบบเดิม</div>
-        <p class="hint">เลือกไฟล์ Excel จาก Google Sheet ของระบบ Apps Script เดิม (แท็บ cases, materials, routes, zones, activity_log) รันซ้ำได้ ไม่เกิดข้อมูลซ้ำ แต่เคสที่แก้ในระบบนี้แล้วจะถูกเขียนทับด้วยของไฟล์</p>
         <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
           <input type="file" id="importFile" accept=".xlsx" style="max-width:100%">
           <button class="btn btn-primary" id="btnImport" type="button">เริ่มนำเข้า</button>
