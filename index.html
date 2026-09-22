@@ -894,6 +894,7 @@ tr.route-editable:hover td{background:var(--amber-glow)}
     <button class="tab-btn" data-view="list">รายการโจรกรรม</button>
     <button class="tab-btn" data-view="form">＋ บันทึกรายการใหม่</button>
     <button class="tab-btn" data-view="routes">ข้อมูลสายทาง</button>
+    <button class="tab-btn" data-view="zones">ข้อมูล สภ.</button>
     <button class="tab-btn" data-view="assets">ข้อมูลทรัพย์สิน</button>
     <button class="tab-btn" data-view="settings">ตั้งค่า</button>
   </nav>
@@ -1238,7 +1239,7 @@ tr.route-editable:hover td{background:var(--amber-glow)}
     </div>
   </div>
 
-  <!-- ===================== ROUTES + ZONES ===================== -->
+  <!-- ===================== ROUTES ===================== -->
   <div class="view" id="view-routes">
     <div class="card">
       <div class="assets-toolbar" style="justify-content:flex-end">
@@ -1258,12 +1259,22 @@ tr.route-editable:hover td{background:var(--amber-glow)}
         </table>
       </div>
     </div>
+  </div>
+
+  <!-- ===================== ZONES (ข้อมูล สภ.) ===================== -->
+  <div class="view" id="view-zones">
     <div class="card">
       <div class="section-title" style="justify-content:space-between"><span>เขตพื้นที่รับผิดชอบ (สภ. / ตำบล / อำเภอ / หมู่)</span></div>
       <div class="assets-toolbar" style="justify-content:flex-end">
-        <div style="display:flex;gap:6px;margin-right:auto;flex-wrap:wrap;align-items:center">
-          <span class="hint" style="margin-right:2px">ดูเฉพาะ:</span>
-          <select id="zonesFilterSelect"></select>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;margin-right:auto">
+          <div class="field" style="min-width:170px">
+            <label>ข้อมูลตาม ทล.</label>
+            <select id="zonesFilterHighway"></select>
+          </div>
+          <div class="field" style="min-width:170px">
+            <label>ข้อมูลตาม สภ.</label>
+            <select id="zonesFilterStation"></select>
+          </div>
         </div>
         <button class="btn btn-outline btn-sm" id="btnAddZone" type="button">+ เพิ่มเขตพื้นที่</button>
         <div class="assets-updated-badge" id="zonesCountHint"></div>
@@ -1930,6 +1941,7 @@ function refreshVisibleViews(){
     if (v === 'dash') renderDashboard();
     if (v === 'assets') renderAssetsPanel();
     if (v === 'routes') renderRoutesTable();
+    if (v === 'zones') renderZonesTable();
   } catch (e) { console.error('refresh failed', e); }
   window.scrollTo(window.scrollX, scrollY);
 }
@@ -2078,6 +2090,7 @@ function updateWhoDisplay(){
   
   renderAssetsPanel();
   renderRoutesTable();
+  renderZonesTable();
 }
 
 function isOwner(){
@@ -2397,6 +2410,7 @@ function initTabs(){
       if (btn.dataset.view === 'settings') renderTeamPanel();
       if (btn.dataset.view === 'assets') renderAssetsPanel();
       if (btn.dataset.view === 'routes') renderRoutesTable();
+      if (btn.dataset.view === 'zones') renderZonesTable();
       recordViewInHistory(btn.dataset.view);
     });
   });
@@ -3286,6 +3300,7 @@ async function startApp(){
   }
   renderTable();
   renderRoutesTable();
+  renderZonesTable();
   renderDashboard();
   startPresenceTracking();
 }
@@ -4549,7 +4564,6 @@ function renderRoutesTable(){
     addBtn.onclick = () => openRouteEditModal(null);
   }
   updateRoutesUpdatedHint();
-  renderZonesTable();
 }
 
 // แยกช่วง กม. หลายช่วงที่คั่นด้วยจุลภาค เช่น "0+000 - 1+308, 2+346 - 3+292" กลับเป็น [[0,1308],[2346,3292]]
@@ -5100,7 +5114,8 @@ function updateAssetsUpdatedHint(){
 
 /* ============ เขตพื้นที่รับผิดชอบ (สภ. / ตำบล / อำเภอ / หมู่) ============
    ใช้ค้นหาอัตโนมัติตอนบันทึกเคสใหม่: เลือก ทล. + กม. แล้วระบบเติม สภ./ตำบล/อำเภอ/จังหวัด/หมู่ให้ — ช่วง กม. เก็บเป็นเมตรเหมือนสายทาง
-   ดรอปดาวน์ "ดูเฉพาะ" ตัวเดียวรวมทุกตัวเลือก: ทั้งหมด / รายทางหลวง / รายสถานีตำรวจ (ค่า: '' | 'hw:<ทล.>' | 'st:<สภ.>') */
+   ดรอปดาวน์แยก 2 ช่อง "ข้อมูลตาม ทล." กับ "ข้อมูลตาม สภ." — เลือกช่องไหนอีกช่องจะกลับเป็นทั้งหมดให้เอง (กรองทีละแกน)
+   เก็บค่าที่เลือกเป็น '' | 'hw:<ทล.>' | 'st:<สภ.>' */
 let zonesFilterValue = '';
 function renderZonesTable(){
   const tbody = document.getElementById('zonesTableBody');
@@ -5108,8 +5123,9 @@ function renderZonesTable(){
   const owner = isOwner();
   const allSorted = ZONES.slice().sort((a, b) => (parseFloat(a.highway) - parseFloat(b.highway)) || (a.kmStart - b.kmStart));
 
-  const filterSel = document.getElementById('zonesFilterSelect');
-  if (filterSel) {
+  const hwSel = document.getElementById('zonesFilterHighway');
+  const stSel = document.getElementById('zonesFilterStation');
+  if (hwSel && stSel) {
     const hwCounts = {}, stCounts = {};
     allSorted.forEach(z => {
       const hw = String(z.highway || 'ไม่ระบุ ทล.');
@@ -5121,11 +5137,16 @@ function renderZonesTable(){
     const stKeys = Object.keys(stCounts).sort((a, b) => a.localeCompare(b, 'th'));
     const validValues = new Set(['', ...hwKeys.map(k => 'hw:' + k), ...stKeys.map(k => 'st:' + k)]);
     if (!validValues.has(zonesFilterValue)) zonesFilterValue = ''; // ตัวเลือกเดิมหายไป (เช่นข้อมูลเปลี่ยน) → กลับเป็นทั้งหมด
-    filterSel.innerHTML = `<option value="">ทั้งหมด (${allSorted.length} เขต)</option>`
-      + `<optgroup label="ตามทางหลวง">` + hwKeys.map(k => `<option value="hw:${escapeHtml(k)}"${('hw:' + k === zonesFilterValue) ? ' selected' : ''}>ทล.${escapeHtml(k)} (${hwCounts[k]} เขต)</option>`).join('') + `</optgroup>`
-      + `<optgroup label="ตามสถานีตำรวจ">` + stKeys.map(k => `<option value="st:${escapeHtml(k)}"${('st:' + k === zonesFilterValue) ? ' selected' : ''}>${escapeHtml(k)} (${stCounts[k]} เขต)</option>`).join('') + `</optgroup>`;
-    filterSel.value = zonesFilterValue;
-    filterSel.onchange = () => { zonesFilterValue = filterSel.value; renderZonesTable(); };
+
+    hwSel.innerHTML = `<option value="">ทั้งหมด (${allSorted.length} เขต)</option>`
+      + hwKeys.map(k => `<option value="hw:${escapeHtml(k)}"${('hw:' + k === zonesFilterValue) ? ' selected' : ''}>ทล.${escapeHtml(k)} (${hwCounts[k]} เขต)</option>`).join('');
+    hwSel.value = zonesFilterValue.indexOf('hw:') === 0 ? zonesFilterValue : '';
+    hwSel.onchange = () => { zonesFilterValue = hwSel.value; renderZonesTable(); };
+
+    stSel.innerHTML = `<option value="">ทั้งหมด (${allSorted.length} เขต)</option>`
+      + stKeys.map(k => `<option value="st:${escapeHtml(k)}"${('st:' + k === zonesFilterValue) ? ' selected' : ''}>${escapeHtml(k)} (${stCounts[k]} เขต)</option>`).join('');
+    stSel.value = zonesFilterValue.indexOf('st:') === 0 ? zonesFilterValue : '';
+    stSel.onchange = () => { zonesFilterValue = stSel.value; renderZonesTable(); };
   }
 
   let rows = allSorted;
@@ -5437,6 +5458,7 @@ async function init(){
 
   renderTable();
   renderRoutesTable();
+  renderZonesTable();
   renderDashboard();
 
   // ต้องล็อกอินก่อน: แสดงหน้าล็อกอิน แล้วค่อยโหลดข้อมูลเมื่อยืนยันตัวตนสำเร็จ (ดู startAuth / startApp)
