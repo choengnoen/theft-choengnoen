@@ -1255,10 +1255,11 @@ tr.route-editable:hover td{background:var(--amber-glow)}
     <div class="card">
       <div class="section-title" style="justify-content:space-between"><span>เขตพื้นที่รับผิดชอบ (สภ. / ตำบล / อำเภอ / หมู่)</span></div>
       <div class="assets-toolbar" style="justify-content:flex-end">
-        <div style="display:flex;gap:6px;margin-right:auto">
-          <span class="hint" style="align-self:center;margin-right:2px">ดูตาม:</span>
+        <div style="display:flex;gap:6px;margin-right:auto;flex-wrap:wrap;align-items:center">
+          <span class="hint" style="margin-right:2px">ดูตาม:</span>
           <button class="btn btn-sm" id="btnZonesByHighway" type="button">ทล.</button>
           <button class="btn btn-outline btn-sm" id="btnZonesByStation" type="button">สภ.</button>
+          <select id="zonesFilterSelect" style="margin-left:6px"></select>
         </div>
         <button class="btn btn-outline btn-sm" id="btnAddZone" type="button">+ เพิ่มเขตพื้นที่</button>
         <div class="assets-updated-badge" id="zonesCountHint"></div>
@@ -1267,8 +1268,8 @@ tr.route-editable:hover td{background:var(--amber-glow)}
         <table class="data" id="zonesTable">
           <thead>
             <tr>
-              <th style="text-align:center">ทล.</th><th style="text-align:center">ช่วง กม.</th><th style="text-align:center">ด้าน</th><th style="text-align:center">สภ.</th><th style="text-align:center">ตำบล</th>
-              <th style="text-align:center">อำเภอ</th><th style="text-align:center">จังหวัด</th><th style="text-align:center">หมู่ที่เกี่ยวข้อง</th>
+              <th style="text-align:center">ทล.</th><th style="text-align:center">ช่วง กม.</th><th style="text-align:center">ด้าน</th><th style="text-align:center">สภ.</th><th style="text-align:center">หมู่</th>
+              <th style="text-align:center">ตำบล</th><th style="text-align:center">อำเภอ</th><th style="text-align:center">จังหวัด</th>
             </tr>
           </thead>
           <tbody id="zonesTableBody"></tbody>
@@ -1307,6 +1308,15 @@ tr.route-editable:hover td{background:var(--amber-glow)}
       <div class="section-title" style="justify-content:space-between"><span>ระบบควบคุมการเข้าใช้งาน</span><span class="presence-chip" id="presenceChip" style="display:none"></span></div>
       <div id="teamPanel"></div>
     </div>
+    <div class="card" id="cardAssignee" style="display:none">
+      <div class="section-title">📇 ผู้รับมอบหมายแจ้งความประจำหมวด (ค่าเริ่มต้น)</div>
+      <div class="grid grid-3">
+        <div class="field"><label>ชื่อ-นามสกุล</label><input type="text" id="st_assigneeName" placeholder="เช่น นางสาวนันท์นภัสธ์ รัตนเสถียร"></div>
+        <div class="field"><label>ตำแหน่ง</label><input type="text" id="st_assigneePosition"></div>
+        <div class="field"><label>เบอร์โทร</label><input type="text" id="st_assigneePhone"></div>
+      </div>
+      <button class="btn btn-primary" id="btnSaveAssignee" type="button" style="margin-top:12px">บันทึกค่าเริ่มต้น</button>
+    </div>
     <!-- แถวเดียว: ถังขยะ / ข้อมูลตั้งต้น / นำเข้าข้อมูล (สองอย่างหลังเห็นเฉพาะเจ้าของระบบ) — ปุ่มส่งออก Excel/PDF อยู่หน้ารายการโจรกรรม -->
     <div class="settings-row">
       <div class="card" id="cardTrash">
@@ -1329,16 +1339,6 @@ tr.route-editable:hover td{background:var(--amber-glow)}
         </div>
         <div id="importLog"></div>
       </div>
-    </div>
-    <div class="card" id="cardAssignee" style="display:none">
-      <div class="section-title">📇 ผู้รับมอบหมายแจ้งความประจำหมวด (ค่าเริ่มต้น)</div>
-      <p class="hint" style="margin-bottom:12px">ใช้เติมช่อง "มอบให้ / ตำแหน่ง / เบอร์โทร" ให้อัตโนมัติทุกครั้งที่เปิดฟอร์มบันทึกเคสใหม่ (แก้เป็นรายเคสได้) เปลี่ยนตัวผู้รับมอบหมายในอนาคตแค่แก้ตรงนี้ครั้งเดียว เคสเก่าที่บันทึกไปแล้วจะไม่ถูกแก้ย้อนหลัง</p>
-      <div class="grid grid-3">
-        <div class="field"><label>ชื่อ-นามสกุล</label><input type="text" id="st_assigneeName" placeholder="เช่น นางสาวนันท์นภัสธ์ รัตนเสถียร"></div>
-        <div class="field"><label>ตำแหน่ง</label><input type="text" id="st_assigneePosition"></div>
-        <div class="field"><label>เบอร์โทร</label><input type="text" id="st_assigneePhone"></div>
-      </div>
-      <button class="btn btn-primary" id="btnSaveAssignee" type="button" style="margin-top:12px">บันทึกค่าเริ่มต้น</button>
     </div>
     <div class="card">
       <div class="section-title">เกี่ยวกับข้อมูล</div>
@@ -2793,13 +2793,19 @@ function findZone(hw, km, side){
   return candidates.find(z => !z.side) || candidates[0];
 }
 let zoneLastAuto = null; // ค่าที่ระบบเติมให้ล่าสุด — ถ้าเจ้าหน้าที่แก้เองแล้วจะไม่ถูกเขียนทับ
+let mooLastAuto = null; // หมู่ที่ระบบเติมให้อัตโนมัติล่าสุด (มีตัวเลือกเดียว) — เจ้าหน้าที่เปลี่ยนเองแล้วจะไม่ถูกเขียนทับ
 function zoneFieldIds(){ return { station: 'f_policeStation', tambon: 'f_tambon', amphoe: 'f_amphoe', changwat: 'f_changwat' }; }
 function refreshMooOptions(zone, selected){
   const sel = document.getElementById('f_moo');
   const list = zone ? zone.moobans.slice() : [];
+  // ค่าปัจจุบันเป็นค่าที่ระบบเคยเติมอัตโนมัติไว้เอง (ไม่ใช่เจ้าหน้าที่เลือก) แล้วเขตเปลี่ยนจนไม่มีหมู่นี้แล้ว → เคลียร์ เพื่อคำนวณใหม่
+  if (selected && selected === mooLastAuto && !list.includes(selected)) selected = '';
   if (selected && !list.includes(selected)) list.push(selected);
   sel.innerHTML = '<option value="">— ' + (zone ? 'เลือกหมู่' : 'ไม่ระบุ') + ' —</option>'
     + list.map(m => `<option value="${escapeHtml(m)}">${escapeHtml(m)}</option>`).join('');
+  // มีหมู่ให้เลือกแค่ตัวเดียวและยังไม่ได้เลือกเอง → เติมให้อัตโนมัติเลย ลดขั้นตอน (มีมากกว่า 1 ตัวยังคงให้เลือกเองเหมือนเดิม)
+  if (!selected && list.length === 1) { selected = list[0]; mooLastAuto = selected; }
+  else if (selected !== mooLastAuto) { mooLastAuto = null; }
   sel.value = selected || '';
 }
 function updateZoneFields(fromRemote){
@@ -2880,6 +2886,7 @@ function clearForm(){
   currentFallbackTotal = null;
   document.getElementById('itemsContainer').innerHTML = '';
   zoneLastAuto = null;
+  mooLastAuto = null;
   updateSuspectNameVisibility();
   updateZoneFields();
   updateItemsSum();
@@ -2910,7 +2917,8 @@ function loadRecordIntoForm(rec){
   document.getElementById('f_amphoe').value = rec.amphoe || '';
   document.getElementById('f_changwat').value = rec.changwat || '';
   zoneLastAuto = null;
-  refreshMooOptions(findZone(rec.highway, rec.km), rec.moo || '');
+  mooLastAuto = null;
+  refreshMooOptions(findZone(rec.highway, rec.km, rec.side), rec.moo || '');
   document.getElementById('f_caseNo').value = rec.caseNo || '';
   document.getElementById('f_reportLetterNo').value = rec.reportLetterNo || '';
   document.getElementById('f_reportedDate').value = rec.reportedDate || '';
@@ -5052,32 +5060,51 @@ function updateAssetsUpdatedHint(){
 
 /* ============ เขตพื้นที่รับผิดชอบ (สภ. / ตำบล / อำเภอ / หมู่) ============
    ใช้ค้นหาอัตโนมัติตอนบันทึกเคสใหม่: เลือก ทล. + กม. แล้วระบบเติม สภ./ตำบล/อำเภอ/จังหวัด/หมู่ให้ — ช่วง กม. เก็บเป็นเมตรเหมือนสายทาง
-   ดูตาราง "ดูตาม" ได้ 2 แบบ: ทล. (เรียงตามสายทาง+กม. ค่าเริ่มต้น) หรือ สภ. (จัดกลุ่มตามสถานีตำรวจ มีหัวกลุ่มคั่น) */
+   ดูตาราง "ดูตาม" ได้ 2 แบบ: ทล. หรือ สภ. — เลือกโหมดแล้วกรองเหลือเฉพาะ ทล./สภ. ที่ต้องการได้จากช่อง dropdown ข้างๆ (เลือก "ทั้งหมด" เพื่อดูทุกรายการ) */
 let zonesViewMode = 'highway';
+let zonesFilterValue = '';
 function renderZonesTable(){
   const tbody = document.getElementById('zonesTableBody');
   if (!tbody) return;
   const owner = isOwner();
   const byStation = zonesViewMode === 'station';
-  const rows = ZONES.slice().sort((a, b) => byStation
+  const keyOf = z => byStation ? (z.station || 'ไม่ระบุ สภ.') : String(z.highway || 'ไม่ระบุ ทล.');
+  const allSorted = ZONES.slice().sort((a, b) => byStation
     ? ((a.station || '').localeCompare(b.station || '', 'th') || (parseFloat(a.highway) - parseFloat(b.highway)) || (a.kmStart - b.kmStart))
     : ((parseFloat(a.highway) - parseFloat(b.highway)) || (a.kmStart - b.kmStart)));
+
+  // ตัวเลือกใน dropdown filter: รายการ ทล./สภ. ทั้งหมดที่มีอยู่จริง พร้อมจำนวนเขตของแต่ละอัน
+  const filterSel = document.getElementById('zonesFilterSelect');
+  if (filterSel) {
+    const counts = {};
+    allSorted.forEach(z => { const k = keyOf(z); counts[k] = (counts[k] || 0) + 1; });
+    const keys = Object.keys(counts).sort((a, b) => byStation ? a.localeCompare(b, 'th') : (parseFloat(a) - parseFloat(b)));
+    if (zonesFilterValue && !counts[zonesFilterValue]) zonesFilterValue = ''; // ตัวเลือกเดิมหายไป (เช่นสลับโหมด) → กลับเป็นทั้งหมด
+    filterSel.innerHTML = `<option value="">ทั้งหมด (${allSorted.length} เขต)</option>`
+      + keys.map(k => `<option value="${escapeHtml(k)}"${k === zonesFilterValue ? ' selected' : ''}>${escapeHtml(byStation ? k : 'ทล.' + k)} (${counts[k]} เขต)</option>`).join('');
+    filterSel.value = zonesFilterValue;
+    filterSel.onchange = () => { zonesFilterValue = filterSel.value; renderZonesTable(); };
+  }
+  const rows = zonesFilterValue ? allSorted.filter(z => keyOf(z) === zonesFilterValue) : allSorted;
+
   const rowHtml = (z, i) => `
     <tr data-idx="${i}" class="${owner ? 'route-editable' : ''}"${owner ? ' title="ดับเบิลคลิกเพื่อแก้ไข"' : ''}>
       <td class="mono" style="text-align:center">${escapeHtml(z.highway)}</td>
       <td class="mono" style="text-align:center;white-space:nowrap">${escapeHtml(formatKm(z.kmStart) + ' - ' + formatKm(z.kmEnd))}</td>
       <td style="text-align:center">${escapeHtml(z.side || 'ทั้งสองฝั่ง')}</td>
       <td style="text-align:center">${escapeHtml(z.station || '-')}</td>
+      <td style="text-align:center">${escapeHtml((z.moobans || []).join(', ') || '-')}</td>
       <td style="text-align:center">${escapeHtml(z.tambon || '-')}</td>
       <td style="text-align:center">${escapeHtml(z.amphoe || '-')}</td>
       <td style="text-align:center">${escapeHtml(z.changwat || '-')}</td>
-      <td style="text-align:center">${escapeHtml((z.moobans || []).join(', ') || '-')}</td>
     </tr>`;
   let bodyHtml = '';
   let lastGroup = null;
-  const groupCounts = byStation ? rows.reduce((m, z) => { const k = z.station || 'ไม่ระบุ สภ.'; m[k] = (m[k] || 0) + 1; return m; }, {}) : null;
+  // จัดกลุ่มหัวข้อคั่นเฉพาะตอนดูตาม สภ. แบบ "ทั้งหมด" — ถ้ากรองเหลือ สภ. เดียวแล้วไม่ต้องขึ้นหัวกลุ่มซ้ำ
+  const showGroups = byStation && !zonesFilterValue;
+  const groupCounts = showGroups ? rows.reduce((m, z) => { const k = z.station || 'ไม่ระบุ สภ.'; m[k] = (m[k] || 0) + 1; return m; }, {}) : null;
   rows.forEach((z, i) => {
-    if (byStation) {
+    if (showGroups) {
       const g = z.station || 'ไม่ระบุ สภ.';
       if (g !== lastGroup) {
         bodyHtml += `<tr class="zone-group-row"><td colspan="8" style="background:var(--paper-2,#f4efe6);font-weight:700;padding:9px 14px">${escapeHtml(g)} <span class="hint" style="font-weight:400">(${groupCounts[g]} เขต)</span></td></tr>`;
@@ -5087,7 +5114,7 @@ function renderZonesTable(){
     bodyHtml += rowHtml(z, i);
   });
   tbody.innerHTML = rows.length ? bodyHtml
-    : `<tr><td colspan="8" class="hint" style="text-align:center;padding:20px">ยังไม่มีข้อมูลเขตพื้นที่${owner ? ' — กด "+ เพิ่มเขตพื้นที่" เพื่อเริ่มเพิ่ม' : ''}</td></tr>`;
+    : `<tr><td colspan="8" class="hint" style="text-align:center;padding:20px">${allSorted.length ? 'ไม่มีเขตพื้นที่ตรงกับตัวกรองนี้' : ('ยังไม่มีข้อมูลเขตพื้นที่' + (owner ? ' — กด "+ เพิ่มเขตพื้นที่" เพื่อเริ่มเพิ่ม' : ''))}</td></tr>`;
   if (owner) {
     tbody.querySelectorAll('tr[data-idx]').forEach(tr => {
       tr.addEventListener('dblclick', () => openZoneEditModal(rows[Number(tr.dataset.idx)]));
@@ -5105,11 +5132,11 @@ function renderZonesTable(){
     btnHw.classList.toggle('btn-primary', !byStation);
     btnSt.classList.toggle('btn-outline', !byStation);
     btnSt.classList.toggle('btn-primary', byStation);
-    btnHw.onclick = () => { if (zonesViewMode !== 'highway') { zonesViewMode = 'highway'; renderZonesTable(); } };
-    btnSt.onclick = () => { if (zonesViewMode !== 'station') { zonesViewMode = 'station'; renderZonesTable(); } };
+    btnHw.onclick = () => { if (zonesViewMode !== 'highway') { zonesViewMode = 'highway'; zonesFilterValue = ''; renderZonesTable(); } };
+    btnSt.onclick = () => { if (zonesViewMode !== 'station') { zonesViewMode = 'station'; zonesFilterValue = ''; renderZonesTable(); } };
   }
   const hint = document.getElementById('zonesCountHint');
-  if (hint) hint.textContent = rows.length ? (rows.length + ' เขตพื้นที่') : '';
+  if (hint) hint.textContent = rows.length ? (rows.length + (zonesFilterValue ? ' จาก ' + allSorted.length : '') + ' เขตพื้นที่') : '';
 }
 function openZoneEditModal(zone){
   const root = document.getElementById('modalRoot');
