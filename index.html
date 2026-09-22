@@ -1256,10 +1256,8 @@ tr.route-editable:hover td{background:var(--amber-glow)}
       <div class="section-title" style="justify-content:space-between"><span>เขตพื้นที่รับผิดชอบ (สภ. / ตำบล / อำเภอ / หมู่)</span></div>
       <div class="assets-toolbar" style="justify-content:flex-end">
         <div style="display:flex;gap:6px;margin-right:auto;flex-wrap:wrap;align-items:center">
-          <span class="hint" style="margin-right:2px">ดูตาม:</span>
-          <button class="btn btn-sm" id="btnZonesByHighway" type="button">ทล.</button>
-          <button class="btn btn-outline btn-sm" id="btnZonesByStation" type="button">สภ.</button>
-          <select id="zonesFilterSelect" style="margin-left:6px"></select>
+          <span class="hint" style="margin-right:2px">ดูเฉพาะ:</span>
+          <select id="zonesFilterSelect"></select>
         </div>
         <button class="btn btn-outline btn-sm" id="btnAddZone" type="button">+ เพิ่มเขตพื้นที่</button>
         <div class="assets-updated-badge" id="zonesCountHint"></div>
@@ -5060,32 +5058,42 @@ function updateAssetsUpdatedHint(){
 
 /* ============ เขตพื้นที่รับผิดชอบ (สภ. / ตำบล / อำเภอ / หมู่) ============
    ใช้ค้นหาอัตโนมัติตอนบันทึกเคสใหม่: เลือก ทล. + กม. แล้วระบบเติม สภ./ตำบล/อำเภอ/จังหวัด/หมู่ให้ — ช่วง กม. เก็บเป็นเมตรเหมือนสายทาง
-   ดูตาราง "ดูตาม" ได้ 2 แบบ: ทล. หรือ สภ. — เลือกโหมดแล้วกรองเหลือเฉพาะ ทล./สภ. ที่ต้องการได้จากช่อง dropdown ข้างๆ (เลือก "ทั้งหมด" เพื่อดูทุกรายการ) */
-let zonesViewMode = 'highway';
+   ดรอปดาวน์ "ดูเฉพาะ" ตัวเดียวรวมทุกตัวเลือก: ทั้งหมด / รายทางหลวง / รายสถานีตำรวจ (ค่า: '' | 'hw:<ทล.>' | 'st:<สภ.>') */
 let zonesFilterValue = '';
 function renderZonesTable(){
   const tbody = document.getElementById('zonesTableBody');
   if (!tbody) return;
   const owner = isOwner();
-  const byStation = zonesViewMode === 'station';
-  const keyOf = z => byStation ? (z.station || 'ไม่ระบุ สภ.') : String(z.highway || 'ไม่ระบุ ทล.');
-  const allSorted = ZONES.slice().sort((a, b) => byStation
-    ? ((a.station || '').localeCompare(b.station || '', 'th') || (parseFloat(a.highway) - parseFloat(b.highway)) || (a.kmStart - b.kmStart))
-    : ((parseFloat(a.highway) - parseFloat(b.highway)) || (a.kmStart - b.kmStart)));
+  const allSorted = ZONES.slice().sort((a, b) => (parseFloat(a.highway) - parseFloat(b.highway)) || (a.kmStart - b.kmStart));
 
-  // ตัวเลือกใน dropdown filter: รายการ ทล./สภ. ทั้งหมดที่มีอยู่จริง พร้อมจำนวนเขตของแต่ละอัน
   const filterSel = document.getElementById('zonesFilterSelect');
   if (filterSel) {
-    const counts = {};
-    allSorted.forEach(z => { const k = keyOf(z); counts[k] = (counts[k] || 0) + 1; });
-    const keys = Object.keys(counts).sort((a, b) => byStation ? a.localeCompare(b, 'th') : (parseFloat(a) - parseFloat(b)));
-    if (zonesFilterValue && !counts[zonesFilterValue]) zonesFilterValue = ''; // ตัวเลือกเดิมหายไป (เช่นสลับโหมด) → กลับเป็นทั้งหมด
+    const hwCounts = {}, stCounts = {};
+    allSorted.forEach(z => {
+      const hw = String(z.highway || 'ไม่ระบุ ทล.');
+      const st = z.station || 'ไม่ระบุ สภ.';
+      hwCounts[hw] = (hwCounts[hw] || 0) + 1;
+      stCounts[st] = (stCounts[st] || 0) + 1;
+    });
+    const hwKeys = Object.keys(hwCounts).sort((a, b) => parseFloat(a) - parseFloat(b));
+    const stKeys = Object.keys(stCounts).sort((a, b) => a.localeCompare(b, 'th'));
+    const validValues = new Set(['', ...hwKeys.map(k => 'hw:' + k), ...stKeys.map(k => 'st:' + k)]);
+    if (!validValues.has(zonesFilterValue)) zonesFilterValue = ''; // ตัวเลือกเดิมหายไป (เช่นข้อมูลเปลี่ยน) → กลับเป็นทั้งหมด
     filterSel.innerHTML = `<option value="">ทั้งหมด (${allSorted.length} เขต)</option>`
-      + keys.map(k => `<option value="${escapeHtml(k)}"${k === zonesFilterValue ? ' selected' : ''}>${escapeHtml(byStation ? k : 'ทล.' + k)} (${counts[k]} เขต)</option>`).join('');
+      + `<optgroup label="ตามทางหลวง">` + hwKeys.map(k => `<option value="hw:${escapeHtml(k)}"${('hw:' + k === zonesFilterValue) ? ' selected' : ''}>ทล.${escapeHtml(k)} (${hwCounts[k]} เขต)</option>`).join('') + `</optgroup>`
+      + `<optgroup label="ตามสถานีตำรวจ">` + stKeys.map(k => `<option value="st:${escapeHtml(k)}"${('st:' + k === zonesFilterValue) ? ' selected' : ''}>${escapeHtml(k)} (${stCounts[k]} เขต)</option>`).join('') + `</optgroup>`;
     filterSel.value = zonesFilterValue;
     filterSel.onchange = () => { zonesFilterValue = filterSel.value; renderZonesTable(); };
   }
-  const rows = zonesFilterValue ? allSorted.filter(z => keyOf(z) === zonesFilterValue) : allSorted;
+
+  let rows = allSorted;
+  if (zonesFilterValue.indexOf('hw:') === 0) {
+    const v = zonesFilterValue.slice(3);
+    rows = allSorted.filter(z => String(z.highway || 'ไม่ระบุ ทล.') === v);
+  } else if (zonesFilterValue.indexOf('st:') === 0) {
+    const v = zonesFilterValue.slice(3);
+    rows = allSorted.filter(z => (z.station || 'ไม่ระบุ สภ.') === v);
+  }
 
   const rowHtml = (z, i) => `
     <tr data-idx="${i}" class="${owner ? 'route-editable' : ''}"${owner ? ' title="ดับเบิลคลิกเพื่อแก้ไข"' : ''}>
@@ -5098,22 +5106,7 @@ function renderZonesTable(){
       <td style="text-align:center">${escapeHtml(z.amphoe || '-')}</td>
       <td style="text-align:center">${escapeHtml(z.changwat || '-')}</td>
     </tr>`;
-  let bodyHtml = '';
-  let lastGroup = null;
-  // จัดกลุ่มหัวข้อคั่นเฉพาะตอนดูตาม สภ. แบบ "ทั้งหมด" — ถ้ากรองเหลือ สภ. เดียวแล้วไม่ต้องขึ้นหัวกลุ่มซ้ำ
-  const showGroups = byStation && !zonesFilterValue;
-  const groupCounts = showGroups ? rows.reduce((m, z) => { const k = z.station || 'ไม่ระบุ สภ.'; m[k] = (m[k] || 0) + 1; return m; }, {}) : null;
-  rows.forEach((z, i) => {
-    if (showGroups) {
-      const g = z.station || 'ไม่ระบุ สภ.';
-      if (g !== lastGroup) {
-        bodyHtml += `<tr class="zone-group-row"><td colspan="8" style="background:var(--paper-2,#f4efe6);font-weight:700;padding:9px 14px">${escapeHtml(g)} <span class="hint" style="font-weight:400">(${groupCounts[g]} เขต)</span></td></tr>`;
-        lastGroup = g;
-      }
-    }
-    bodyHtml += rowHtml(z, i);
-  });
-  tbody.innerHTML = rows.length ? bodyHtml
+  tbody.innerHTML = rows.length ? rows.map(rowHtml).join('')
     : `<tr><td colspan="8" class="hint" style="text-align:center;padding:20px">${allSorted.length ? 'ไม่มีเขตพื้นที่ตรงกับตัวกรองนี้' : ('ยังไม่มีข้อมูลเขตพื้นที่' + (owner ? ' — กด "+ เพิ่มเขตพื้นที่" เพื่อเริ่มเพิ่ม' : ''))}</td></tr>`;
   if (owner) {
     tbody.querySelectorAll('tr[data-idx]').forEach(tr => {
@@ -5124,16 +5117,6 @@ function renderZonesTable(){
   if (addBtn) {
     addBtn.style.display = owner ? '' : 'none';
     addBtn.onclick = () => openZoneEditModal(null);
-  }
-  const btnHw = document.getElementById('btnZonesByHighway');
-  const btnSt = document.getElementById('btnZonesByStation');
-  if (btnHw && btnSt) {
-    btnHw.classList.toggle('btn-outline', byStation);
-    btnHw.classList.toggle('btn-primary', !byStation);
-    btnSt.classList.toggle('btn-outline', !byStation);
-    btnSt.classList.toggle('btn-primary', byStation);
-    btnHw.onclick = () => { if (zonesViewMode !== 'highway') { zonesViewMode = 'highway'; zonesFilterValue = ''; renderZonesTable(); } };
-    btnSt.onclick = () => { if (zonesViewMode !== 'station') { zonesViewMode = 'station'; zonesFilterValue = ''; renderZonesTable(); } };
   }
   const hint = document.getElementById('zonesCountHint');
   if (hint) hint.textContent = rows.length ? (rows.length + (zonesFilterValue ? ' จาก ' + allSorted.length : '') + ' เขตพื้นที่') : '';
