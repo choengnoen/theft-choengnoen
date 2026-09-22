@@ -1043,8 +1043,10 @@ tr.route-editable:hover td{background:var(--amber-glow)}
       <div class="grid grid-3" style="margin-top:12px">
         <div class="field">
           <label>มอบให้ (ชื่อ-นามสกุล)</label>
-          <input type="text" id="f_assignedToName" list="assigneeNamesList" placeholder="พิมพ์ หรือเลือกจากรายชื่อ">
-          <datalist id="assigneeNamesList"></datalist>
+          <div style="position:relative">
+            <input type="text" id="f_assignedToName" placeholder="พิมพ์ หรือเลือกจากรายชื่อ" autocomplete="off">
+            <div class="it-dd" id="assignedToDd" style="display:none"></div>
+          </div>
         </div>
         <div class="field">
           <label>ตำแหน่ง</label>
@@ -1863,7 +1865,6 @@ function applySettingsDocs(docs){
   DEFAULT_ASSIGNEE = current ? { name: current.name || '', position: current.position || '', phone: current.phone || '' } : { name: '', position: '', phone: '' };
   // ไม่ re-render ฟอร์มแก้ไขรายชื่อทับถ้ากำลังพิมพ์อยู่ (เช่นเพิ่ม/แก้แถวค้างไว้) — re-render เฉพาะตอนยังไม่เคยเปิดใช้งานในเซสชันนี้
   if (!assigneesEditedInSession) renderAssigneesSettings();
-  populateAssigneePicker();
 }
 async function loadSettingsData(){
   try {
@@ -1922,14 +1923,53 @@ async function apiSaveAssignees(){
   ASSIGNEE_LIST = data.people;
   const current = ASSIGNEE_LIST.find(p => p.name === data.currentName) || ASSIGNEE_LIST[0] || null;
   DEFAULT_ASSIGNEE = current ? { name: current.name, position: current.position || '', phone: current.phone || '' } : { name: '', position: '', phone: '' };
-  populateAssigneePicker();
 }
-// ช่อง "มอบให้" ในฟอร์มบันทึกเคส: พิมพ์เองได้ตามปกติ หรือเลือกจากรายชื่อที่ตั้งไว้ (คลิกช่องว่างๆ / พิมพ์บางส่วน จะมีรายชื่อให้เลือกจากเบราว์เซอร์)
-// พิมพ์/เลือกชื่อที่ตรงกับรายชื่อพอดี จะเติมตำแหน่ง/เบอร์โทรให้อัตโนมัติ — พิมพ์ชื่อที่ไม่อยู่ในรายชื่อ (เช่นคนที่เคยรับมอบหมายในปีก่อนๆ) ก็ทำได้ปกติ ไม่ถูกบล็อก
-function populateAssigneePicker(){
-  const dl = document.getElementById('assigneeNamesList');
-  if (!dl) return;
-  dl.innerHTML = ASSIGNEE_LIST.map(p => `<option value="${escapeHtml(p.name)}">`).join('');
+// ช่อง "มอบให้" ในฟอร์มบันทึกเคส: ดรอปดาวน์ค้นหาสไตล์เดียวกับช่องค้นหาทรัพย์สิน (ไม่ใช้ popup มืดของเบราว์เซอร์)
+// คลิก/พิมพ์ในช่องจะมีรายชื่อที่ตั้งไว้ให้เลือก เลือกแล้วเติมตำแหน่ง/เบอร์โทรให้อัตโนมัติ — พิมพ์ชื่อที่ไม่อยู่ในรายชื่อ (เช่นคนที่เคยรับมอบหมายในปีก่อนๆ) ก็ทำได้ปกติ ไม่ถูกบล็อก
+function initAssigneeSearchUi(){
+  const input = document.getElementById('f_assignedToName');
+  const dd = document.getElementById('assignedToDd');
+  if (!input || !dd) return;
+  let hits = [];
+  let active = -1;
+  const closeDd = () => { dd.style.display = 'none'; active = -1; };
+  const paintActive = () => {
+    [...dd.querySelectorAll('.it-dd-item')].forEach((el, i) => el.classList.toggle('active', i === active));
+    const el = dd.querySelector('.it-dd-item.active');
+    if (el) el.scrollIntoView({ block: 'nearest' });
+  };
+  const render = () => {
+    const q = input.value.trim().toLowerCase();
+    hits = ASSIGNEE_LIST.filter(p => !q || p.name.toLowerCase().includes(q)).slice(0, 8);
+    if (!hits.length) { closeDd(); return; }
+    active = 0;
+    dd.innerHTML = hits.map((p, i) => `<div class="it-dd-item" data-i="${i}"><span class="nm">${escapeHtml(p.name)}${p.name === DEFAULT_ASSIGNEE.name ? '<span class="asset-frequent-badge">★</span>' : ''}<span class="cat">${escapeHtml(p.position || '-')}</span></span>${p.phone ? `<b class="mono">${escapeHtml(p.phone)}</b>` : ''}</div>`).join('');
+    dd.style.display = '';
+    paintActive();
+  };
+  const choose = (i) => {
+    const p = hits[i];
+    if (!p) return;
+    input.value = p.name;
+    document.getElementById('f_assignedToPosition').value = p.position || '';
+    document.getElementById('f_assignedToPhone').value = p.phone || '';
+    closeDd();
+  };
+  input.addEventListener('input', render);
+  input.addEventListener('focus', render);
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown') { e.preventDefault(); if (hits.length) { active = (active + 1) % hits.length; paintActive(); } }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); if (hits.length) { active = (active - 1 + hits.length) % hits.length; paintActive(); } }
+    else if (e.key === 'Enter') { if (active >= 0 && dd.style.display !== 'none') { e.preventDefault(); choose(active); } }
+    else if (e.key === 'Escape') { closeDd(); }
+  });
+  dd.addEventListener('mousedown', (e) => {
+    const el = e.target.closest('.it-dd-item');
+    if (!el) return;
+    e.preventDefault();
+    choose(Number(el.dataset.i));
+  });
+  document.addEventListener('click', (e) => { if (e.target !== input && !e.target.closest('#assignedToDd')) closeDd(); });
 }
 function applyRouteDocs(docs){
   const byHighway = {};
@@ -5512,6 +5552,7 @@ async function init(){
   });
   populateMaterialCategorySelect();
   initItemEntryUi();
+  initAssigneeSearchUi();
 
   renderTable();
   renderRoutesTable();
