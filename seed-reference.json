@@ -1,0 +1,3131 @@
+{
+    "note":  "ข้อมูลอ้างอิงตั้งต้น (สายทาง + ราคากลางทรัพย์สิน) ของหมวดทางหลวงเชิงเนิน",
+    "routes":  [
+                   {
+                       "highway":  "3",
+                       "controlNo":  "0503",
+                       "section":  "ระยอง-กะเฉด",
+                       "kmRanges":  [
+                                        [
+                                            223650,
+                                            247902
+                                        ]
+                                    ],
+                       "distanceActual":  24.252,
+                       "distance2Lane":  52.201,
+                       "asphalt":  52.201,
+                       "concrete":  0,
+                       "workQty":  166.352,
+                       "status":  "active"
+                   },
+                   {
+                       "highway":  "36",
+                       "controlNo":  "0203",
+                       "section":  "ทับมา-ปลวกเกตุ",
+                       "kmRanges":  [
+                                        [
+                                            49369,
+                                            57021
+                                        ]
+                                    ],
+                       "distanceActual":  7.652,
+                       "distance2Lane":  33.76,
+                       "asphalt":  0,
+                       "concrete":  33.76,
+                       "workQty":  112.758,
+                       "status":  "active"
+                   },
+                   {
+                       "highway":  "3139",
+                       "controlNo":  "0100",
+                       "section":  "บ้านแลง-หาดใหญ่",
+                       "kmRanges":  [
+                                        [
+                                            0,
+                                            21234
+                                        ]
+                                    ],
+                       "distanceActual":  21.234,
+                       "distance2Lane":  21.234,
+                       "asphalt":  21.234,
+                       "concrete":  0,
+                       "workQty":  69.542,
+                       "status":  "active"
+                   },
+                   {
+                       "highway":  "3140",
+                       "controlNo":  "0100",
+                       "section":  "ทางเข้าบ้านเพ",
+                       "kmRanges":  [
+                                        [
+                                            0,
+                                            100
+                                        ]
+                                    ],
+                       "distanceActual":  0.1,
+                       "distance2Lane":  0.2,
+                       "asphalt":  0,
+                       "concrete":  0.2,
+                       "workQty":  0.687,
+                       "status":  "active"
+                   },
+                   {
+                       "highway":  "3143",
+                       "controlNo":  "0100",
+                       "section":  "บ้านค่าย-หนองละลอก",
+                       "kmRanges":  [
+                                        [
+                                            0,
+                                            14041
+                                        ]
+                                    ],
+                       "distanceActual":  14.041,
+                       "distance2Lane":  17.501,
+                       "asphalt":  17.501,
+                       "concrete":  0,
+                       "workQty":  64.229,
+                       "status":  "active"
+                   },
+                   {
+                       "highway":  "3574",
+                       "controlNo":  "0202",
+                       "section":  "บ้านค่าย-ระยอง",
+                       "kmRanges":  [
+                                        [
+                                            43000,
+                                            57161
+                                        ]
+                                    ],
+                       "distanceActual":  14.161,
+                       "distance2Lane":  32.187,
+                       "asphalt":  27.415,
+                       "concrete":  4.772,
+                       "workQty":  115.71,
+                       "status":  "active"
+                   },
+                   {
+                       "highway":  "3575",
+                       "controlNo":  "0100",
+                       "section":  "ทางเข้าบ้านค่าย",
+                       "kmRanges":  [
+                                        [
+                                            0,
+                                            1308
+                                        ],
+                                        [
+                                            2346,
+                                            3292
+                                        ]
+                                    ],
+                       "distanceActual":  2.254,
+                       "distance2Lane":  2.254,
+                       "asphalt":  2.254,
+                       "concrete":  0,
+                       "workQty":  7.88,
+                       "status":  "active"
+                   },
+                   {
+                       "highway":  "3145",
+                       "controlNo":  "0101",
+                       "section":  "บ้านเพ-ท่าเรือแกลง",
+                       "kmRanges":  [
+                                        [
+                                            2575,
+                                            10500
+                                        ]
+                                    ],
+                       "distanceActual":  7.925,
+                       "distance2Lane":  7.925,
+                       "asphalt":  7.925,
+                       "concrete":  null,
+                       "workQty":  21.636,
+                       "status":  "transferred"
+                   }
+               ],
+    "materials":  [
+                      {
+                          "key":  "mat-002",
+                          "name":  "แผ่นปลายการ์ดเรล หนา 3.2 มม.",
+                          "unit":  "แผ่น",
+                          "price":  2000,
+                          "category":  "",
+                          "frequent":  true
+                      },
+                      {
+                          "key":  "mat-003",
+                          "name":  "เสาการ์ดเรล ขนาด Dia.10 ยาว 2.00 ม.",
+                          "unit":  "ต้น",
+                          "price":  2000,
+                          "category":  "",
+                          "frequent":  true
+                      },
+                      {
+                          "key":  "mat-006",
+                          "name":  "เป้าสะท้อนแสง คางหมู สีเหลือง หน้าเดี่ยว ขนาด 15x10 ซม.",
+                          "unit":  "อัน",
+                          "price":  90,
+                          "category":  "",
+                          "frequent":  true
+                      },
+                      {
+                          "key":  "mat-007",
+                          "name":  "แผ่นสะท้อนแสง สีเหลือง ขนาด 15x8 ซม.",
+                          "unit":  "แผ่น",
+                          "price":  18,
+                          "category":  "",
+                          "frequent":  true
+                      },
+                      {
+                          "key":  "mat-008",
+                          "name":  "Block out lip C-150x75x20x4.5 มม. ยาว 0.33 ม.",
+                          "unit":  "อัน",
+                          "price":  650,
+                          "category":  "guardrail",
+                          "frequent":  null
+                      },
+                      {
+                          "key":  "mat-009",
+                          "name":  "Steel plate 200x100x4 มม.",
+                          "unit":  "อัน",
+                          "price":  350,
+                          "category":  "guardrail",
+                          "frequent":  null
+                      },
+                      {
+                          "key":  "mat-010",
+                          "name":  "น็อตยึด Block out 16x65 มม.",
+                          "unit":  "ตัว",
+                          "price":  80,
+                          "category":  "guardrail",
+                          "frequent":  null
+                      },
+                      {
+                          "key":  "mat-012",
+                          "name":  "โคมไฟโซเดียม 250 วัตต์ พร้อมอุปกรณ์",
+                          "unit":  "โคม",
+                          "price":  9800,
+                          "category":  "",
+                          "frequent":  true
+                      },
+                      {
+                          "key":  "mat-013",
+                          "name":  "ฐานเสาปูน คสล.",
+                          "unit":  "ฐาน",
+                          "price":  5800,
+                          "category":  "",
+                          "frequent":  true
+                      },
+                      {
+                          "key":  "mat-018",
+                          "name":  "แผ่นสะท้อนแสงสีส้ม ขนาด 15x15 ซม.",
+                          "unit":  "แผ่น",
+                          "price":  80,
+                          "category":  "",
+                          "frequent":  true
+                      },
+                      {
+                          "key":  "mat-021",
+                          "name":  "แผงฟิวส์คู่ (สำหรับเสาไฟ 9.00 ม.)",
+                          "unit":  "อัน",
+                          "price":  215,
+                          "category":  "electric",
+                          "frequent":  true
+                      },
+                      {
+                          "key":  "mat-022",
+                          "name":  "แผ่นป้ายแนะนำ ทางแยก ขนาด 1.20x2.40 ม.",
+                          "unit":  "แผ่น",
+                          "price":  4510,
+                          "category":  "",
+                          "frequent":  true
+                      },
+                      {
+                          "key":  "mat-023",
+                          "name":  "เสาเหล็กกล่อง ขนาด 3\"x3\"x3.50 ม.",
+                          "unit":  "ต้น",
+                          "price":  1150,
+                          "category":  "",
+                          "frequent":  true
+                      },
+                      {
+                          "key":  "mat-024",
+                          "name":  "น็อตเหล็กอาบสังกะสี ขนาด Ø3/8\"x5\"",
+                          "unit":  "ตัว",
+                          "price":  18,
+                          "category":  "",
+                          "frequent":  true
+                      },
+                      {
+                          "key":  "mat-025",
+                          "name":  "สีน้ำพลาสติก สีขาว",
+                          "unit":  "กระปุก",
+                          "price":  600,
+                          "category":  "",
+                          "frequent":  true
+                      },
+                      {
+                          "key":  "mat-026",
+                          "name":  "สีน้ำพลาสติก สีดำ",
+                          "unit":  "กระปุก",
+                          "price":  600,
+                          "category":  "",
+                          "frequent":  true
+                      },
+                      {
+                          "key":  "mat-027",
+                          "name":  "ป้ายบังคับหัวเกาะ ขนาด Ø 0.75 ม.",
+                          "unit":  "แผ่น",
+                          "price":  4140,
+                          "category":  "",
+                          "frequent":  true
+                      },
+                      {
+                          "key":  "mat-028",
+                          "name":  "ป้ายเตือนสิ่งกีดขวาง ขนาด 0.45x0.75 ม.",
+                          "unit":  "แผ่น",
+                          "price":  1880,
+                          "category":  "",
+                          "frequent":  true
+                      },
+                      {
+                          "key":  "mat-029",
+                          "name":  "ป้ายแนะนำโอเวอร์เฮด ขนาด 18 ตร.ม. (3.00x6.00 ม.)",
+                          "unit":  "แผ่น",
+                          "price":  170000,
+                          "category":  "",
+                          "frequent":  true
+                      },
+                      {
+                          "key":  "mat-030",
+                          "name":  "ฐานเสาคอนกรีต",
+                          "unit":  "ฐาน",
+                          "price":  35450,
+                          "category":  "",
+                          "frequent":  true
+                      },
+                      {
+                          "key":  "mat-031",
+                          "name":  "โครงสร้างเสาป้าย",
+                          "unit":  "ชุด",
+                          "price":  102100,
+                          "category":  "",
+                          "frequent":  true
+                      },
+                      {
+                          "key":  "cat-0",
+                          "name":  "แผ่นสะท้อนแสง Engineer Grade (3M) สีขาว สีเขียว สีน้ำเงิน สีแดง",
+                          "unit":  "หลา",
+                          "price":  750,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-1",
+                          "name":  "แผ่นสะท้อนแสง Engineer Grade (3M) สีขาว สีเขียว สีน้ำเงิน สีแดง (มอก.606-2549) แบบที่ 1 ขนาด 24\"",
+                          "unit":  "ม้วน",
+                          "price":  37500,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-2",
+                          "name":  "แผ่นสะท้อนแสง Engineer Grade (3M) สีขาว สีเขียว สีน้ำเงิน สีแดง",
+                          "unit":  "หลา",
+                          "price":  920,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-3",
+                          "name":  "แผ่นสะท้อนแสง Engineer Grade (3M) สีขาว สีเขียว สีน้ำเงิน สีแดง (มอก.606-2549) แบบที่ 1 ขนาด 30\"",
+                          "unit":  "ม้วน",
+                          "price":  46000,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-4",
+                          "name":  "แผ่นสะท้อนแสง Engineer Grade (3M) สีขาว สีเขียว สีน้ำเงิน สีแดง",
+                          "unit":  "หลา",
+                          "price":  1120,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-5",
+                          "name":  "แผ่นสะท้อนแสง Engineer Grade (3M) สีขาว สีเขียว สีน้ำเงิน สีแดง (มอก.606-2549) แบบที่ 1 ขนาด 36\"",
+                          "unit":  "ม้วน",
+                          "price":  56000,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-6",
+                          "name":  "แผ่นสะท้อนแสง Engineer Grade (3M) สีขาว สีเขียว สีน้ำเงิน สีแดง",
+                          "unit":  "หลา",
+                          "price":  1450,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-7",
+                          "name":  "แผ่นสะท้อนแสง Engineer Grade (3M) สีขาว สีเขียว สีน้ำเงิน สีแดง (มอก.606-2549) แบบที่ 1 ขนาด 48\"",
+                          "unit":  "ม้วน",
+                          "price":  72500,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-8",
+                          "name":  "แผ่นสะท้อนแสง Engineer Prismatic Grade (3M) สีขาว สีเหลือง สีเขียว สีน้ำเงิน สีแดง",
+                          "unit":  "หลา",
+                          "price":  750,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-9",
+                          "name":  "แผ่นสะท้อนแสง Engineer Prismatic Grade (3M) สีขาว สีเหลือง สีเขียว สีน้ำเงิน สีแดง (มอก.606-2549) แบบที่ 1 ขนาด 24\"",
+                          "unit":  "ม้วน",
+                          "price":  37500,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-10",
+                          "name":  "แผ่นสะท้อนแสง Engineer Prismatic Grade (3M) สีขาว สีเหลือง สีเขียว สีน้ำเงิน สีแดง",
+                          "unit":  "หลา",
+                          "price":  920,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-11",
+                          "name":  "แผ่นสะท้อนแสง Engineer Prismatic Grade (3M) สีขาว สีเหลือง สีเขียว สีน้ำเงิน สีแดง (มอก.606-2549) แบบที่ 1 ขนาด 30\"",
+                          "unit":  "ม้วน",
+                          "price":  46000,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-12",
+                          "name":  "แผ่นสะท้อนแสง Engineer Prismatic Grade (3M) สีขาว สีเหลือง สีเขียว สีน้ำเงิน สีแดง",
+                          "unit":  "หลา",
+                          "price":  1120,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-13",
+                          "name":  "แผ่นสะท้อนแสง Engineer Prismatic Grade (3M) สีขาว สีเหลือง สีเขียว สีน้ำเงิน สีแดง (มอก.606-2549) แบบที่ 1 ขนาด 36\"",
+                          "unit":  "ม้วน",
+                          "price":  56000,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-14",
+                          "name":  "แผ่นสะท้อนแสง Engineer Prismatic Grade (3M) สีขาว สีเหลือง สีเขียว สีน้ำเงิน สีแดง",
+                          "unit":  "หลา",
+                          "price":  1450,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-15",
+                          "name":  "แผ่นสะท้อนแสง Engineer Prismatic Grade (3M) สีขาว สีเหลือง สีเขียว สีน้ำเงิน สีแดง (มอก.606-2549) แบบที่ 1 ขนาด 48\"",
+                          "unit":  "ม้วน",
+                          "price":  72500,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-16",
+                          "name":  "แผ่นสะท้อนแสง Advanced Flexible Engineer Prismatic Grade (3M) สีส้ม",
+                          "unit":  "หลา",
+                          "price":  750,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-17",
+                          "name":  "แผ่นสะท้อนแสง Advanced Flexible Engineer Prismatic Grade (3M) สีส้ม (มอก.606-2549) แบบที่ 1 ขนาด 24\"",
+                          "unit":  "ม้วน",
+                          "price":  37500,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-18",
+                          "name":  "แผ่นสะท้อนแสง Advanced Flexible Engineer Prismatic Grade (3M) สีส้ม",
+                          "unit":  "หลา",
+                          "price":  920,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-19",
+                          "name":  "แผ่นสะท้อนแสง Advanced Flexible Engineer Prismatic Grade (3M) สีส้ม (มอก.606-2549) แบบที่ 1 ขนาด 30\"",
+                          "unit":  "ม้วน",
+                          "price":  46000,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-20",
+                          "name":  "แผ่นสะท้อนแสง Advanced Flexible Engineer Prismatic Grade (3M) สีส้ม",
+                          "unit":  "หลา",
+                          "price":  1120,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-21",
+                          "name":  "แผ่นสะท้อนแสง Advanced Flexible Engineer Prismatic Grade (3M) สีส้ม (มอก.606-2549) แบบที่ 1 ขนาด 36\"",
+                          "unit":  "ม้วน",
+                          "price":  56000,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-22",
+                          "name":  "แผ่นสะท้อนแสง Advanced Flexible Engineer Prismatic Grade (3M) สีขาว สีเหลือง สีส้ม",
+                          "unit":  "หลา",
+                          "price":  1450,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-23",
+                          "name":  "แผ่นสะท้อนแสง Advanced Flexible Engineer Prismatic Grade (3M) สีขาว สีเหลือง สีส้ม (มอก.606-2549) แบบที่ 1 ขนาด 48\"",
+                          "unit":  "ม้วน",
+                          "price":  72500,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-24",
+                          "name":  "แผ่นสะท้อนแสง High Intensity Prismatic Grade (3M) สีขาว สีเหลือง สีเขียว สีน้ำเงิน",
+                          "unit":  "หลา",
+                          "price":  1320,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-25",
+                          "name":  "แผ่นสะท้อนแสง High Intensity Prismatic Grade (3M) สีขาว สีเหลือง สีเขียว สีน้ำเงิน และสีแดง (มอก.606-2549) แบบที่ 4 ขนาด 24\"",
+                          "unit":  "ม้วน",
+                          "price":  66000,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-26",
+                          "name":  "แผ่นสะท้อนแสง High Intensity Prismatic Grade (3M) สีขาว สีเหลือง สีเขียว สีน้ำเงิน",
+                          "unit":  "หลา",
+                          "price":  1650,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-27",
+                          "name":  "แผ่นสะท้อนแสง High Intensity Prismatic Grade (3M) สีขาว สีเหลือง สีเขียว สีน้ำเงิน และสีแดง (มอก.606-2549) แบบที่ 4 ขนาด 30\"",
+                          "unit":  "ม้วน",
+                          "price":  82500,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-28",
+                          "name":  "แผ่นสะท้อนแสง High Intensity Prismatic Grade (3M) สีขาว สีเหลือง สีเขียว สีน้ำเงิน",
+                          "unit":  "หลา",
+                          "price":  1980,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-29",
+                          "name":  "แผ่นสะท้อนแสง High Intensity Prismatic Grade (3M) สีขาว สีเหลือง สีเขียว สีน้ำเงิน และสีแดง (มอก.606-2549) แบบที่ 4 ขนาด 36\"",
+                          "unit":  "ม้วน",
+                          "price":  99000,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-30",
+                          "name":  "แผ่นสะท้อนแสง High Intensity Prismatic Grade (3M) สีขาว สีเหลือง สีเขียว สีน้ำเงิน",
+                          "unit":  "หลา",
+                          "price":  2640,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-31",
+                          "name":  "แผ่นสะท้อนแสง High Intensity Prismatic Grade (3M) สีขาว สีเหลือง สีเขียว สีน้ำเงิน และสีแดง (มอก.606-2549) แบบที่ 4 ขนาด 48\"",
+                          "unit":  "ม้วน",
+                          "price":  132000,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-32",
+                          "name":  "แผ่นสะท้อนแสง Diamond Grade DGM3 (3M) สีขาว สีเขียว สีน้ำเงิน สีแดง สีเขียวมะนาว",
+                          "unit":  "หลา",
+                          "price":  2600,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-33",
+                          "name":  "แผ่นสะท้อนแสง Diamond Grade DGM3 (3M) สีขาว สีเขียว สีน้ำเงิน สีแดง สีเขียวมะนาว Fluorescent, สีส้ม Fluorescent, สีเหลือง Fluorescent, (มอก.606-2549) แบบที่ 9 ขนาด 24\"",
+                          "unit":  "ม้วน",
+                          "price":  130000,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-34",
+                          "name":  "แผ่นสะท้อนแสง Diamond Grade DGM3 (3M) สีขาว สีเขียว สีน้ำเงิน สีแดง",
+                          "unit":  "หลา",
+                          "price":  3250,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-35",
+                          "name":  "แผ่นสะท้อนแสง Diamond Grade DGM3 (3M) สีขาว สีเขียว สีน้ำเงิน สีแดง สีส้ม Fluorescent, สีเหลือง Fluorescent, (มอก.606-2549) แบบที่ 9 ขนาด 30\"",
+                          "unit":  "ม้วน",
+                          "price":  162500,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-36",
+                          "name":  "แผ่นสะท้อนแสง Diamond Grade DGM3 (3M) สีขาว สีเขียว สีน้ำเงิน สีแดง",
+                          "unit":  "หลา",
+                          "price":  3900,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-37",
+                          "name":  "แผ่นสะท้อนแสง Diamond Grade DGM3 (3M) สีขาว สีเขียว สีน้ำเงิน สีแดง สีส้ม Fluorescent, สีเหลือง Fluorescent, (มอก.606-2549) แบบที่ 9 ขนาด 36\"",
+                          "unit":  "ม้วน",
+                          "price":  195000,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-38",
+                          "name":  "แผ่นสะท้อนแสง Diamond Grade DGM3 (3M) สีขาว สีเหลือง สีเขียว สีน้ำเงิน สีแดง สีเขียวมะนาว Fluorescent, สีส้ม Fluorescent, สีเหลือง Fluorescent,",
+                          "unit":  "หลา",
+                          "price":  5200,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-39",
+                          "name":  "แผ่นสะท้อนแสง Diamond Grade DGM3 (3M) สีขาว สีเหลือง สีเขียว สีน้ำเงิน สีแดง (มอก.606-2549) แบบที่ 9 ขนาด 48\"",
+                          "unit":  "หลา",
+                          "price":  260000,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-40",
+                          "name":  "สติ๊กเกอร์ (3M) สีดำด้าน Black Matt (มอก.606-2549) ขนาด 24\"",
+                          "unit":  "ม้วน",
+                          "price":  290,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-41",
+                          "name":  "สติ๊กเกอร์ (3M) สีดำด้าน Black Matt (มอก.606-2549) ขนาด 24\"",
+                          "unit":  "หลา",
+                          "price":  14500,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-42",
+                          "name":  "สติ๊กเกอร์ (3M) สีดำด้าน Black Matt (มอก.606-2549) ขนาด 30\"",
+                          "unit":  "ม้วน",
+                          "price":  365,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-43",
+                          "name":  "สติ๊กเกอร์ (3M) สีดำด้าน Black Matt (มอก.606-2549) ขนาด 30\"",
+                          "unit":  "หลา",
+                          "price":  18250,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-44",
+                          "name":  "สติ๊กเกอร์ (3M) สีดำด้าน Black Matt (มอก.606-2549) ขนาด 36\"",
+                          "unit":  "ม้วน",
+                          "price":  435,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-45",
+                          "name":  "สติ๊กเกอร์ (3M) สีดำด้าน Black Matt (มอก.606-2549) ขนาด 36\"",
+                          "unit":  "หลา",
+                          "price":  21750,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-46",
+                          "name":  "สติ๊กเกอร์ (3M) สีดำด้าน Black Matt (มอก.606-2549) ขนาด 48\"",
+                          "unit":  "ม้วน",
+                          "price":  580,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-47",
+                          "name":  "สติ๊กเกอร์ (3M) สีดำด้าน Black Matt (มอก.606-2549) ขนาด 48\"",
+                          "unit":  "หลา",
+                          "price":  29000,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-48",
+                          "name":  "แผ่นสะท้อนแสงชนิด Diamond Grade DG3 (3M) Fluoresent สีส้ม สำหรับติดเสาไฟฟ้า สูง 9.00 เมตร ขนาด 15 x 15 ซม.",
+                          "unit":  "แผ่น",
+                          "price":  80,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-49",
+                          "name":  "แผ่นสะท้อนแสงชนิด Advanced Flexible Engineer Prismatic Grade (3M) สีส้ม สำหรับ ติดสูง 9.00 เมตร ขนาด 15 x 15 ซม.",
+                          "unit":  "แผ่น",
+                          "price":  40,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-50",
+                          "name":  "แถบสะท้อนแสงไดมอนด์เกรดสำหรับยานพาหนะ (DG Reflective Sheeting For Vehicle) (สีแดง ,สีเหลือง ,สีขาว ,ขวา - แดง) ขนาด 2\" x 50 เมตร",
+                          "unit":  "ม้วน",
+                          "price":  8500,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-51",
+                          "name":  "แผ่นสะท้อนแสงคอมฟอร์มเมเบิ้ล (3M) สำหรับติดหลักนำทาง ในกล่องประกอบด้วย แผ่นสะท้อนแสงแบบกลม ขนาด ศก.6ซม. จำนวน 200 อัน แบบเหลี่ยม ขนาด 3 x 15 ซม. จำนวน 100 อัน พร้อมอุปกรณ์",
+                          "unit":  "กล่อง",
+                          "price":  5500,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-52",
+                          "name":  "แผ่นสะท้อนแสงคอมฟอร์มเมเบิ้ล (3M) สำหรับติดราวสะพาน ในกล่องประกอบด้วย แผ่นสะท้อนแสง ขนาด 10ซม. x 25 หลา จำนวน 1 ม้วน พร้อมอุปรณ์.",
+                          "unit":  "กล่อง",
+                          "price":  10700,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-53",
+                          "name":  "กรวยยางสีส้มฃนิดยืดหยุ่นได้ ชนาดฐาน 35 x 35 ซม. สูง 70 ซม. (หนัก 2.2 กก.) คาดแถลสะท้อนแสงสีขาว 2 แถบ",
+                          "unit":  "ลูก",
+                          "price":  540,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-54",
+                          "name":  "กรวยยางสีส้มฃนิดยืดหยุ่นได้ ชนาดฐาน 40 x 40 ซม. สูง 80 ซม. (หนัก 2.2 กก.) คาดแถลสะท้อนแสงสีขาว 2 แถบ",
+                          "unit":  "ลูก",
+                          "price":  740,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-55",
+                          "name":  "กรวยยางสีส้มฃนิดยืดหยุ่นได้ ชนาดฐาน 50 x 50 ซม. สูง 100 ซม. (หนัก 4.2 กก.) คาดแถลสะท้อนแสงสีขาว 3 แถบ",
+                          "unit":  "ลูก",
+                          "price":  1200,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-56",
+                          "name":  "ป้ายยอดกรวยยาง พร้อมตัวยืดบนยอดกรวยยาง ติดแผ่นสะท้อนแสง Engineer Grade - ป้ายยอดกรวย ขนาด 40 ซม.",
+                          "unit":  "ชุด",
+                          "price":  480,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-57",
+                          "name":  "ป้ายยอดกรวยยาง พร้อมตัวยืดบนยอดกรวยยาง ติดแผ่นสะท้อนแสง Engineer Grade - ป้ายยอดกรวย ขนาด 45 ซม.",
+                          "unit":  "ชุด",
+                          "price":  680,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-58",
+                          "name":  "หลักล้มลุกสีส้มสะท้อนแสง (TPU) (มีใบรับรองจากกรมวิทย์ฯ) ติดแถบสะท้อนแสงสีขาว หลักล้มลุกสีส้มสะท้อนแสง (TPU) ขนาด ø 8 ซม. สูง 0.75 ม. ชั้นเดียว",
+                          "unit":  "อัน",
+                          "price":  1800,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-59",
+                          "name":  "หลักล้มลุกสีส้มสะท้อนแสง (TPU) (มีใบรับรองจากกรมวิทย์ฯ) ติดแถบสะท้อนแสงสีขาว หลักล้มลุกสีส้มสะท้อนแสง (TPU) ขนาด ø 8 ซม. สูง 0.75 ม. สองชั้น",
+                          "unit":  "อัน",
+                          "price":  2500,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-60",
+                          "name":  "หลักล้มลุกชนิดแบน (แบบถอดเปลี่ยนได้) ขนาด 7.5 ซม. สูง 75 ซม. ติดแถบสะท้อนแสง - หลักล้มลุกชนิดแบน (ไม่รวมฐาน)",
+                          "unit":  "อัน",
+                          "price":  1800,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-61",
+                          "name":  "หลักล้มลุกชนิดแบน (แบบถอดเปลี่ยนได้) ขนาด 7.5 ซม. สูง 75 ซม. ติดแถบสะท้อนแสง - หลักล้มลุกชนิดแบนพร้อมฐาน",
+                          "unit":  "อัน",
+                          "price":  2500,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-62",
+                          "name":  "หลักบอกระยะและบอกแนวทางชนิดแบน (สีเหลือง , สีขาว) ติดแผ่นสะท้อนแสง - ขนาดกว้าง 10 ซม. พร้อมฐาน 19.5 x 24.5 ซม. หรือ แบบฝังดิน",
+                          "unit":  "บาท",
+                          "price":  1800,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-63",
+                          "name":  "หลักบอกระยะและบอกแนวทางชนิดแบน (สีเหลือง , สีขาว) ติดแผ่นสะท้อนแสง - ขนาดกว้าง 12 ซม. พร้อมฐาน 19.5 x 24.5 ซม. หรือ แบบฝังดิน",
+                          "unit":  "บาท",
+                          "price":  2400,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-64",
+                          "name":  "CURB ประกอบหลักล้มลุก แบบแข็งแรงพิเศษไม่แตกหักทนต่อแรงกดกระแทกจาก รถบรรทุกขนาดใหญ่ได้ดี ขนาด ยาว 48 ซม. กว้าง 20 ซม. สูง 10 ซม. ติดแผ่นสะท้อนแสง Diamond Grade (3M)",
+                          "unit":  "อัน",
+                          "price":  1400,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-65",
+                          "name":  "CURB ขนาด ยาว 104 ซม. กว้าง 20 ซม. สูง 10 ซม. พร้อมหลักล้มลุกขนาด ø 8 ซม. สูง 75 ซม. ติดแผ่นสะท้อนแสง 3M ชนิด DIAMOND GRADE ขนาด 3 นิ้ว 3 แถบ",
+                          "unit":  "ชุด",
+                          "price":  3900,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-66",
+                          "name":  "บาริเออร์น้ำชนิดพลาสติกอย่างดีสีส้ม ขนาด 52 x 104 x 80 ซม. (หนัก 12 กก.)",
+                          "unit":  "อัน",
+                          "price":  3900,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-67",
+                          "name":  "บาริเออร์น้ำชนิดพลาสติกอย่างดีสีส้ม ขนาด 50 x 150 x 80 ซม.",
+                          "unit":  "อัน",
+                          "price":  4900,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-68",
+                          "name":  "บาริเออร์น้ำชนิดพลาสติกอย่างดีสีส้ม ขนาด 50 x 200 x 100 ซม.",
+                          "unit":  "อัน",
+                          "price":  7800,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-69",
+                          "name":  "บาริเออร์หัวเกาะ ชนิดพลาสติกอย่างดี คาดแถบสะท้อนแสง Diamond Grade Fluorescent - บาริเออร์หัวเกาะ ขนาด 90 x 60 x 90 ซม.",
+                          "unit":  "อัน",
+                          "price":  14000,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-70",
+                          "name":  "บาริเออร์หัวเกาะ ชนิดพลาสติกอย่างดี คาดแถบสะท้อนแสง Diamond Grade Fluorescent - บาริเออร์หัวเกาะ ขนาด 90 x 90 x 90 ซม.",
+                          "unit":  "อัน",
+                          "price":  22000,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-71",
+                          "name":  "บาริเออร์หัวเกาะ ชนิดพลาสติกอย่างดี (แบบมีไฟกระพริบพลังงานแสงอาทิตย์) - บาริเออร์หัวเกาะ Soler Cells ขนาด 90 x 60 x 90 ซม.",
+                          "unit":  "อัน",
+                          "price":  22000,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-72",
+                          "name":  "บาริเออร์หัวเกาะ ชนิดพลาสติกอย่างดี (แบบมีไฟกระพริบพลังงานแสงอาทิตย์) - บาริเออร์หัวเกาะ Soler Cells ขนาด 90 x 90 x 90 ซม.",
+                          "unit":  "อัน",
+                          "price":  29000,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-73",
+                          "name":  "ป้ายพับตั้งพื้น ผลิตจากพลาสติกอย่างดี ติดแผ่นสะท้อนแสง Advanced Flexible Engineer - ขนาด 65 x 115 ซม. หน้าเดี่ยว",
+                          "unit":  "ป้าย",
+                          "price":  1950,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-74",
+                          "name":  "ป้ายพับตั้งพื้น ผลิตจากพลาสติกอย่างดี ติดแผ่นสะท้อนแสง Advanced Flexible Engineer - ขนาด 65 x 115 ซม. สองหน้า",
+                          "unit":  "ป้าย",
+                          "price":  2650,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-75",
+                          "name":  "ป้ายพับตั้งพื้น ผลิตจากพลาสติกอย่างดี ติดแผ่นสะท้อนแสง Diamond Grade DG3 - ขนาด 65 x 115 ซม. หน้าเดี่ยว",
+                          "unit":  "ป้าย",
+                          "price":  3600,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-76",
+                          "name":  "ป้ายพับตั้งพื้น ผลิตจากพลาสติกอย่างดี ติดแผ่นสะท้อนแสง Diamond Grade DG3 - ขนาด 65 x 115 ซม. สองหน้า",
+                          "unit":  "ป้าย",
+                          "price":  4950,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-77",
+                          "name":  "ป้ายชั่วคราวเคลื่อนที่ ขนาดป้าย 24 x 110 x 4 ซม. ขนาดฐาน 40 x 70 x 6 ซม. พื้นและข้อความทำจากแผ่นสะท้อนแสง 3M สามารถปรับเปลี่ยนหรือถอดประกอบได้",
+                          "unit":  "ชุด",
+                          "price":  2500,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-78",
+                          "name":  "เป้าสะท้อนแสงสำหรับติดหลักกันโค้ง ผลิตจากแผ่นเหล็กชุบสังกะสี ติดแผ่นสะท้อนแสง Hi Prismatic Grede ประกอบด้วยเป้าแบบเหลี่ยม ขนาด 4 x 15 ซม. - 1 อัน, แบบกลม ขนาด ø 6ซม. - 2 อัน ใช้น็อต 4 ตัว (ไม่รวมค่าติดตั้ง)",
+                          "unit":  "ชุด",
+                          "price":  60,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-79",
+                          "name":  "เป้าสะท้อนแสงสำหรับติดหลักกันโค้ง ผลิตจากแผ่นเหล็กชุบสังกะสี ติดแผ่นสะท้อนแสง ชนิด Hi Prismatic Grede ประกอบด้วยเป้าแบบเหลี่ยม ขนาด 4 x 15 ซม. - 1 อัน, แบบกลม ขนาด ø 6ซม. - 2 อัน ใช้น็อต 4 ตัว (พร้อมติดตั้ง)",
+                          "unit":  "ชุด",
+                          "price":  75,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-80",
+                          "name":  "เป้าสะท้อนแสงสำหรับติดตั้งบนราวกันอันตราย (การ์ดเรล) ติดแผ่นสะท้อนแสง - ขนาด ø 10 ซม. หน้าเดี่ยว (ไม่รวมติดตั้ง)",
+                          "unit":  "ตัว",
+                          "price":  75,
+                          "category":  "guardrail",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-81",
+                          "name":  "เป้าสะท้อนแสงสำหรับติดตั้งบนราวกันอันตราย (การ์ดเรล) ติดแผ่นสะท้อนแสง - ขนาด ø 10 ซม. หน้าเดี่ยว (รวมติดตั้ง)",
+                          "unit":  "ตัว",
+                          "price":  95,
+                          "category":  "guardrail",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-82",
+                          "name":  "เป้าสะท้อนแสงสำหรับติดตั้งบนราวกันอันตราย (การ์ดเรล) ติดแผ่นสะท้อนแสง - ขนาด ø 10 ซม. สองหน้า (ไม่รวมติดตั้ง)",
+                          "unit":  "ตัว",
+                          "price":  95,
+                          "category":  "guardrail",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-83",
+                          "name":  "เป้าสะท้อนแสงสำหรับติดตั้งบนราวกันอันตราย (การ์ดเรล) ติดแผ่นสะท้อนแสง - ขนาด ø 10 ซม. สองหน้า (รวมติดตั้ง)",
+                          "unit":  "ตัว",
+                          "price":  115,
+                          "category":  "guardrail",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-84",
+                          "name":  "เป้าสะท้อนแสงสำหรับติดตั้งบนราวกันอันตราย (การ์ดเรล) ติดแผ่นสะท้อนแสง - ขนาด 15 x 10 ซม. หน้าเดี่ยว (ไม่รวมติดตั้ง)",
+                          "unit":  "ตัว",
+                          "price":  90,
+                          "category":  "guardrail",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-85",
+                          "name":  "เป้าสะท้อนแสงสำหรับติดตั้งบนราวกันอันตราย (การ์ดเรล) ติดแผ่นสะท้อนแสง - ขนาด 15 x 10 ซม. หน้าเดี่ยว (รวมติดตั้ง)",
+                          "unit":  "ตัว",
+                          "price":  110,
+                          "category":  "guardrail",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-86",
+                          "name":  "เป้าสะท้อนแสงสำหรับติดตั้งบนราวกันอันตราย (การ์ดเรล) ติดแผ่นสะท้อนแสง - ขนาด 15 x 10 ซม. สองหน้า (ไม่รวมติดตั้ง)",
+                          "unit":  "ตัว",
+                          "price":  140,
+                          "category":  "guardrail",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-87",
+                          "name":  "เป้าสะท้อนแสงสำหรับติดตั้งบนราวกันอันตราย (การ์ดเรล) ติดแผ่นสะท้อนแสง - ขนาด 15 x 10 ซม. สองหน้า (รวมติดตั้ง)",
+                          "unit":  "ตัว",
+                          "price":  165,
+                          "category":  "guardrail",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-88",
+                          "name":  "เป้าสะท้อนแสงสำหรับติดตั้งบน Curb ติดแผ่นสะท้อนแสง Diamond Grade - ขนาด 10 x 10 ซม. หน้าเดี่ยว (ไม่รวมติดตั้ง)",
+                          "unit":  "ตัว",
+                          "price":  95,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-89",
+                          "name":  "เป้าสะท้อนแสงสำหรับติดตั้งบน Curb ติดแผ่นสะท้อนแสง Diamond Grade - ขนาด 10 x 10 ซม. หน้าเดี่ยว (รวมติดตั้ง)",
+                          "unit":  "ตัว",
+                          "price":  115,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-90",
+                          "name":  "เป้าสะท้อนแสงสำหรับติดตั้งบน Curb ติดแผ่นสะท้อนแสง Diamond Grade - ขนาด 10 x 10 ซม. สองหน้า (ไม่รวมติดตั้ง)",
+                          "unit":  "ตัว",
+                          "price":  135,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-91",
+                          "name":  "เป้าสะท้อนแสงสำหรับติดตั้งบน Curb ติดแผ่นสะท้อนแสง Diamond Grade - ขนาด 10 x 10 ซม. สองหน้า (รวมติดตั้ง)",
+                          "unit":  "ตัว",
+                          "price":  165,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-92",
+                          "name":  "เป้าสะท้อนแสงสำหรับติดตั้งบน Curb ติดแผ่นสะท้อนแสง Diamond Grade - ขนาด 15 x 10 ซม. หน้าเดี่ยว (ไม่รวมติดตั้ง)",
+                          "unit":  "ตัว",
+                          "price":  130,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-93",
+                          "name":  "เป้าสะท้อนแสงสำหรับติดตั้งบน Curb ติดแผ่นสะท้อนแสง Diamond Grade - ขนาด 15 x 10 ซม. หน้าเดี่ยว (รวมติดตั้ง)",
+                          "unit":  "ตัว",
+                          "price":  150,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-94",
+                          "name":  "เป้าสะท้อนแสงสำหรับติดตั้งบน Curb ติดแผ่นสะท้อนแสง Diamond Grade - ขนาด 15 x 10 ซม. สองหน้า (ไม่รวมติดตั้ง)",
+                          "unit":  "ตัว",
+                          "price":  190,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-95",
+                          "name":  "เป้าสะท้อนแสงสำหรับติดตั้งบน Curb ติดแผ่นสะท้อนแสง Diamond Grade - ขนาด 15 x 10 ซม. สองหน้า (รวมติดตั้ง)",
+                          "unit":  "ตัว",
+                          "price":  230,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-96",
+                          "name":  "เป้าสะท้อนแสงสำหรับติดตั้งบนราวสะพานและบนบาริเออร์ ติดแผ่นสะท้อนแสง - ขนาด 10 x 10 ซม. หน้าเดี่ยว (ไม่รวมติดตั้ง)",
+                          "unit":  "ตัว",
+                          "price":  95,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-97",
+                          "name":  "เป้าสะท้อนแสงสำหรับติดตั้งบนราวสะพานและบนบาริเออร์ ติดแผ่นสะท้อนแสง - ขนาด 10 x 10 ซม. หน้าเดี่ยว (รวมติดตั้ง)",
+                          "unit":  "ตัว",
+                          "price":  115,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-98",
+                          "name":  "เป้าสะท้อนแสงสำหรับติดตั้งบนราวสะพานและบนบาริเออร์ ติดแผ่นสะท้อนแสง - ขนาด 10 x 10 ซม. สองหน้า (ไม่รวมติดตั้ง)",
+                          "unit":  "ตัว",
+                          "price":  135,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-99",
+                          "name":  "เป้าสะท้อนแสงสำหรับติดตั้งบนราวสะพานและบนบาริเออร์ ติดแผ่นสะท้อนแสง - ขนาด 10 x 10 ซม. สองหน้า (รวมติดตั้ง)",
+                          "unit":  "ตัว",
+                          "price":  165,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-100",
+                          "name":  "เป้าสะท้อนแสงสำหรับติดตั้งบนราวสะพานและบนบาริเออร์ ติดแผ่นสะท้อนแสง - ขนาด 15 x 15 ซม. หน้าเดี่ยว (ไม่รวมติดตั้ง)",
+                          "unit":  "ตัว",
+                          "price":  195,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-101",
+                          "name":  "เป้าสะท้อนแสงสำหรับติดตั้งบนราวสะพานและบนบาริเออร์ ติดแผ่นสะท้อนแสง - ขนาด 15 x 15 ซม. หน้าเดี่ยว (รวมติดตั้ง)",
+                          "unit":  "ตัว",
+                          "price":  220,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-102",
+                          "name":  "เป้าสะท้อนแสงสำหรับติดตั้งบนราวสะพานและบนบาริเออร์ ติดแผ่นสะท้อนแสง - ขนาด 15 x 15 ซม. สองหน้า (ไม่รวมติดตั้ง)",
+                          "unit":  "ตัว",
+                          "price":  275,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-103",
+                          "name":  "เป้าสะท้อนแสงสำหรับติดตั้งบนราวสะพานและบนบาริเออร์ ติดแผ่นสะท้อนแสง - ขนาด 15 x 15 ซม. สองหน้า (รวมติดตั้ง)",
+                          "unit":  "ตัว",
+                          "price":  325,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-104",
+                          "name":  "เป้าล้มลุก ตัวเป้าเป็นพลาสติกอย่างดี ติดแผ่นสะท้อนแสง Diamond Grade - ขนาด 6 x 10 ซม. หน้าเดียว",
+                          "unit":  "ตัว",
+                          "price":  145,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-105",
+                          "name":  "เป้าล้มลุก ตัวเป้าเป็นพลาสติกอย่างดี ติดแผ่นสะท้อนแสง Diamond Grade - ขนาด 6 x 10 ซม. สองหน้า",
+                          "unit":  "ตัว",
+                          "price":  180,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-106",
+                          "name":  "เป้าล้มลุก ตัวเป้าเป็นพลาสติกอย่างดี ติดแผ่นสะท้อนแสง Diamond Grade - ขนาด 6 x 15 ซม. หน้าเดียว",
+                          "unit":  "ตัว",
+                          "price":  220,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-107",
+                          "name":  "เป้าล้มลุก ตัวเป้าเป็นพลาสติกอย่างดี ติดแผ่นสะท้อนแสง Diamond Grade - ขนาด 6 x 15 ซม. สองหน้า",
+                          "unit":  "ตัว",
+                          "price":  265,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-108",
+                          "name":  "เป้าล้มลุก ตัวเป้าเป็นพลาสติกอย่างดี ติดแผ่นสะท้อนแสง Diamond Grade - ขนาด 10 x 10 ซม. หน้าเดียว",
+                          "unit":  "ตัว",
+                          "price":  240,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-109",
+                          "name":  "เป้าล้มลุก ตัวเป้าเป็นพลาสติกอย่างดี ติดแผ่นสะท้อนแสง Diamond Grade - ขนาด 10 x 10 ซม. สองหน้า",
+                          "unit":  "ตัว",
+                          "price":  280,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-110",
+                          "name":  "เป้าล้มลุก ตัวเป้าเป็นพลาสติกอย่างดี ติดแผ่นสะท้อนแสง Diamond Grade - ขนาด 10 x 15 ซม. หน้าเดียว",
+                          "unit":  "ตัว",
+                          "price":  360,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-111",
+                          "name":  "เป้าล้มลุก ตัวเป้าเป็นพลาสติกอย่างดี ติดแผ่นสะท้อนแสง Diamond Grade - ขนาด 10 x 15 ซม. สองหน้า",
+                          "unit":  "ตัว",
+                          "price":  420,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-112",
+                          "name":  "แผ่นบังแสง (ANTI GLARE BOARD) ติดเป้าสะท้อนแสง Diamond Grade - ขนาด กว้าง 28.5 ซม. สูง 65 ซม. หนา 5.8 ซม. หน้าเดียว",
+                          "unit":  "ชุด",
+                          "price":  1800,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-113",
+                          "name":  "แผ่นบังแสง (ANTI GLARE BOARD) ติดเป้าสะท้อนแสง Diamond Grade - ขนาด กว้าง 28.5 ซม. สูง 65 ซม. หนา 5.8 ซม. สองหน้า",
+                          "unit":  "ชุด",
+                          "price":  1800,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-114",
+                          "name":  "หมุดลูกแก้วสะท้อนแสง 360 องศา ชนิดแข็งแรงพิเศษ ทนต่อแรงกดสูง (มีใบรับรองผลการทดสอบ)",
+                          "unit":  "ตัว",
+                          "price":  500,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-115",
+                          "name":  "หมุดลูกแก้วสะท้อนแสง 360 องศา พลังงานแสงอาทิตย์ ใช้หลอด LED ชนิดความเข้มสูง",
+                          "unit":  "ตัว",
+                          "price":  2450,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-116",
+                          "name":  "หมุดสะท้อนแสง 3M ชนิดอลูมิเนียมอัลฟอยด์ สีขาว, สีเหลือง หน้าเดียว",
+                          "unit":  "ตัว",
+                          "price":  240,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-117",
+                          "name":  "หมุดสะท้อนแสง 3M ชนิดอลูมิเนียมอัลฟอยด์ สีขาว, สีเหลือง สองหน้า",
+                          "unit":  "ตัว",
+                          "price":  280,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-118",
+                          "name":  "กาวอีพ๊อกซี่ (ขนาดจุ A 1 แกลลอน, ขนาด B 1 แกลลอน) - ชุดเล็ก",
+                          "unit":  "ชุด",
+                          "price":  2600,
+                          "category":  "road",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-119",
+                          "name":  "กาวอีพ๊อกซี่ (ขนาดจุ A 1 แกลลอน, ขนาด B 1 แกลลอน) - ชุดกลาง",
+                          "unit":  "ชุด",
+                          "price":  5400,
+                          "category":  "road",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-120",
+                          "name":  "กาวอีพ๊อกซี่ (ขนาดจุ A 1 แกลลอน, ขนาด B 1 แกลลอน) - ชุดใหญ่",
+                          "unit":  "ชุด",
+                          "price":  12500,
+                          "category":  "road",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-121",
+                          "name":  "ป้ายติดหลักกิโลเมตร ติดแผ่นสะท้อนแสง Hi Prismatic Grade - ขนาด 0.30 x 0.60 ม. (ไม่รวมติดตั้ง)",
+                          "unit":  "แผ่น",
+                          "price":  665,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-122",
+                          "name":  "ป้ายติดหลักกิโลเมตร ติดแผ่นสะท้อนแสง Hi Prismatic Grade - ขนาด 0.30 x 0.60 ม. (รวมติดตั้ง)",
+                          "unit":  "แผ่น",
+                          "price":  860,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-123",
+                          "name":  "ป้ายเตือนแนวทาง (Chevron) แบบพลังงานแสงอาทิตย์ ขนาด 0.60 x 0.75 ม. ติดแผ่นสะท้อนแสง Diamond Grade ใช้หลอด LED จำนวน 216 ดวง แบบควบคุม ให้กระพริบ เรียงไปในทิศทางเดียวกัน Link / Sequence",
+                          "unit":  "ป้าย",
+                          "price":  24500,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-124",
+                          "name":  "ป้ายหัวเกาะ ไฟกระพริบพลังงานแสงอาทิตย์ (แบบกระพริบบน - กระพริบล่าง) - ป้ายหัวเกาะ ขนาด ø 0.75 ม. หรือ ขนาด 0.75 x 0.75 ม. ติดแผ่นสะท้อนแสง Diamond Grade - ป้ายเตือนสิ่งกีดขวาง ขนาด 0.45 x 0.75 ม. ติดแผ่นสะท้อนแสง Diamond Grade",
+                          "unit":  "ชุด",
+                          "price":  49500,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-125",
+                          "name":  "ป้ายหัวเกาะ ไฟกระพริบพลังงานแสงอาทิตย์ (แบบกระพริบบน - กระพริบล่าง) - ป้ายหัวเกาะ ขนาด ø 0.75 ม. หรือ ขนาด 0.75 x 0.75 ม. ติดแผ่นสะท้อนแสง Diamond Grade - ป้ายเตือนสิ่งกีดขวาง ขนาด 0.45 x 0.75 ม. ชนิดแผ่นเหล็กชุบสังกะสี หนา 1.2 มม. ติดแผ่นสะท้อนแสง Diamond Grade",
+                          "unit":  "ชุด",
+                          "price":  33000,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-126",
+                          "name":  "ป้ายจราจร ไฟกระพริบพลังงานแสงอาทิตย์ (แบบกระพริบบน - กระพริบล่าง) - ป้ายจราจร ขนาด ø 0.75 ม. ติดแผ่นสะท้อนแสง Diamond Grade - ป้าย ขนาด 0.75 x 0.75 ม. ติดแผ่นสะท้อนแสง Diamond Grade",
+                          "unit":  "ชุด",
+                          "price":  33000,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-127",
+                          "name":  "ป้ายจราจร ไฟกระพริบพลังงานแสงอาทิตย์ (แบบกระพริบบน - กระพริบล่าง) - ป้ายจราจร ขนาด ø 0.90 ม. ติดแผ่นสะท้อนแสง Diamond Grade - ป้าย ขนาด 0.90 x 0.90 ม. ติดแผ่นสะท้อนแสง Diamond Grade",
+                          "unit":  "ชุด",
+                          "price":  49000,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-128",
+                          "name":  "ไฟสัญญาณจราจรชนิดหลอด LED ขนาด 300 มม. สีแดง สีเหลือง สีเขียว ใช้ไฟขนาด 220 โวลท์",
+                          "unit":  "โคม",
+                          "price":  12000,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-129",
+                          "name":  "ไฟสัญญาณจราจรชนิดหลอด LED ขนาด 300 มม. สีแดง สีเหลือง สีเขียว ใช้ไฟขนาด 220 โวลท์ รุ่น 3 ดวงโคม พร้อมแบ็กกิ้งบอร์ด",
+                          "unit":  "ชุด",
+                          "price":  39200,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-130",
+                          "name":  "ไฟสัญญาณจราจรชนิดหลอด LED ขนาด 300 มม. สีแดง สีเหลือง สีเขียว และสีเขียวเลี้ยว ใช้ไฟขนาด 220 โวลท์ รุ่น 4 ดวงโคม พร้อมแบ็กกิ้งบอร์ด",
+                          "unit":  "ชุด",
+                          "price":  51400,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-131",
+                          "name":  "ไฟสัญญาณจราจรชนิดหลอด LED ขนาด 300 มม. สีแดง สีเหลือง สีเขียว และสีเขียวเลี้ยว ใช้ไฟขนาด 220 โวลท์ รุ่น 6 ดวงโคม พร้อมแบ็กกิ้งบอร์ด",
+                          "unit":  "ชุด",
+                          "price":  78400,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-132",
+                          "name":  "โคมไฟกระพริบโซล่าเซลล์ ขนาด 300 มม. กระพริบทั้งกลางวันและกลางคืน - โคมไฟกระพริบโซล่าเซลล์ (รุ่นแบบแบนพิเศษ) รุ่นหลอด LED 168 ดวง",
+                          "unit":  "โคม",
+                          "price":  12900,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-133",
+                          "name":  "โคมไฟกระพริบโซล่าเซลล์ ขนาด 300 มม. กระพริบทั้งกลางวันและกลางคืน - โคมไฟกระพริบโซล่าเซลล์ (รุ่นแบบหนา) รุ่นหลอด LED 168 ดวง หรือ 252 ดวง",
+                          "unit":  "โคม",
+                          "price":  18500,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-134",
+                          "name":  "โคมไฟสัญญาณเตือนลูกศรท้ายรถ ขนาด 0.65 x 1.20 ม. 1 ดวงโคมเล็กมีหลอด LED 36 ดวง - ไฟเตือนลูกศรท้ายรถ ขนาด 0.65 x 1.20 ม. (แบบเฉพาะไฟ)",
+                          "unit":  "ชุด",
+                          "price":  23000,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-135",
+                          "name":  "โคมไฟสัญญาณเตือนลูกศรท้ายรถ ขนาด 0.65 x 1.20 ม. 1 ดวงโคมเล็กมีหลอด LED 36 ดวง - ไฟเตือนลูกศรท้ายรถ ขนาด 0.65 x 1.20 ม. (แบบติดแผ่นสะท้อนแสง Diamond Grade 3M)",
+                          "unit":  "ชุด",
+                          "price":  33000,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-136",
+                          "name":  "ไฟลูกศร LED สำหรับงานก่อสร้าง 1 ดวงโคมเล็กมีหลอด LED 36 ดวง พร้อมขาตั้งมีล้อ - ไฟลูกศร LED สำหรับงานก่อสร้าง (ไม่รวมแบตเตอรี่)",
+                          "unit":  "ชุด",
+                          "price":  14500,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-137",
+                          "name":  "ไฟลูกศร LED สำหรับงานก่อสร้าง 1 ดวงโคมเล็กมีหลอด LED 36 ดวง พร้อมขาตั้งมีล้อ - ไฟลูกศร LED สำหรับงานก่อสร้าง (รวมแบตเตอรี่)",
+                          "unit":  "ชุด",
+                          "price":  18000,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-138",
+                          "name":  "ไฟไซเรนธรรมดา สีเหลือง, สีแดง",
+                          "unit":  "อัน",
+                          "price":  2950,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-139",
+                          "name":  "ไฟไซเรน LED ขนาด ø 6\" สีเหลือง , สีแดง",
+                          "unit":  "อัน",
+                          "price":  3250,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-140",
+                          "name":  "ไฟไซเรน LED ขนาด ø 8\" สีเหลือง , สีแดง",
+                          "unit":  "อัน",
+                          "price":  5800,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-141",
+                          "name":  "รถเข็นไฟไซเรนธรรมดา สีเหลือง , สีแดง (ไม่รวมแบตเตอรี่)",
+                          "unit":  "ชุด",
+                          "price":  5300,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-142",
+                          "name":  "รถเข็นไฟไซเรน LED ขนาด ø 6\" สีเหลือง , สีแดง (ไม่รวมแบตเตอรี่)",
+                          "unit":  "ชุด",
+                          "price":  5600,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-143",
+                          "name":  "รถเข็นไฟไซเรน LED ขนาด ø 8\" สีเหลือง , สีแดง (ไม่รวมแบตเตอรี่)",
+                          "unit":  "ชุด",
+                          "price":  5800,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-144",
+                          "name":  "รถเข็นไฟไซเรน LED ขนาด ø 6\" สีเหลือง , สีแดง พลังงานแสงอาทิตย์",
+                          "unit":  "ชุด",
+                          "price":  21000,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-145",
+                          "name":  "เสื้อกั๊กสะท้อนแสงสีส้มชนิดผ้านิ่ม คาดแถบสะท้อนแสง 4 แถบ หน้า - หลัง พร้อมแถบหนังสีขาวสกรีนชื่อหน่วยงาน",
+                          "unit":  "ตัว",
+                          "price":  360,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-146",
+                          "name":  "เสื้อกั๊กสะท้อนแสงสีส้มชนิดผ้านิ่ม คาดแถบสะท้อนแสง 8 แถบ หน้า - หลัง พร้อมแถบหนังสีขาวสกรีนชื่อหน่วยงาน",
+                          "unit":  "ตัว",
+                          "price":  450,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-147",
+                          "name":  "เสื้อกั๊กสะท้อนแสงรุ่น LED ไฟกระพริบ คาดแถบสะท้อนแสง หน้า - หลัง พร้อมสกรีนชื่อหน่วยงาน",
+                          "unit":  "ตัว",
+                          "price":  750,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-148",
+                          "name":  "เสื้อกั๊กตาข่ายสีดำซิปหน้า คาดแถบสะท้อนแสง หน้า - หลัง (สีเขียวมะนาว - สีส้ม) พร้อมสกรีนชื่อหน่วยงาน",
+                          "unit":  "ตัว",
+                          "price":  950,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-149",
+                          "name":  "เสื้อกันฝนสีส้มแบบโค้ทยาว กระดุมหน้าพร้อมหมวก PVC แบบนิ่ม ติดแถบสะท้อนแสงสีขาว 4 แถบ หน้า - หลัง พร้อมแถบหนังสีขาวสกรีนชื่อหน่วยงาน",
+                          "unit":  "ตัว",
+                          "price":  490,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-150",
+                          "name":  "ชุดกันฝนสีส้ม เสื้อพร้อมกางเกง กระดุมหน้าพร้อมหมวก PVC แบบนิ่ม ติดแถบสะท้อนแสงสีขาว หน้า - หลัง พร้อมแถบหนังสีขาวสกรีนชื่อหน่วยงาน",
+                          "unit":  "ชุด",
+                          "price":  750,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-151",
+                          "name":  "แผ่นการ์ดเรล (ราวกันอันตราย) ขนาดหนา 2.5 มม. ยาว 4 เมตร",
+                          "unit":  "แผ่น",
+                          "price":  4400,
+                          "category":  "guardrail",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-154",
+                          "name":  "แผ่นประกับเฉียงการ์ดเรล",
+                          "unit":  "แผ่น",
+                          "price":  2000,
+                          "category":  "guardrail",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-158",
+                          "name":  "กระบองไฟฉายจราจร แบบใส่ถ่าน ชนิดกระพริบ",
+                          "unit":  "อัน",
+                          "price":  650,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-159",
+                          "name":  "กระบองไฟฉายจราจร แบบฃาร์จไฟ ชนิดกระพริบ",
+                          "unit":  "อัน",
+                          "price":  750,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-160",
+                          "name":  "บริเขต ทำจากพลาสติกอย่างดี สามารถถอดประกอบหรือเคลื่อนย้ายได้สะดวก - ฐานยาง ขนาด 0.30 x 0.10 ม.",
+                          "unit":  "ชิ้น",
+                          "price":  750,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-161",
+                          "name":  "บริเขต ทำจากพลาสติกอย่างดี สามารถถอดประกอบหรือเคลื่อนย้ายได้สะดวก - เสา ขนาด 0.15 x 1.00 ม.",
+                          "unit":  "ชิ้น",
+                          "price":  480,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-162",
+                          "name":  "บริเขต ทำจากพลาสติกอย่างดี สามารถถอดประกอบหรือเคลื่อนย้ายได้สะดวก - แผ่น ขนาด 0.15 x 1.00 ม. ไม่ติดแผ่นสะท้อนแสง",
+                          "unit":  "แผ่น",
+                          "price":  480,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-163",
+                          "name":  "บริเขต ทำจากพลาสติกอย่างดี สามารถถอดประกอบหรือเคลื่อนย้ายได้สะดวก - แผ่น ขนาด 0.20 x 1.50 ม. ไม่ติดแผ่นสะท้อนแสง",
+                          "unit":  "แผ่น",
+                          "price":  850,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-164",
+                          "name":  "บริเขต ทำจากพลาสติกอย่างดี สามารถถอดประกอบหรือเคลื่อนย้ายได้สะดวก - บริเขต ขนาด 1.00 x 1.00 ม. ไม่ติดแผ่นสะท้อนแสง",
+                          "unit":  "ชุด",
+                          "price":  2500,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-165",
+                          "name":  "บริเขต ทำจากพลาสติกอย่างดี สามารถถอดประกอบหรือเคลื่อนย้ายได้สะดวก - บริเขต ขนาด 1.00 x 1.00 ม. ไม่ติดแผ่นสะท้อนแสง Advaneed Flexible Engineer Prismatic",
+                          "unit":  "ชุด",
+                          "price":  2900,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-166",
+                          "name":  "บริเขต ทำจากพลาสติกอย่างดี สามารถถอดประกอบหรือเคลื่อนย้ายได้สะดวก - บริเขต ขนาด 1.00 x 1.50 ม. ไม่ติดแผ่นสะท้อนแสง",
+                          "unit":  "ชุด",
+                          "price":  3500,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-167",
+                          "name":  "บริเขต ทำจากพลาสติกอย่างดี สามารถถอดประกอบหรือเคลื่อนย้ายได้สะดวก - บริเขต ขนาด 1.00 x 1.50 ม. ไม่ติดแผ่นสะท้อนแสง Advaneed Flexible Engineer Prismatic",
+                          "unit":  "ชุด",
+                          "price":  3900,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-168",
+                          "name":  "แผงกั้นเหล็กขาวแดง - ขนาดเล็กไม่มีล้อ ความยาว 100 ซม.",
+                          "unit":  "แผง",
+                          "price":  1650,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-169",
+                          "name":  "แผงกั้นเหล็กขาวแดง - ขนาดเล็กมีล้อ ความยาว 100 ซม.",
+                          "unit":  "ชุด",
+                          "price":  2650,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-170",
+                          "name":  "แผงกั้นเหล็กขาวแดง - ขนาดกลางไม่มีล้อ ความยาว 150 ซม.",
+                          "unit":  "แผง",
+                          "price":  1850,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-171",
+                          "name":  "แผงกั้นเหล็กขาวแดง - ขนาดกลางมีล้อ ความยาว 150 ซม.",
+                          "unit":  "ชุด",
+                          "price":  2850,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-172",
+                          "name":  "แผงกั้นเหล็กขาวแดง - ขนาดใหญ่ไม่มีล้อ ความยาว 200 ซม.",
+                          "unit":  "แผง",
+                          "price":  1950,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-173",
+                          "name":  "แผงกั้นเหล็กขาวแดง - ขนาดใหญ่มีล้อ ความยาว 200 ซม.",
+                          "unit":  "ชุด",
+                          "price":  2950,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-174",
+                          "name":  "แผ่นเหล็กอาบสังกะสี , แผ่นเหล็กชุบซิงค์ ขนาด 1.20 x 2.40 เมตร หนา 1.2 มม.",
+                          "unit":  "แผ่น",
+                          "price":  1980,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-175",
+                          "name":  "แผ่นอลูมิเนียม ขนาด 1.20 x 2.40 เมตร หนา 2 มม.",
+                          "unit":  "แผ่น",
+                          "price":  3950,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-176",
+                          "name":  "แผ่นอลูมิเนียม ขนาด 1.20 x 2.40 เมตร หนา 3 มม.",
+                          "unit":  "แผ่น",
+                          "price":  5000,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-177",
+                          "name":  "ลูกแก้วสำหรับผสมสีตีเส้น จุ 25 กก. (มอก.543-2549)",
+                          "unit":  "ถุง",
+                          "price":  1850,
+                          "category":  "road",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-178",
+                          "name":  "สีโคลพลาสติก ลรรจุ 18 กก. (มอก.2611- 2556)",
+                          "unit":  "ถัง",
+                          "price":  3900,
+                          "category":  "road",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-179",
+                          "name":  "แคสตาลิส (สารทำแข็ง) จุ 300 กรัม",
+                          "unit":  "ถุง",
+                          "price":  750,
+                          "category":  "road",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-180",
+                          "name":  "บ๊อกไซด์ (สารกันลื่น) จุ 5.2 กก.",
+                          "unit":  "ถุง",
+                          "price":  700,
+                          "category":  "road",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-181",
+                          "name":  "สีตีเส้น จุ 5 แกลลอน สีขาว (มอก.415 - 2551)",
+                          "unit":  "ถัง",
+                          "price":  3500,
+                          "category":  "road",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-182",
+                          "name":  "สีตีเส้น จุ 5 แกลลอน สีเหลือง (มอก.415 - 2551)",
+                          "unit":  "ถัง",
+                          "price":  3700,
+                          "category":  "road",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-183",
+                          "name":  "สีเทอร์โมพลาสติกสีขาว จุ 20 กก. (มอก.542 - 2549)",
+                          "unit":  "ถุง",
+                          "price":  1650,
+                          "category":  "road",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-184",
+                          "name":  "สีเทอร์โมพลาสติกสีเหลือง จุ 20 กก. (มอก.542 - 2549)",
+                          "unit":  "ถุง",
+                          "price":  1650,
+                          "category":  "road",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-185",
+                          "name":  "สีน้ำพลาสติกสีขาว จุ 3.785 ลิตร (มอก.2514 - 2553)",
+                          "unit":  "กระป๋อง",
+                          "price":  510,
+                          "category":  "road",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-186",
+                          "name":  "สีน้ำพลาสติกสีขาว จุ 18.925 ลิตร (มอก.272-2549)",
+                          "unit":  "ถัง",
+                          "price":  2200,
+                          "category":  "road",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-187",
+                          "name":  "สีน้ำพลาสติกสีดำ และสีอื่นๆ จุ 3.785 ลิตร (มอก.272 - 2549)",
+                          "unit":  "กระป๋อง",
+                          "price":  580,
+                          "category":  "road",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-188",
+                          "name":  "สีน้ำมันทุกสี จุ 3.785 ลิตร (มอก.327 - 2553)",
+                          "unit":  "กระป๋อง",
+                          "price":  640,
+                          "category":  "road",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-189",
+                          "name":  "สีสะท้อนแสง 3M (3M Reflective Paint) จุ 400 กรัม",
+                          "unit":  "กระป๋อง",
+                          "price":  995,
+                          "category":  "road",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-190",
+                          "name":  "สีพ่นอุตสาหกรรมสีขาว จุ 1แกลลอน (มอก.2625 - 2557)",
+                          "unit":  "กระป๋อง",
+                          "price":  650,
+                          "category":  "road",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-191",
+                          "name":  "สีพ่นอุตสาหกรรมสีเทา จุ 1แกลลอน (มอก.2625 - 2557)",
+                          "unit":  "กระป๋อง",
+                          "price":  680,
+                          "category":  "road",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-192",
+                          "name":  "สีกันสนิมสีแดง จุ 1 แกลลอน",
+                          "unit":  "กระป๋อง",
+                          "price":  580,
+                          "category":  "road",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-193",
+                          "name":  "ทินเนอร์",
+                          "unit":  "ปี้บ",
+                          "price":  680,
+                          "category":  "road",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-194",
+                          "name":  "ทินเนอร์ จุ 1.9 ลิตร",
+                          "unit":  "แกลลอน",
+                          "price":  220,
+                          "category":  "road",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-195",
+                          "name":  "น้ำมันสน จุ 10 ลิตร",
+                          "unit":  "ปี้บ",
+                          "price":  680,
+                          "category":  "road",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-196",
+                          "name":  "น้ำมันสน จุ 1.9 ลิตร",
+                          "unit":  "แกลลอน",
+                          "price":  220,
+                          "category":  "road",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-197",
+                          "name":  "น็อตชุบซิงค์ ขนาด ø 3/8\" x 2",
+                          "unit":  "ตัว",
+                          "price":  12,
+                          "category":  "road",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-198",
+                          "name":  "น็อตชุบซิงค์ ขนาด ø 3/8\" x 3",
+                          "unit":  "ตัว",
+                          "price":  14,
+                          "category":  "road",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-199",
+                          "name":  "น็อตชุบซิงค์ ขนาด ø 3/8\" x 4",
+                          "unit":  "ตัว",
+                          "price":  16,
+                          "category":  "road",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-200",
+                          "name":  "น็อตชุบซิงค์ ขนาด ø 3/8\" x 5",
+                          "unit":  "ตัว",
+                          "price":  18,
+                          "category":  "road",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-201",
+                          "name":  "น็อตชุบซิงค์ ขนาด ø 3/8\" x 6",
+                          "unit":  "ตัว",
+                          "price":  25,
+                          "category":  "road",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-202",
+                          "name":  "น็อตชุบซิงค์ ขนาด ø 3/8\" x 7",
+                          "unit":  "ตัว",
+                          "price":  26,
+                          "category":  "road",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-203",
+                          "name":  "น็อตชุบซิงค์ ขนาด ø 3/8\" x 8",
+                          "unit":  "ตัว",
+                          "price":  28,
+                          "category":  "road",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-204",
+                          "name":  "น็อตชุบซิงค์ ขนาด ø 3/8\" x 9",
+                          "unit":  "ตัว",
+                          "price":  30,
+                          "category":  "road",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-205",
+                          "name":  "เสาหักงอ ขนาด 3\" x 1.50 ม. หนา 1.2 มม.",
+                          "unit":  "ต้น",
+                          "price":  2250,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-206",
+                          "name":  "เสาหักงอ ขนาด 3\" x 1.50 ม. หนา 2.3 มม.",
+                          "unit":  "ต้น",
+                          "price":  2500,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-207",
+                          "name":  "เสาหักงอ ขนาด 3\" x 1.50 ม. หนา 3.2 มม.",
+                          "unit":  "ต้น",
+                          "price":  2950,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-208",
+                          "name":  "กระจกโค้ง - กระจกโค้ง ขนาด ø 24\" - กระจกโค้ง ขนาด ø 32\"",
+                          "unit":  "อัน",
+                          "price":  3500,
+                          "category":  "safety",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-209",
+                          "name":  "คอนกรีตขอบถนน ขนาด 0.15 x 0.30 x 1.00 ม.",
+                          "unit":  "อัน",
+                          "price":  335,
+                          "category":  "road",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-210",
+                          "name":  "แผ่นทางเท้า ขนาด 0.30 x 0.30 ม.",
+                          "unit":  "แผ่น",
+                          "price":  95,
+                          "category":  "road",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-211",
+                          "name":  "แผ่นทางเท้า ขนาด 0.40 x 0.40 ม.",
+                          "unit":  "แผ่น",
+                          "price":  120,
+                          "category":  "road",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-212",
+                          "name":  "หลัก กม.ย่อย กม. + กม. ......พร้อมเสาเหล็กกล่อง ขนาด 1\" x 2\" x 2.00 ม.",
+                          "unit":  "ชุด",
+                          "price":  792,
+                          "category":  "road",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-213",
+                          "name":  "กิ่งเดี่ยว สำหรับเสาไฟฟ้า 9.00 เมตร",
+                          "unit":  "อัน",
+                          "price":  3200,
+                          "category":  "electric",
+                          "frequent":  true
+                      },
+                      {
+                          "key":  "cat-214",
+                          "name":  "กิ่งคู่ สำหรับเสาไฟฟ้า 9.00 เมตร",
+                          "unit":  "อัน",
+                          "price":  4500,
+                          "category":  "electric",
+                          "frequent":  true
+                      },
+                      {
+                          "key":  "cat-215",
+                          "name":  "กระปุกฟิวส์ ขนาด 10.25 แอมป์ พร้อมลูกฟิวส์",
+                          "unit":  "ตัว",
+                          "price":  90,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-216",
+                          "name":  "กระปุกฟิวส์ ขนาด 63 แอมป์ พร้อมลูกฟิวส์",
+                          "unit":  "ตัว",
+                          "price":  125,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-217",
+                          "name":  "ขาแล็คชนิด 2 ช่อง พร้อมลูกแล็ค (ไม่รวมน็อต) ใส่ลูกแล็ค 1 ลูก",
+                          "unit":  "อัน",
+                          "price":  185,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-218",
+                          "name":  "ขาแล็คชนิด 3 ช่อง พร้อมลูกแล็ค (ไม่รวมน็อต) ใส่ลูกแล็ค 2 ลูก (เฉพาะขาแล็ค @ 190 บาท)",
+                          "unit":  "อัน",
+                          "price":  250,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-219",
+                          "name":  "ขาแล็คชนิด 4 ช่อง พร้อมลูกแล็ค (ไม่รวมน็อต) ใส่ลูกแล็ค 3 ลูก (เฉพาะขาแล็ค @ 200 บาท)",
+                          "unit":  "อัน",
+                          "price":  280,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-220",
+                          "name":  "ขั้วหลอดโซเดียม 250 วัตต์ (มอก.819 - 2531)",
+                          "unit":  "อัน",
+                          "price":  350,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-221",
+                          "name":  "ขั้วหลอดโซเดียม 400 วัตต์ (มอก.819 - 2531)",
+                          "unit":  "อัน",
+                          "price":  350,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-222",
+                          "name":  "ขาเสียบโฟโตเซลล์",
+                          "unit":  "อัน",
+                          "price":  1100,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-223",
+                          "name":  "คาปาซิเตอร์ (คอนเดนเซอร์) ขนาด 18 - 22 UF",
+                          "unit":  "ตัว",
+                          "price":  730,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-224",
+                          "name":  "คาปาซิเตอร์ (คอนเดนเซอร์) ขนาด 25 UF",
+                          "unit":  "ตัว",
+                          "price":  770,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-225",
+                          "name":  "คาปาซิเตอร์ (คอนเดนเซอร์) ขนาด 36 UF",
+                          "unit":  "ตัว",
+                          "price":  870,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-226",
+                          "name":  "คาปาซิเตอร์ (คอนเดนเซอร์) ขนาด 50 UF",
+                          "unit":  "ตัว",
+                          "price":  970,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-227",
+                          "name":  "ไฟสัญญาณจราจรชนิดหลอด LED ขนาด 300 มม. สีแดง สีเหลือง สีเขียว ใช้ไฟขนาด 220 โวลท์",
+                          "unit":  "ชุด",
+                          "price":  12000,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-228",
+                          "name":  "ไฟสัญญาณจราจรชนิดหลอด LED ขนาด 300 มม. สีแดง สีเหลือง สีเขียว ใช้ไฟขนาด 220 โวลท์ รุ่น 3 ดวงโคม พร้อมแบ็กกิ้งบอร์ด",
+                          "unit":  "ชุด",
+                          "price":  39000,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-229",
+                          "name":  "ไฟสัญญาณจราจรชนิดหลอด LED ขนาด 300 มม. สีแดง สีเหลือง สีเขียว และสีเขียวเลี้ยว ใช้ไฟขนาด 220 โวลท์ รุ่น 4 ดวงโคม พร้อมแบ็กกิ้งบอร์ด",
+                          "unit":  "ชุด",
+                          "price":  51400,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-230",
+                          "name":  "ไฟสัญญาณจราจรชนิดหลอด LED ขนาด 300 มม. สีแดง สีเหลือง สีเขียว ใช้ไฟขนาด 220 โวลท์ รุ่น 6 ดวงโคม พร้อมแบ็กกิ้งบอร์ด",
+                          "unit":  "ชุด",
+                          "price":  78400,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-231",
+                          "name":  "โคมไฟกระพริบโซล่าเซลล์ ขนาด 300 มม. รุ่นหลอด LED 168 ดวง (ใช้พลังงานแสงอาทิตย์) กระพริบทั้งกลางวันและกลางคืน (ใช้งานต่อเนื่องนาน 14 วัน โดยไม่มีแสงแดด)",
+                          "unit":  "โคม",
+                          "price":  18500,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-233",
+                          "name":  "โคมไฟโซเดียม 400 วัตต์ พร้อมอุปกรณ์ (มอก.1955 - 2551)",
+                          "unit":  "โคม",
+                          "price":  10500,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-234",
+                          "name":  "ชุดฟิวส์กันฝน ขนาด 10 , 25 แอมป์",
+                          "unit":  "ชุด",
+                          "price":  590,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-235",
+                          "name":  "ชุดฟิวส์กันฝน ขนาด 63 แอมป์",
+                          "unit":  "ชุด",
+                          "price":  780,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-236",
+                          "name":  "เซฟตี้สวิทซ์กันน้ำ 30 แอมป์ 240 โวลท์ (SQUARE D) พร้อมลูกฟิวส์",
+                          "unit":  "ชุด",
+                          "price":  4200,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-237",
+                          "name":  "เซฟตี้สวิทซ์กันน้ำ 30 แอมป์ 600 โวลท์ (SQUARE D) พร้อมลูกฟิวส์",
+                          "unit":  "ชุด",
+                          "price":  13800,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-238",
+                          "name":  "เซฟตี้สวิทซ์กันน้ำ 60 แอมป์ 240 โวลท์ (SQUARE D) พร้อมลูกฟิวส์",
+                          "unit":  "ชุด",
+                          "price":  7200,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-239",
+                          "name":  "เซฟตี้สวิทซ์กันน้ำ 60 แอมป์ 600 โวลท์ (SQUARE D) พร้อมลูกฟิวส์",
+                          "unit":  "ชุด",
+                          "price":  18500,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-240",
+                          "name":  "เซฟตี้สวิทซ์กันน้ำ 100 แอมป์ 240 โวลท์ (SQUARE D) พร้อมลูกฟิวส์",
+                          "unit":  "ชุด",
+                          "price":  10200,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-241",
+                          "name":  "เซฟตี้สวิทซ์กันน้ำ 100 แอมป์ 600 โวลท์ (SQUARE D) พร้อมลูกฟิวส์",
+                          "unit":  "ชุด",
+                          "price":  29000,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-242",
+                          "name":  "อิกนิเตอร์ 250 วัตต์ (ฉื่อจิ้นฮั่ว) มอก.1955 - 2542",
+                          "unit":  "อัน",
+                          "price":  800,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-243",
+                          "name":  "อิกนิเตอร์ 400 วัตต์ (ฉื่อจิ้นฮั่ว) มอก.1955 - 2542",
+                          "unit":  "อัน",
+                          "price":  870,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-244",
+                          "name":  "ฐานเสาไฟฟ้า 9.00 ม. (ฐานเสาปูน คสล.)",
+                          "unit":  "ฐาน",
+                          "price":  5800,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-245",
+                          "name":  "ชุดควบคุมไฟกระพริบ (เฟรชเซอร์)",
+                          "unit":  "ตัว",
+                          "price":  2500,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-246",
+                          "name":  "ชุดควบคุมไฟกระพริบ (เฟรชเซอร์ชนิดควบคุม 2 ดวงโคม)",
+                          "unit":  "ตัว",
+                          "price":  3900,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-247",
+                          "name":  "ชุดควบคุมไฟกระพริบ (เฟรชเซอร์ชนิดควบคุม 4 ดวงโคม)",
+                          "unit":  "ตัว",
+                          "price":  4900,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-248",
+                          "name":  "ทรานฟอร์มเมอร์ 220 โวลท์ - 12 โวลท์ (หม้อแปลง)",
+                          "unit":  "ตัว",
+                          "price":  1200,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-249",
+                          "name":  "เทปพันสายไฟธรรมดา",
+                          "unit":  "ม้วน",
+                          "price":  30,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-250",
+                          "name":  "เทปพันสายไฟธรรมดา (3M) TEMFLEX",
+                          "unit":  "ม้วน",
+                          "price":  30,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-251",
+                          "name":  "เทปพันสายไฟเบอร์ 23 (3M)",
+                          "unit":  "ม้วน",
+                          "price":  390,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-252",
+                          "name":  "เทปพันสายไฟเบอร์ 33 (3M)",
+                          "unit":  "ม้วน",
+                          "price":  280,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-253",
+                          "name":  "เทปพันสายไฟ ตรากวาง (ม้วนใหญ่)",
+                          "unit":  "ม้วน",
+                          "price":  60,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-254",
+                          "name":  "แท่งกราวด์รอด (สายดิน)",
+                          "unit":  "แท่ง",
+                          "price":  500,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-256",
+                          "name":  "น็อตตัวเจ (น็อตฐานเสาไฟฟ้า 9.00 ม.) 1ชุด / 4 ตัว (ราคาต่อตัว)",
+                          "unit":  "ตัว",
+                          "price":  390,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-257",
+                          "name":  "เบรกเกอร์ ขนาด 10 แอมป์ 1 โพล",
+                          "unit":  "ตัว",
+                          "price":  220,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-258",
+                          "name":  "เบรกเกอร์ ขนาด 20 แอมป์ 2 เฟส",
+                          "unit":  "ตัว",
+                          "price":  290,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-259",
+                          "name":  "เบรกเกอร์ ขนาด 20 แอมป์ 3 เฟส",
+                          "unit":  "ตัว",
+                          "price":  980,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-260",
+                          "name":  "เบรกเกอร์ ขนาด 30 แอมป์ 2 เฟส",
+                          "unit":  "ตัว",
+                          "price":  330,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-261",
+                          "name":  "เบรกเกอร์ ขนาด 30 แอมป์ 3 เฟส",
+                          "unit":  "ตัว",
+                          "price":  990,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-262",
+                          "name":  "เบรกเกอร์ ขนาด 60 แอมป์ 2 เฟส",
+                          "unit":  "ตัว",
+                          "price":  1750,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-263",
+                          "name":  "เบรกเกอร์ ขนาด 60 แอมป์ 3 เฟส",
+                          "unit":  "ตัว",
+                          "price":  1980,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-264",
+                          "name":  "บาลาสต์โซเดียม 250 วัตต์ (ฉื่อจิ้นฮั่ว) มอก.1955 - 2542",
+                          "unit":  "ตัว",
+                          "price":  1550,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-265",
+                          "name":  "บาลาสต์โซเดียม 400 วัตต์ (ฉื่อจิ้นฮั่ว) มอก.1955 - 2542",
+                          "unit":  "ตัว",
+                          "price":  1800,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-266",
+                          "name":  "บาลาสต์ฟลูออเรสเซนท์ 20 วัตต์ (มอก.23-2551 , มอก.1955 - 2542)",
+                          "unit":  "ตัว",
+                          "price":  150,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-267",
+                          "name":  "บาลาสต์ฟลูออเรสเซนท์ 40 วัตต์ (มอก.23-2551 , มอก.1955 - 2542)",
+                          "unit":  "ตัว",
+                          "price":  180,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-268",
+                          "name":  "ปลั๊กพร้อมช็อกเก็ต (ปลั๊กอีเกิ้ล ตัวผู้พร้อมตัวเมีย)",
+                          "unit":  "ชุด",
+                          "price":  490,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-271",
+                          "name":  "ฝาครอบโคมโซเดียม 250 วัตต์ (ฉื่อจิ้นฮั่ว)",
+                          "unit":  "ฝา",
+                          "price":  2000,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-272",
+                          "name":  "ฝาปิดประตูเสาไฟฟ้า 9.00 ม. (ฉื่อจิ้นฮั่ว)",
+                          "unit":  "อัน",
+                          "price":  650,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-273",
+                          "name":  "ฟิวส์กระบอก 30 แอมป์ 250 โวลท์",
+                          "unit":  "ตัว",
+                          "price":  75,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-274",
+                          "name":  "ฟิวส์กระบอก 60 แอมป์ 250 โวลท์",
+                          "unit":  "ตัว",
+                          "price":  140,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-275",
+                          "name":  "ฟิวส์กระบอก 60 แอมป์ 600 โวลท์",
+                          "unit":  "ตัว",
+                          "price":  185,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-276",
+                          "name":  "ฟิวส์กระบอก 100 แอมป์ 250 โวลท์",
+                          "unit":  "ตัว",
+                          "price":  180,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-277",
+                          "name":  "ฟิวส์กระบอก 100 แอมป์ 600 โวลท์",
+                          "unit":  "ตัว",
+                          "price":  280,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-278",
+                          "name":  "ฟิวส์หลอดแก้วเล็ก ขนาด 3 แอมป์",
+                          "unit":  "ตัว",
+                          "price":  6,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-279",
+                          "name":  "ฟิวส์หลอดแก้วใหญ่ ขนาด 5 แอมป์",
+                          "unit":  "ตัว",
+                          "price":  10,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-280",
+                          "name":  "ฟิวส์ (LT แรงต่ำ) ขนาด 50 แอมป์",
+                          "unit":  "ตัว",
+                          "price":  250,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-281",
+                          "name":  "ฟิวส์ (LT แรงต่ำ) ขนาด 80 แอมป์",
+                          "unit":  "ตัว",
+                          "price":  295,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-282",
+                          "name":  "ฟิวส์ (LT แรงต่ำ) ขนาด 100 แอมป์",
+                          "unit":  "ตัว",
+                          "price":  340,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-283",
+                          "name":  "ฟิวส์ (LT แรงต่ำ) ขนาด 160 แอมป์",
+                          "unit":  "ตัว",
+                          "price":  590,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-284",
+                          "name":  "ฟิวส์ (LT แรงต่ำ) ขนาด 400 แอมป์",
+                          "unit":  "ตัว",
+                          "price":  1950,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-285",
+                          "name":  "โฟโต้เซลล์",
+                          "unit":  "ตัว",
+                          "price":  870,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-286",
+                          "name":  "แมกเนติก 32 แอมป์ 220 โวลท์ (SC 5-1)",
+                          "unit":  "ตัว",
+                          "price":  2800,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-287",
+                          "name":  "แมกเนติก 60 แอมป์ 220 โวลท์ (SC N2)",
+                          "unit":  "ตัว",
+                          "price":  3400,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-288",
+                          "name":  "แมกเนติก 100 แอมป์ 220 โวลท์ (SC N3)",
+                          "unit":  "ตัว",
+                          "price":  4200,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-289",
+                          "name":  "รีเลย์ทรงกระบอก 60 แอมป์ (คอรแทครีเลย์) TYPE-A",
+                          "unit":  "ตัว",
+                          "price":  5850,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-290",
+                          "name":  "รีเลย์ทรงกระบอก 60 แอมป์ (คอรแทครีเลย์) TYPE-B",
+                          "unit":  "ตัว",
+                          "price":  5250,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-291",
+                          "name":  "ลูกฟิวส์กระเบื้อง 5 แอมป์",
+                          "unit":  "อัน",
+                          "price":  10,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-292",
+                          "name":  "ลูกฟิวส์กระเบื้อง 10 แอมป์",
+                          "unit":  "อัน",
+                          "price":  12,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-293",
+                          "name":  "ลูกฟิวส์กระเบื้อง 25 แอมป์",
+                          "unit":  "อัน",
+                          "price":  20,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-294",
+                          "name":  "ลูกฟิวส์กระเบื้อง 63 แอมป์",
+                          "unit":  "อัน",
+                          "price":  30,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-295",
+                          "name":  "ลูกแล็ค",
+                          "unit":  "อัน",
+                          "price":  25,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-296",
+                          "name":  "สตาร์ทเตอร์ (มอก.183 - 2547)",
+                          "unit":  "ตัว",
+                          "price":  15,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-297",
+                          "name":  "สลิปต่อสายไฟเบอร์ 6",
+                          "unit":  "ตัว",
+                          "price":  10,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-298",
+                          "name":  "สลิปต่อสายไฟเบอร์ 8,10",
+                          "unit":  "ตัว",
+                          "price":  12,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-299",
+                          "name":  "สลิปต่อสายไฟเบอร์ 16",
+                          "unit":  "ตัว",
+                          "price":  20,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-300",
+                          "name":  "สลิปต่อสายไฟเบอร์ 25",
+                          "unit":  "ตัว",
+                          "price":  28,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-301",
+                          "name":  "สายไฟ THW - A 1 x 10 SQ.MM. (มอก.293-2541)",
+                          "unit":  "เมตร",
+                          "price":  15,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-302",
+                          "name":  "สายไฟ THW - A 1 x 16 SQ.MM. (มอก.293-2541)",
+                          "unit":  "เมตร",
+                          "price":  20,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-303",
+                          "name":  "สายไฟ THW - A 1 x 25 SQ.MM. (มอก.293-2541)",
+                          "unit":  "เมตร",
+                          "price":  30,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-304",
+                          "name":  "สายไฟ THW - A 1 x 35 SQ.MM. (มอก.293-2541)",
+                          "unit":  "เมตร",
+                          "price":  40,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-305",
+                          "name":  "สายไฟ THW - A 1 x 50 SQ.MM. (มอก.293-2541)",
+                          "unit":  "เมตร",
+                          "price":  60,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-306",
+                          "name":  "สายไฟ THW 1 x 1 SQ.MM. (มอก.1 เล่ม 3-2553)",
+                          "unit":  "เมตร",
+                          "price":  10,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-307",
+                          "name":  "สายไฟ THW 1 x 1.5 SQ.MM. (มอก.11 เล่ม 3-2553)",
+                          "unit":  "เมตร",
+                          "price":  15,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-309",
+                          "name":  "สายไฟ THW 1 x 4 SQ.MM. (มอก.11 เล่ม 3-2553)",
+                          "unit":  "เมตร",
+                          "price":  30,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-310",
+                          "name":  "สายไฟ THW 1 x 6 SQ.MM. (มอก.11 เล่ม 3-2553)",
+                          "unit":  "เมตร",
+                          "price":  40,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-311",
+                          "name":  "สายไฟ THW 1 x 10 SQ.MM. (มอก.11 เล่ม 3-2553)",
+                          "unit":  "เมตร",
+                          "price":  70,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-312",
+                          "name":  "สายไฟ THW 1 x 16 SQ.MM. (มอก.11 เล่ม 3-2553)",
+                          "unit":  "เมตร",
+                          "price":  98,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-313",
+                          "name":  "สายไฟ THW 1 x 25 SQ.MM. (มอก.11 เล่ม 3-2553)",
+                          "unit":  "เมตร",
+                          "price":  150,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-314",
+                          "name":  "สายไฟ THW 2 x 1 SQ.MM. (มอก.11 เล่ม 101-2553)",
+                          "unit":  "เมตร",
+                          "price":  60,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-315",
+                          "name":  "สายไฟ THW 2 x 1.5 SQ.MM. (มอก.11 เล่ม 101-2553)",
+                          "unit":  "เมตร",
+                          "price":  70,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-317",
+                          "name":  "สายไฟ THW 2 x 4 SQ.MM. (มอก.11 เล่ม 101-2553)",
+                          "unit":  "เมตร",
+                          "price":  120,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-318",
+                          "name":  "สายไฟ THW 2 x 6 SQ.MM. (มอก.11 เล่ม 101-2553)",
+                          "unit":  "เมตร",
+                          "price":  150,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-319",
+                          "name":  "สายไฟ THW 3 x 10 SQ.MM. (มอก.11 เล่ม 101-2553)",
+                          "unit":  "เมตร",
+                          "price":  260,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-320",
+                          "name":  "สายไฟ THW 3 x 16 SQ.MM. (มอก.11 เล่ม 101-2553)",
+                          "unit":  "เมตร",
+                          "price":  410,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-321",
+                          "name":  "สายไฟ THW 3 x 25 SQ.MM. (มอก.11 เล่ม 101-2553)",
+                          "unit":  "เมตร",
+                          "price":  620,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-322",
+                          "name":  "สายไฟ THW 3 x 35 SQ.MM. (มอก.11 เล่ม 101-2553)",
+                          "unit":  "เมตร",
+                          "price":  835,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-323",
+                          "name":  "สายไฟ THW 4 x 1.5 SQ.MM. (มอก.11 เล่ม 101-2553)",
+                          "unit":  "เมตร",
+                          "price":  85,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-324",
+                          "name":  "สายไฟ THW 4 x 10 SQ.MM. (มอก.11 เล่ม 101-2553)",
+                          "unit":  "เมตร",
+                          "price":  340,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-325",
+                          "name":  "สายไฟ THW 4 x 16 SQ.MM. (มอก.11 เล่ม 101-2553)",
+                          "unit":  "เมตร",
+                          "price":  520,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-326",
+                          "name":  "สายไฟ THW 4 x 2.5 SQ.MM. (มอก.11 เล่ม 101-2553)",
+                          "unit":  "เมตร",
+                          "price":  110,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-327",
+                          "name":  "สายไฟ THW 4 x 25 SQ.MM. (มอก.11 เล่ม 101-2553)",
+                          "unit":  "เมตร",
+                          "price":  750,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-328",
+                          "name":  "สายไฟ THW 4 x 35 SQ.MM. (มอก.11 เล่ม 101-2553)",
+                          "unit":  "เมตร",
+                          "price":  1100,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-329",
+                          "name":  "สายไฟ VAF 2 x 1 SQ.MM. (มอก.11 เล่ม 101-2553)",
+                          "unit":  "เมตร",
+                          "price":  15,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-330",
+                          "name":  "สายไฟ VAF 2 x 1.5 SQ.MM. (มอก.11 เล่ม 101-2553)",
+                          "unit":  "เมตร",
+                          "price":  20,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-331",
+                          "name":  "สายไฟ VAF 2 x 2.5 SQ.MM. (มอก.11 เล่ม 101-2553)",
+                          "unit":  "เมตร",
+                          "price":  30,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-332",
+                          "name":  "สายไฟ VAF 2 x 4 SQ.MM. (มอก.11 เล่ม 101-2553)",
+                          "unit":  "เมตร",
+                          "price":  50,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-333",
+                          "name":  "สายไฟ VAF 2 x 6 SQ.MM. (มอก.11 เล่ม 101-2553)",
+                          "unit":  "เมตร",
+                          "price":  75,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-334",
+                          "name":  "สายไฟ VAF 2 x 10 SQ.MM. (มอก.11 เล่ม 101-2553)",
+                          "unit":  "เมตร",
+                          "price":  115,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-335",
+                          "name":  "สายไฟ VAF 2 x 16 SQ.MM. (มอก.11 เล่ม 101-2553)",
+                          "unit":  "เมตร",
+                          "price":  175,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-336",
+                          "name":  "สายไฟ VCT 2 x 1.5 SQ.MM. (มอก.11 เล่ม 101-2553)",
+                          "unit":  "เมตร",
+                          "price":  45,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-337",
+                          "name":  "สายไฟ VCT 2 x 2.5 SQ.MM. (มอก.11 เล่ม 101-2553)",
+                          "unit":  "เมตร",
+                          "price":  65,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-338",
+                          "name":  "สายไฟ VCT 3 x 2.5 SQ.MM. (มอก.11 เล่ม 101-2553)",
+                          "unit":  "เมตร",
+                          "price":  75,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-339",
+                          "name":  "สายไฟ VCT 3 x 6 SQ.MM. (มอก.11 เล่ม 101-2553)",
+                          "unit":  "เมตร",
+                          "price":  130,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-340",
+                          "name":  "สายไฟ VCT 4 x 1.5 SQ.MM. (มอก.11 เล่ม 101-2553)",
+                          "unit":  "เมตร",
+                          "price":  80,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-341",
+                          "name":  "สายไฟ VCT 4 x 2.5 SQ.MM. (มอก.11 เล่ม 101-2553)",
+                          "unit":  "เมตร",
+                          "price":  115,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-342",
+                          "name":  "เสาไฟสัญญาณจราจรขนาด ø 4\" ยาว 3 เมตร พร้อมเพลทฐานเสา",
+                          "unit":  "ต้น",
+                          "price":  5500,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-343",
+                          "name":  "เสาไฟสัญญาณจราจรขนาด ø 4\" ยาว 4 เมตร",
+                          "unit":  "ต้น",
+                          "price":  4000,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-347",
+                          "name":  "เสาไฟฟ้าขนาด 9 เมตร พร้อมกิ่งเดี่ยว พร้อมโคมโซเดียม 250 วัตต์ (ฉื่อจิ้นฮั่ว)",
+                          "unit":  "ต้น",
+                          "price":  26500,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-348",
+                          "name":  "เสาไฟฟ้าขนาด 9 เมตร พร้อมกิ่งคู่ พร้อมโคมโซเดียม 250 วัตต์ (ฉื่อจิ้นฮั่ว)",
+                          "unit":  "ต้น",
+                          "price":  37600,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-349",
+                          "name":  "หลอดโซเดียม 250 วัตต์ (OSRAM,PHILIP) มอก.1955-2551",
+                          "unit":  "หลอด",
+                          "price":  1100,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-350",
+                          "name":  "หลอดโซเดียม 400 วัตต์ (OSRAM) มอก.1955-2551",
+                          "unit":  "หลอด",
+                          "price":  1300,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-351",
+                          "name":  "หลอดฟลูออเรสเซนท์ 18-20 วัตต์ (OSRAM) มอก.956-2533",
+                          "unit":  "หลอด",
+                          "price":  65,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-352",
+                          "name":  "หลอดฟลูออเรสเซนท์ 36-40 วัตต์ (OSRAM) มอก.956-2533",
+                          "unit":  "หลอด",
+                          "price":  85,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "cat-353",
+                          "name":  "หลอดไฟสัญญาณฮาโลเจน ขนาด 12 โวลท์ 55 วัตต์ (แบบสายเสียบ,แบบขาเสียบ)",
+                          "unit":  "หลอด",
+                          "price":  240,
+                          "category":  "electric",
+                          "frequent":  false
+                      },
+                      {
+                          "key":  "mat-mtpcuk9x",
+                          "name":  "แท่งกราวด์ ขนาด 2.40 ม. (สายดินทองแดง)",
+                          "unit":  "แท่ง",
+                          "price":  850,
+                          "category":  "electric",
+                          "frequent":  true
+                      },
+                      {
+                          "key":  "mat-mtpdy69w",
+                          "name":  "แผงฟิวส์เดี่ยว (สำหรับเสาไฟ 9.00 ม.)",
+                          "unit":  "อัน",
+                          "price":  155,
+                          "category":  "electric",
+                          "frequent":  true
+                      },
+                      {
+                          "key":  "mat-mtpe45fm",
+                          "name":  "สายไฟ NYY 3 x 10 SQ.MM.",
+                          "unit":  "เมตร",
+                          "price":  350,
+                          "category":  "electric",
+                          "frequent":  true
+                      },
+                      {
+                          "key":  "mat-mtpe4lva",
+                          "name":  "สายไฟ THW 1 x 2.5 SQ.MM. (สายกราวด์)",
+                          "unit":  "เมตร",
+                          "price":  25,
+                          "category":  "electric",
+                          "frequent":  true
+                      },
+                      {
+                          "key":  "mat-mtpg5o1t",
+                          "name":  "สายไฟ THW 2 x 2.5 SQ.MM.",
+                          "unit":  "เมตร",
+                          "price":  90,
+                          "category":  "electric",
+                          "frequent":  true
+                      },
+                      {
+                          "key":  "mat-mtpg6hof",
+                          "name":  "เสาไฟฟ้าขนาด 9 เมตร พร้อมกิ่งคู่",
+                          "unit":  "ต้น",
+                          "price":  18000,
+                          "category":  "electric",
+                          "frequent":  true
+                      },
+                      {
+                          "key":  "mat-mtpg77qk",
+                          "name":  "เสาไฟฟ้าขนาด 9 เมตร พร้อมกิ่งเดี่ยว",
+                          "unit":  "ต้น",
+                          "price":  16700,
+                          "category":  "electric",
+                          "frequent":  true
+                      },
+                      {
+                          "key":  "mat-mtpg8ieg",
+                          "name":  "เสาไฟฟ้าขนาด 9 เมตร (ไม่รวมกิ่ง)",
+                          "unit":  "ต้น",
+                          "price":  13500,
+                          "category":  "electric",
+                          "frequent":  true
+                      },
+                      {
+                          "key":  "mat-mtpga9mi",
+                          "name":  "น็อตการ์ดเรลยาว 16x165 มม. (ยึดเสา)",
+                          "unit":  "ตัว",
+                          "price":  85,
+                          "category":  "guardrail",
+                          "frequent":  true
+                      },
+                      {
+                          "key":  "mat-mtpgbctn",
+                          "name":  "น็อตการ์ดเรล 16x30 มม. (ยึดแผ่น)",
+                          "unit":  "ตัว",
+                          "price":  55,
+                          "category":  "guardrail",
+                          "frequent":  true
+                      },
+                      {
+                          "key":  "mat-mtpgcv3n",
+                          "name":  "แผ่นการ์ดเรล (ราวกันอันตราย) หนา 3.2 มม. ยาว 4 เมตร",
+                          "unit":  "แผ่น",
+                          "price":  4700,
+                          "category":  "guardrail",
+                          "frequent":  true
+                      },
+                      {
+                          "key":  "mat-mtseb3cw",
+                          "name":  "สายไฟ NYY 4 x 1.5 sq.mm.",
+                          "unit":  "เมตร",
+                          "price":  95,
+                          "category":  "electric",
+                          "frequent":  false
+                      }
+                  ]
+}
