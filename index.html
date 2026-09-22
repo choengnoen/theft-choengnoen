@@ -1040,7 +1040,7 @@ tr.route-editable:hover td{background:var(--amber-glow)}
           <input type="date" id="f_assignDate">
         </div>
       </div>
-      <div class="grid grid-3" style="margin-top:12px">
+      <div class="grid grid-3" style="margin-top:12px;grid-template-columns:2fr 1fr 1fr">
         <div class="field">
           <label>มอบให้ (ชื่อ-นามสกุล)</label>
           <div style="position:relative">
@@ -1926,6 +1926,7 @@ async function apiSaveAssignees(){
 }
 // ช่อง "มอบให้" ในฟอร์มบันทึกเคส: ดรอปดาวน์ค้นหาสไตล์เดียวกับช่องค้นหาทรัพย์สิน (ไม่ใช้ popup มืดของเบราว์เซอร์)
 // คลิก/พิมพ์ในช่องจะมีรายชื่อที่ตั้งไว้ให้เลือก เลือกแล้วเติมตำแหน่ง/เบอร์โทรให้อัตโนมัติ — พิมพ์ชื่อที่ไม่อยู่ในรายชื่อ (เช่นคนที่เคยรับมอบหมายในปีก่อนๆ) ก็ทำได้ปกติ ไม่ถูกบล็อก
+let assignedToLastAuto = null; // {position, phone} ที่เติมให้อัตโนมัติล่าสุดจากการเลือก/พิมพ์ชื่อตรงกับรายชื่อ — ล้างชื่อแล้วเคลียร์ตามให้ถ้ายังไม่ถูกแก้เอง
 function initAssigneeSearchUi(){
   const input = document.getElementById('f_assignedToName');
   const dd = document.getElementById('assignedToDd');
@@ -1947,15 +1948,32 @@ function initAssigneeSearchUi(){
     dd.style.display = '';
     paintActive();
   };
+  // p = ข้อมูลที่จะเติมให้ (พบชื่อตรงกับรายชื่อ) หรือ null (ชื่อว่าง/ไม่ตรงกับใครเลย → เคลียร์เฉพาะช่องที่ยังเป็นค่าที่เติมอัตโนมัติไว้ ไม่แตะช่องที่แก้เอง)
+  const applyAuto = (p) => {
+    const posEl = document.getElementById('f_assignedToPosition');
+    const phoneEl = document.getElementById('f_assignedToPhone');
+    if (p) {
+      posEl.value = p.position || '';
+      phoneEl.value = p.phone || '';
+      assignedToLastAuto = { position: posEl.value, phone: phoneEl.value };
+    } else if (assignedToLastAuto) {
+      if (posEl.value === assignedToLastAuto.position) posEl.value = '';
+      if (phoneEl.value === assignedToLastAuto.phone) phoneEl.value = '';
+      assignedToLastAuto = null;
+    }
+  };
   const choose = (i) => {
     const p = hits[i];
     if (!p) return;
     input.value = p.name;
-    document.getElementById('f_assignedToPosition').value = p.position || '';
-    document.getElementById('f_assignedToPhone').value = p.phone || '';
+    applyAuto(p);
     closeDd();
   };
-  input.addEventListener('input', render);
+  input.addEventListener('input', () => {
+    render();
+    const val = input.value.trim();
+    applyAuto(ASSIGNEE_LIST.find(x => x.name === val) || null);
+  });
   input.addEventListener('focus', render);
   input.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowDown') { e.preventDefault(); if (hits.length) { active = (active + 1) % hits.length; paintActive(); } }
@@ -3014,6 +3032,8 @@ function clearForm(){
   document.getElementById('f_assignedToName').value = DEFAULT_ASSIGNEE.name;
   document.getElementById('f_assignedToPosition').value = DEFAULT_ASSIGNEE.position;
   document.getElementById('f_assignedToPhone').value = DEFAULT_ASSIGNEE.phone;
+  // จำไว้ว่าตำแหน่ง/เบอร์โทรตอนนี้เป็นค่าที่เติมอัตโนมัติ — ถ้าลบช่องชื่อทิ้งจะเคลียร์ 2 ช่องนี้ตามไปด้วย (ยกเว้นแก้เองแล้ว)
+  assignedToLastAuto = DEFAULT_ASSIGNEE.name ? { position: DEFAULT_ASSIGNEE.position, phone: DEFAULT_ASSIGNEE.phone } : null;
   currentFallbackTotal = null;
   document.getElementById('itemsContainer').innerHTML = '';
   document.getElementById('interrogationsContainer').innerHTML = '';
@@ -3050,6 +3070,7 @@ function loadRecordIntoForm(rec){
   document.getElementById('f_changwat').value = rec.changwat || '';
   zoneLastAuto = null;
   mooLastAuto = null;
+  assignedToLastAuto = null;
   refreshMooOptions(findZone(rec.highway, rec.km, rec.side), rec.moo || '');
   document.getElementById('f_caseNo').value = rec.caseNo || '';
   document.getElementById('f_reportLetterNo').value = rec.reportLetterNo || '';
@@ -5542,14 +5563,6 @@ async function init(){
     }
   });
   document.getElementById('assigneesContainer').addEventListener('input', () => { assigneesEditedInSession = true; });
-  document.getElementById('f_assignedToName').addEventListener('input', () => {
-    const val = document.getElementById('f_assignedToName').value.trim();
-    const p = ASSIGNEE_LIST.find(x => x.name === val);
-    if (p) {
-      document.getElementById('f_assignedToPosition').value = p.position || '';
-      document.getElementById('f_assignedToPhone').value = p.phone || '';
-    }
-  });
   populateMaterialCategorySelect();
   initItemEntryUi();
   initAssigneeSearchUi();
