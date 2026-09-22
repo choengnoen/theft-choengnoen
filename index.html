@@ -997,7 +997,7 @@ tr.route-editable:hover td{background:var(--amber-glow)}
 
     <div class="card" id="fsec2">
       <div class="section-title" style="justify-content:space-between">
-        <span style="display:flex;align-items:center;gap:8px"><span class="num">2</span> รายการทรัพย์สินที่ถูกขโมย (ประเมินค่าเสียหาย) <span class="sub">ไม่รวมค่าแรง / ค่าเครื่องจักร</span></span>
+        <span style="display:flex;align-items:center;gap:8px"><span class="num">2</span> รายการทรัพย์สินที่ถูกขโมย (ประเมินค่าเสียหาย)</span>
       </div>
 
       <div class="it-toolbar">
@@ -1025,7 +1025,7 @@ tr.route-editable:hover td{background:var(--amber-glow)}
     </div>
 
     <div class="card" id="fsec3">
-      <div class="section-title"><span class="num">3</span> การมอบหมายแจ้งความ <span class="sub">กรอกก่อนนำไปลงบันทึกประจำวันที่ สภ.</span></div>
+      <div class="section-title"><span class="num">3</span> การมอบหมายแจ้งความ</div>
       <div class="grid grid-3">
         <div class="field">
           <label>มอบโดย</label>
@@ -1043,7 +1043,8 @@ tr.route-editable:hover td{background:var(--amber-glow)}
       <div class="grid grid-3" style="margin-top:12px">
         <div class="field">
           <label>มอบให้ (ชื่อ-นามสกุล)</label>
-          <input type="text" id="f_assignedToName">
+          <select id="f_assignedToPicker" style="margin-bottom:6px"><option value="">— เลือกจากรายชื่อ —</option></select>
+          <input type="text" id="f_assignedToName" placeholder="หรือพิมพ์ชื่อ-นามสกุลเอง">
         </div>
         <div class="field">
           <label>ตำแหน่ง</label>
@@ -1210,7 +1211,7 @@ tr.route-editable:hover td{background:var(--amber-glow)}
       <div class="stat-card amber"><div class="big mono" id="statValue">0</div><div class="lbl">มูลค่าความเสียหาย (บาท)</div></div>
       <div class="stat-card green clickable" id="cardClosed"><div class="big mono" id="statClosed">0</div><div class="lbl">ปิดคดีแล้ว (คดี)</div></div>
       <div class="stat-card rust clickable" id="cardOpen"><div class="big mono" id="statOpen">0</div><div class="lbl">ยังไม่ปิดคดี (คดี)</div></div>
-      <div class="stat-card ins clickable" id="cardArrest" title="คดีที่จับกุมผู้ต้องหาได้แล้ว แต่ยังไม่ปิดคดี"><div class="big mono" id="statArrest">0</div><div class="lbl">จับกุมได้ รอปิดคดี (คดี)</div></div>
+      <div class="stat-card ins clickable" id="cardArrest" title="คดีที่จับกุมผู้ต้องหาได้แล้ว รอ สภ. เรียกสอบปากคำก่อนปิดคดี"><div class="big mono" id="statArrest">0</div><div class="lbl">รอสอบปากคำ (คดี)</div></div>
     </div>
 
     <div class="grid grid-2" id="dashFirstRow">
@@ -1264,8 +1265,8 @@ tr.route-editable:hover td{background:var(--amber-glow)}
   <!-- ===================== ZONES (ข้อมูล สภ.) ===================== -->
   <div class="view" id="view-zones">
     <div class="card">
-      <div class="section-title" style="justify-content:space-between"><span>เขตพื้นที่รับผิดชอบ (สภ. / ตำบล / อำเภอ / หมู่)</span></div>
-      <div class="assets-toolbar" style="justify-content:flex-end">
+      <div class="section-title" style="justify-content:space-between"><span>เขตพื้นที่รับผิดชอบ</span></div>
+      <div class="assets-toolbar" style="justify-content:flex-end;align-items:flex-end">
         <div style="display:flex;gap:16px;flex-wrap:wrap;margin-right:auto">
           <div class="field" style="min-width:170px">
             <label>ข้อมูลตาม ทล.</label>
@@ -1324,13 +1325,13 @@ tr.route-editable:hover td{background:var(--amber-glow)}
       <div id="teamPanel"></div>
     </div>
     <div class="card" id="cardAssignee" style="display:none">
-      <div class="section-title">📇 ผู้รับมอบหมายแจ้งความประจำหมวด (ค่าเริ่มต้น)</div>
-      <div class="grid grid-3">
-        <div class="field"><label>ชื่อ-นามสกุล</label><input type="text" id="st_assigneeName" placeholder="เช่น นางสาวนันท์นภัสธ์ รัตนเสถียร"></div>
-        <div class="field"><label>ตำแหน่ง</label><input type="text" id="st_assigneePosition"></div>
-        <div class="field"><label>เบอร์โทร</label><input type="text" id="st_assigneePhone"></div>
+      <div class="section-title">📇 รายชื่อผู้รับมอบหมายแจ้งความ</div>
+      <p class="hint" style="margin-bottom:12px">เพิ่มรายชื่อเจ้าหน้าที่ที่เคย/กำลังรับมอบหมายแจ้งความไว้ที่นี่ — เลือกใช้ได้จากฟอร์มบันทึกเคส (ปุ่มเลือกชื่อจะเติมตำแหน่ง/เบอร์โทรให้อัตโนมัติ) ติ๊ก "ใช้งานอยู่" ไว้ที่คนปัจจุบัน 1 คน จะถูกเติมให้อัตโนมัติทุกครั้งที่เปิดฟอร์มบันทึกเคสใหม่ — คนเก่าที่เคยรับมอบหมายในปีที่ผ่านมา เก็บไว้ในรายชื่อได้เรื่อยๆ ไม่ต้องลบ</p>
+      <div id="assigneesContainer"></div>
+      <div style="display:flex;gap:8px;margin-top:8px">
+        <button class="btn btn-outline btn-sm" id="btnAddAssignee" type="button">+ เพิ่มรายชื่อ</button>
+        <button class="btn btn-primary btn-sm" id="btnSaveAssignee" type="button">บันทึกรายชื่อ</button>
       </div>
-      <button class="btn btn-primary" id="btnSaveAssignee" type="button" style="margin-top:12px">บันทึกค่าเริ่มต้น</button>
     </div>
     <!-- แถวเดียว: ถังขยะ / ข้อมูลตั้งต้น / นำเข้าข้อมูล (สองอย่างหลังเห็นเฉพาะเจ้าของระบบ) — ปุ่มส่งออก Excel/PDF อยู่หน้ารายการโจรกรรม -->
     <div class="settings-row">
@@ -1376,7 +1377,8 @@ tr.route-editable:hover td{background:var(--amber-glow)}
 // สายทางและเขตพื้นที่ถูกอ่านจาก Firestore (คอลเลกชัน routes / zones) — เจ้าของระบบกด "เติมข้อมูลตั้งต้น" ที่หน้าตั้งค่าเพื่อเติมครั้งแรก
 let ROUTES = [];
 let ZONES = [];
-// ผู้รับมอบหมายแจ้งความประจำหมวด (ค่าเริ่มต้น) — แก้ได้จากหน้าตั้งค่า ใช้เติมฟอร์มบันทึกเคสใหม่ให้อัตโนมัติ (settings/assignee)
+// รายชื่อผู้รับมอบหมายแจ้งความ (คนเก่า+คนปัจจุบัน) + คนที่ "ใช้งานอยู่" — แก้ได้จากหน้าตั้งค่า (settings/assignees) ใช้เติมฟอร์มบันทึกเคสใหม่ให้อัตโนมัติ
+let ASSIGNEE_LIST = []; // [{name, position, phone}]
 let DEFAULT_ASSIGNEE = { name: '', position: '', phone: '' };
 const STORAGE_KEY = 'theft-records-v1';
 const RECORDER_KEY = 'recorder-name';
@@ -1857,16 +1859,15 @@ function applyMaterialDocs(docs){
   });
   materialPriceMap = map;
 }
-// ค่าตั้งต้นแก้ได้จากหน้าตั้งค่า (คอลเลกชัน settings) — ตอนนี้มีแค่ settings/assignee (ผู้รับมอบหมายแจ้งความประจำหมวด)
+// ค่าตั้งต้นแก้ได้จากหน้าตั้งค่า (คอลเลกชัน settings) — settings/assignees = รายชื่อผู้รับมอบหมายแจ้งความทั้งหมด (คนเก่า+คนปัจจุบัน) + currentName = คนที่ใช้งานอยู่
 function applySettingsDocs(docs){
-  const doc = (docs || []).find(d => (d.id || d.__id) === 'assignee');
-  DEFAULT_ASSIGNEE = { name: (doc && doc.name) || '', position: (doc && doc.position) || '', phone: (doc && doc.phone) || '' };
-  const nameEl = document.getElementById('st_assigneeName');
-  if (nameEl && document.activeElement !== nameEl) nameEl.value = DEFAULT_ASSIGNEE.name;
-  const posEl = document.getElementById('st_assigneePosition');
-  if (posEl && document.activeElement !== posEl) posEl.value = DEFAULT_ASSIGNEE.position;
-  const phoneEl = document.getElementById('st_assigneePhone');
-  if (phoneEl && document.activeElement !== phoneEl) phoneEl.value = DEFAULT_ASSIGNEE.phone;
+  const doc = (docs || []).find(d => (d.id || d.__id) === 'assignees');
+  ASSIGNEE_LIST = (doc && Array.isArray(doc.people)) ? doc.people : [];
+  const current = ASSIGNEE_LIST.find(p => p.name === (doc && doc.currentName)) || ASSIGNEE_LIST[0] || null;
+  DEFAULT_ASSIGNEE = current ? { name: current.name || '', position: current.position || '', phone: current.phone || '' } : { name: '', position: '', phone: '' };
+  // ไม่ re-render ฟอร์มแก้ไขรายชื่อทับถ้ากำลังพิมพ์อยู่ (เช่นเพิ่ม/แก้แถวค้างไว้) — re-render เฉพาะตอนยังไม่เคยเปิดใช้งานในเซสชันนี้
+  if (!assigneesEditedInSession) renderAssigneesSettings();
+  populateAssigneePicker();
 }
 async function loadSettingsData(){
   try {
@@ -1876,14 +1877,63 @@ async function loadSettingsData(){
     console.error('load settings failed', e);
   }
 }
-async function apiSaveAssigneeDefault(){
-  const data = {
-    name: document.getElementById('st_assigneeName').value.trim(),
-    position: document.getElementById('st_assigneePosition').value.trim(),
-    phone: document.getElementById('st_assigneePhone').value.trim()
-  };
-  await FBL.saveSetting('assignee', data);
-  DEFAULT_ASSIGNEE = data;
+// รายการผู้รับมอบหมายแจ้งความในหน้าตั้งค่า: เพิ่ม/ลบได้หลายคน ติ๊ก "ใช้งานอยู่" ไว้ 1 คนเพื่อเป็นค่าเริ่มต้นของฟอร์มเคสใหม่
+let assigneesEditedInSession = false;
+function renderAssigneesSettings(){
+  const wrap = document.getElementById('assigneesContainer');
+  if (!wrap) return;
+  wrap.innerHTML = '';
+  const list = ASSIGNEE_LIST.length ? ASSIGNEE_LIST : [{ name: '', position: '', phone: '' }];
+  list.forEach(p => addAssigneeRow(p, !!p.name && p.name === DEFAULT_ASSIGNEE.name));
+}
+function addAssigneeRow(data, isCurrent){
+  data = data || { name: '', position: '', phone: '' };
+  const wrap = document.getElementById('assigneesContainer');
+  const row = document.createElement('div');
+  row.className = 'grid grid-4 assignee-row';
+  row.style.marginBottom = '8px';
+  row.innerHTML = `
+    <div class="field"><label>ชื่อ-นามสกุล</label><input type="text" class="asg-name" value="${escapeHtml(data.name || '')}" placeholder="เช่น นางสาวนันท์นภัสธ์ รัตนเสถียร"></div>
+    <div class="field"><label>ตำแหน่ง</label><input type="text" class="asg-position" value="${escapeHtml(data.position || '')}"></div>
+    <div class="field"><label>เบอร์โทร</label><input type="text" class="asg-phone" value="${escapeHtml(data.phone || '')}"></div>
+    <div class="field"><label>&nbsp;</label>
+      <div style="display:flex;gap:10px;align-items:center;height:36px">
+        <label style="display:flex;align-items:center;gap:4px;font-size:13px;white-space:nowrap"><input type="radio" name="asgCurrent" class="asg-current"${isCurrent ? ' checked' : ''}> ใช้งานอยู่</label>
+        <button type="button" class="btn btn-outline btn-sm del-item">ลบ</button>
+      </div>
+    </div>`;
+  wrap.appendChild(row);
+  row.querySelector('.del-item').addEventListener('click', () => row.remove());
+}
+function collectAssignees(){
+  const rows = document.querySelectorAll('#assigneesContainer .assignee-row');
+  const people = [];
+  let currentName = '';
+  rows.forEach(row => {
+    const name = row.querySelector('.asg-name').value.trim();
+    const position = row.querySelector('.asg-position').value.trim();
+    const phone = row.querySelector('.asg-phone').value.trim();
+    if (!name) return;
+    people.push({ name, position, phone });
+    if (row.querySelector('.asg-current').checked) currentName = name;
+  });
+  if (!currentName && people.length) currentName = people[0].name;
+  return { people, currentName };
+}
+async function apiSaveAssignees(){
+  const data = collectAssignees();
+  await FBL.saveSetting('assignees', data);
+  ASSIGNEE_LIST = data.people;
+  const current = ASSIGNEE_LIST.find(p => p.name === data.currentName) || ASSIGNEE_LIST[0] || null;
+  DEFAULT_ASSIGNEE = current ? { name: current.name, position: current.position || '', phone: current.phone || '' } : { name: '', position: '', phone: '' };
+  populateAssigneePicker();
+}
+// ปุ่ม "เลือกจากรายชื่อ" ในฟอร์มบันทึกเคส — เลือกแล้วเติมตำแหน่ง/เบอร์โทรให้อัตโนมัติ (ช่องชื่อยังพิมพ์เองได้เสมอ เผื่อเป็นคนที่ไม่อยู่ในรายชื่อ เช่นคนที่เคยรับมอบหมายในปีก่อนๆ)
+function populateAssigneePicker(){
+  const sel = document.getElementById('f_assignedToPicker');
+  if (!sel) return;
+  sel.innerHTML = '<option value="">— เลือกจากรายชื่อ —</option>'
+    + ASSIGNEE_LIST.map((p, i) => `<option value="${i}">${escapeHtml(p.name)}${p.name === DEFAULT_ASSIGNEE.name ? ' (ใช้งานอยู่)' : ''}</option>`).join('');
 }
 function applyRouteDocs(docs){
   const byHighway = {};
@@ -4461,7 +4511,7 @@ tbody tr.tot td{font-weight:700;background:#ecefe9;border-top:2px solid #123a5e}
   <div class="tile"><b>${th(formatMoney(s.value))}</b><span>มูลค่าความเสียหาย (บาท)</span></div>
   <div class="tile"><b>${s.closed.toLocaleString('th-TH')}</b><span>ปิดคดีแล้ว</span></div>
   <div class="tile"><b>${s.open.toLocaleString('th-TH')}</b><span>ยังไม่ปิดคดี</span></div>
-  <div class="tile"><b>${s.arrest.toLocaleString('th-TH')}</b><span>จับกุมได้ รอปิดคดี</span></div>
+  <div class="tile"><b>${s.arrest.toLocaleString('th-TH')}</b><span>รอสอบปากคำ</span></div>
 </div>
 <table class="rep">
 <thead><tr class="sp"><td colspan="10"></td></tr><tr><th style="width:7.5%">เลขที่เคส</th><th style="width:8%">วันที่</th><th style="width:13%">ทล. / ตอน</th><th style="width:6.5%">กม.</th><th style="width:15%">สภ. / บริเวณ</th><th style="width:9.5%">เลขคดี</th><th style="width:9.5%">มูลค่า (บาท)</th><th style="width:10%">ผู้ต้องสงสัย</th><th style="width:14%">สถานะคดี</th><th style="width:7%">ปิดคดี</th></tr></thead>
@@ -5439,19 +5489,32 @@ async function init(){
   document.getElementById('btnImport').addEventListener('click', runImport);
   document.getElementById('btnSeed').addEventListener('click', runSeed);
   document.getElementById('btnOpenTrash').addEventListener('click', openTrashModal);
+  document.getElementById('btnAddAssignee').addEventListener('click', () => addAssigneeRow());
   document.getElementById('btnSaveAssignee').addEventListener('click', async () => {
     if (!isOwner()) { showToast('เฉพาะเจ้าของระบบเท่านั้น'); return; }
     const btn = document.getElementById('btnSaveAssignee');
     busyButton(btn, 'กำลังบันทึก...');
     try {
-      await apiSaveAssigneeDefault();
+      await apiSaveAssignees();
+      assigneesEditedInSession = false; // บันทึกแล้ว ให้กลับมารับข้อมูลจากคนอื่นได้ตามปกติ
       await doneButton(btn, '✓ บันทึกแล้ว');
-      showToast('บันทึกค่าเริ่มต้นผู้รับมอบหมายแล้ว');
+      showToast('บันทึกรายชื่อผู้รับมอบหมายแล้ว');
     } catch (e) {
-      console.error('save assignee default failed', e);
+      console.error('save assignees failed', e);
       showToast('บันทึกไม่สำเร็จ: ' + FBL.errorText(e));
       btn.disabled = false; btn.classList.remove('btn-loading'); btn.innerHTML = btn.dataset.originalHTML;
     }
+  });
+  document.getElementById('assigneesContainer').addEventListener('input', () => { assigneesEditedInSession = true; });
+  document.getElementById('f_assignedToPicker').addEventListener('change', () => {
+    const sel = document.getElementById('f_assignedToPicker');
+    const p = ASSIGNEE_LIST[Number(sel.value)];
+    if (p) {
+      document.getElementById('f_assignedToName').value = p.name || '';
+      document.getElementById('f_assignedToPosition').value = p.position || '';
+      document.getElementById('f_assignedToPhone').value = p.phone || '';
+    }
+    sel.value = ''; // เป็นปุ่มเลือกครั้งเดียว ไม่ใช่ค่าที่ค้างไว้ — ช่องชื่อด้านล่างคือค่าจริงที่จะบันทึก
   });
   populateMaterialCategorySelect();
   initItemEntryUi();
