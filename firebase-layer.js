@@ -359,6 +359,12 @@
     await db.collection('materials').doc(key).set(data, { merge: true });
   };
 
+  // ค่าตั้งต้นแก้ได้จากหน้าตั้งค่า เช่น settings/assignee = ผู้รับมอบหมายแจ้งความประจำหมวด (เจ้าของระบบแก้เท่านั้น)
+  FBL.saveSetting = async function (docId, data) {
+    requireOwner();
+    await db.collection('settings').doc(String(docId)).set(clean(Object.assign({}, data, { updatedAt: nowIso() })), { merge: true });
+  };
+
   function routeData(r) {
     return clean({
       highway: String(r.highway), controlNo: r.controlNo || '', section: r.section || '',
@@ -387,6 +393,7 @@
     return clean({
       id: String(z.id), highway: String(z.highway || ''),
       kmStart: Number(z.kmStart) || 0, kmEnd: Number(z.kmEnd) || 0,
+      side: z.side || '',
       station: z.station || '', tambon: z.tambon || '', amphoe: z.amphoe || '', changwat: z.changwat || '',
       moobans: asJsonString(z.moobans),
       updatedAt: z.updatedAt || ''
@@ -528,6 +535,7 @@
     return {
       id: toStr(r.id), highway: stripHw(r.route !== undefined && r.route !== '' ? r.route : r.highway),
       kmStart: kmToMeters(r.kmStart) || 0, kmEnd: kmToMeters(r.kmEnd) || 0,
+      side: toStr(r.side),
       station: toStr(r.station), tambon: toStr(r.tambon), amphoe: toStr(r.amphoe), changwat: toStr(r.changwat),
       moobans: JSON.stringify(parseJsonArr(r.moobans).map(String)),
       updatedAt: toDateStr(r.updatedAt)

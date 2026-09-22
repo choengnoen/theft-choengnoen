@@ -122,8 +122,9 @@ h1,h2,h3,.display{font-family:'Kanit',sans-serif;font-weight:700}
 .grid-2{grid-template-columns:1fr 1fr}
 .grid-3{grid-template-columns:1fr 1fr 1fr}
 .grid-4{grid-template-columns:1fr 1fr 1fr 1fr}
+.grid-5{grid-template-columns:1fr 1fr 1fr 1fr 1fr}
 .grid-vehicle{grid-template-columns:1fr 1fr 0.65fr}
-@media(max-width:720px){.grid-2,.grid-3,.grid-4,.grid-vehicle{grid-template-columns:1fr}}
+@media(max-width:720px){.grid-2,.grid-3,.grid-4,.grid-5,.grid-vehicle{grid-template-columns:1fr}}
 
 .field{display:flex;flex-direction:column;gap:5px}
 .field label{font-size:12.5px;color:var(--ink-soft);font-weight:600}
@@ -919,17 +920,13 @@ tr.route-editable:hover td{background:var(--amber-glow)}
     </div>
     <div class="card" id="fsec1">
       <div class="section-title"><span class="num">1</span> ข้อมูลเหตุโจรกรรม</div>
-      <div class="grid grid-4">
+      <div class="grid grid-3">
         <div class="field">
           <label>ปีงบประมาณ <span class="req">*</span></label>
           <select id="f_fiscalYear"></select>
         </div>
         <div class="field">
-          <label>วันที่เกิดเหตุ <span class="req">*</span></label>
-          <input type="date" id="f_dateIncident">
-        </div>
-        <div class="field">
-          <label>วันที่ตรวจพบ</label>
+          <label>วันที่เกิดเหตุ/ตรวจพบ <span class="req">*</span></label>
           <input type="date" id="f_dateFound">
         </div>
         <div class="field">
@@ -968,10 +965,14 @@ tr.route-editable:hover td{background:var(--amber-glow)}
           <input type="text" id="f_location" placeholder="เช่น สี่แยก, จุดกลับรถ, สะพาน">
         </div>
       </div>
-      <div class="grid grid-4" style="margin-top:12px">
+      <div class="grid grid-5" style="margin-top:12px">
         <div class="field">
           <label>สภ. รับผิดชอบ</label>
           <input type="text" id="f_policeStation" placeholder="เช่น สภ.บ้านค่าย">
+        </div>
+        <div class="field">
+          <label>หมู่ที่เกิดเหตุ</label>
+          <select id="f_moo"><option value="">— เลือกสายทาง/กม. ก่อน —</option></select>
         </div>
         <div class="field">
           <label>ตำบล</label>
@@ -987,12 +988,8 @@ tr.route-editable:hover td{background:var(--amber-glow)}
         </div>
       </div>
       <div class="grid grid-4" style="margin-top:12px">
-        <div class="field">
-          <label>หมู่ที่เกิดเหตุ</label>
-          <select id="f_moo"><option value="">— เลือกสายทาง/กม. ก่อน —</option></select>
-        </div>
-        <div class="field" style="grid-column:span 3;justify-content:flex-end">
-          <span class="hint" id="zoneHint">กรอกสายทางและ กม. ระบบจะค้นหา สภ./ตำบล/อำเภอ/หมู่ จากข้อมูล "เขตพื้นที่รับผิดชอบ" ให้อัตโนมัติ (แก้เองได้)</span>
+        <div class="field" style="grid-column:span 4;justify-content:flex-end">
+          <span class="hint" id="zoneHint"></span>
         </div>
       </div>
     </div>
@@ -1100,25 +1097,25 @@ tr.route-editable:hover td{background:var(--amber-glow)}
 
       <div class="party-block" data-role="assign" style="margin-top:14px">
         <div class="party-block-title"><span>การมอบหมายแจ้งความ</span></div>
-        <div class="grid grid-4">
+        <div class="grid grid-3">
           <div class="field">
             <label>มอบโดย</label>
             <input type="text" id="f_assignedBy" value="แขวงทางหลวงระยอง">
           </div>
           <div class="field">
             <label>หนังสือเลขที่</label>
-            <input type="text" id="f_assignLetterNo">
+            <input type="text" id="f_assignLetterNo" value="ที่ คค 06087/ส.3/">
           </div>
           <div class="field">
             <label>ลงวันที่</label>
             <input type="date" id="f_assignDate">
           </div>
+        </div>
+        <div class="grid grid-3" style="margin-top:12px">
           <div class="field">
             <label>มอบให้ (ชื่อ-นามสกุล)</label>
             <input type="text" id="f_assignedToName">
           </div>
-        </div>
-        <div class="grid grid-2" style="margin-top:12px">
           <div class="field">
             <label>ตำแหน่ง</label>
             <input type="text" id="f_assignedToPosition">
@@ -1258,6 +1255,11 @@ tr.route-editable:hover td{background:var(--amber-glow)}
     <div class="card">
       <div class="section-title" style="justify-content:space-between"><span>เขตพื้นที่รับผิดชอบ (สภ. / ตำบล / อำเภอ / หมู่)</span></div>
       <div class="assets-toolbar" style="justify-content:flex-end">
+        <div style="display:flex;gap:6px;margin-right:auto">
+          <span class="hint" style="align-self:center;margin-right:2px">ดูตาม:</span>
+          <button class="btn btn-sm" id="btnZonesByHighway" type="button">ทล.</button>
+          <button class="btn btn-outline btn-sm" id="btnZonesByStation" type="button">สภ.</button>
+        </div>
         <button class="btn btn-outline btn-sm" id="btnAddZone" type="button">+ เพิ่มเขตพื้นที่</button>
         <div class="assets-updated-badge" id="zonesCountHint"></div>
       </div>
@@ -1265,7 +1267,7 @@ tr.route-editable:hover td{background:var(--amber-glow)}
         <table class="data" id="zonesTable">
           <thead>
             <tr>
-              <th style="text-align:center">ทล.</th><th style="text-align:center">ช่วง กม.</th><th style="text-align:center">สภ.</th><th style="text-align:center">ตำบล</th>
+              <th style="text-align:center">ทล.</th><th style="text-align:center">ช่วง กม.</th><th style="text-align:center">ด้าน</th><th style="text-align:center">สภ.</th><th style="text-align:center">ตำบล</th>
               <th style="text-align:center">อำเภอ</th><th style="text-align:center">จังหวัด</th><th style="text-align:center">หมู่ที่เกี่ยวข้อง</th>
             </tr>
           </thead>
@@ -1328,6 +1330,16 @@ tr.route-editable:hover td{background:var(--amber-glow)}
         <div id="importLog"></div>
       </div>
     </div>
+    <div class="card" id="cardAssignee" style="display:none">
+      <div class="section-title">📇 ผู้รับมอบหมายแจ้งความประจำหมวด (ค่าเริ่มต้น)</div>
+      <p class="hint" style="margin-bottom:12px">ใช้เติมช่อง "มอบให้ / ตำแหน่ง / เบอร์โทร" ให้อัตโนมัติทุกครั้งที่เปิดฟอร์มบันทึกเคสใหม่ (แก้เป็นรายเคสได้) เปลี่ยนตัวผู้รับมอบหมายในอนาคตแค่แก้ตรงนี้ครั้งเดียว เคสเก่าที่บันทึกไปแล้วจะไม่ถูกแก้ย้อนหลัง</p>
+      <div class="grid grid-3">
+        <div class="field"><label>ชื่อ-นามสกุล</label><input type="text" id="st_assigneeName" placeholder="เช่น นางสาวนันท์นภัสธ์ รัตนเสถียร"></div>
+        <div class="field"><label>ตำแหน่ง</label><input type="text" id="st_assigneePosition"></div>
+        <div class="field"><label>เบอร์โทร</label><input type="text" id="st_assigneePhone"></div>
+      </div>
+      <button class="btn btn-primary" id="btnSaveAssignee" type="button" style="margin-top:12px">บันทึกค่าเริ่มต้น</button>
+    </div>
     <div class="card">
       <div class="section-title">เกี่ยวกับข้อมูล</div>
       <p class="hint">
@@ -1349,6 +1361,8 @@ tr.route-editable:hover td{background:var(--amber-glow)}
 // สายทางและเขตพื้นที่ถูกอ่านจาก Firestore (คอลเลกชัน routes / zones) — เจ้าของระบบกด "เติมข้อมูลตั้งต้น" ที่หน้าตั้งค่าเพื่อเติมครั้งแรก
 let ROUTES = [];
 let ZONES = [];
+// ผู้รับมอบหมายแจ้งความประจำหมวด (ค่าเริ่มต้น) — แก้ได้จากหน้าตั้งค่า ใช้เติมฟอร์มบันทึกเคสใหม่ให้อัตโนมัติ (settings/assignee)
+let DEFAULT_ASSIGNEE = { name: '', position: '', phone: '' };
 const STORAGE_KEY = 'theft-records-v1';
 const RECORDER_KEY = 'recorder-name';
 const OWNER_VERIFIER_KEY = 'owner-verifier';
@@ -1827,6 +1841,34 @@ function applyMaterialDocs(docs){
   });
   materialPriceMap = map;
 }
+// ค่าตั้งต้นแก้ได้จากหน้าตั้งค่า (คอลเลกชัน settings) — ตอนนี้มีแค่ settings/assignee (ผู้รับมอบหมายแจ้งความประจำหมวด)
+function applySettingsDocs(docs){
+  const doc = (docs || []).find(d => (d.id || d.__id) === 'assignee');
+  DEFAULT_ASSIGNEE = { name: (doc && doc.name) || '', position: (doc && doc.position) || '', phone: (doc && doc.phone) || '' };
+  const nameEl = document.getElementById('st_assigneeName');
+  if (nameEl && document.activeElement !== nameEl) nameEl.value = DEFAULT_ASSIGNEE.name;
+  const posEl = document.getElementById('st_assigneePosition');
+  if (posEl && document.activeElement !== posEl) posEl.value = DEFAULT_ASSIGNEE.position;
+  const phoneEl = document.getElementById('st_assigneePhone');
+  if (phoneEl && document.activeElement !== phoneEl) phoneEl.value = DEFAULT_ASSIGNEE.phone;
+}
+async function loadSettingsData(){
+  try {
+    const docs = await FBL.watch('settings', onRemoteChange);
+    applySettingsDocs(docs);
+  } catch (e) {
+    console.error('load settings failed', e);
+  }
+}
+async function apiSaveAssigneeDefault(){
+  const data = {
+    name: document.getElementById('st_assigneeName').value.trim(),
+    position: document.getElementById('st_assigneePosition').value.trim(),
+    phone: document.getElementById('st_assigneePhone').value.trim()
+  };
+  await FBL.saveSetting('assignee', data);
+  DEFAULT_ASSIGNEE = data;
+}
 function applyRouteDocs(docs){
   const byHighway = {};
   (docs || []).forEach(r => { byHighway[String(r.highway || r.__id)] = r; });
@@ -1854,6 +1896,7 @@ function applyZoneDocs(docs){
     highway: String(z.highway || ''),
     kmStart: Number(z.kmStart) || 0,
     kmEnd: Number(z.kmEnd) || 0,
+    side: z.side || '',
     station: z.station || '',
     tambon: z.tambon || '',
     amphoe: z.amphoe || '',
@@ -1869,6 +1912,7 @@ function onRemoteChange(col){
   else if (col === 'materials') applyMaterialDocs(FBL.docs('materials'));
   else if (col === 'routes') { applyRouteDocs(FBL.docs('routes')); try { refreshHighwayOptions(); } catch(e){} }
   else if (col === 'zones') { applyZoneDocs(FBL.docs('zones')); try { updateZoneFields(true); } catch(e){} }
+  else if (col === 'settings') applySettingsDocs(FBL.docs('settings'));
   refreshVisibleViews();
 }
 function refreshVisibleViews(){
@@ -2019,7 +2063,9 @@ function updateWhoDisplay(){
   if (importCard) importCard.style.display = isOwner() ? '' : 'none';
   const seedCard = document.getElementById('cardSeed');
   if (seedCard) seedCard.style.display = isOwner() ? '' : 'none';
-  renderTeamPanel(); 
+  const assigneeCard = document.getElementById('cardAssignee');
+  if (assigneeCard) assigneeCard.style.display = isOwner() ? '' : 'none';
+  renderTeamPanel();
   
   
   
@@ -2725,10 +2771,26 @@ function applyMaterialCategory(){
 }
 
 
-/* ===== เขตพื้นที่รับผิดชอบ: เลือก ทล. + กม. แล้วเติม สภ./ตำบล/อำเภอ/จังหวัด/หมู่ ให้อัตโนมัติ ===== */
-function findZone(hw, km){
+/* ===== เขตพื้นที่รับผิดชอบ: เลือก ทล. + กม. + ด้าน แล้วเติม สภ./ตำบล/อำเภอ/จังหวัด/หมู่ ให้อัตโนมัติ =====
+   บาง กม. ฝั่งซ้าย/ขวาถนนอยู่คนละตำบล/สภ. (ช่วง กม. ทับซ้อนกันในข้อมูล) — ถ้าเขตพื้นที่ระบุ "ด้าน" ไว้และตรงกับ
+   ที่เลือกในฟอร์ม ให้ใช้ตัวนั้นก่อน ถ้าไม่ระบุด้าน (ใช้ได้ทั้งสองฝั่ง) เป็นตัวเลือกรอง ไม่งั้นใช้ตัวแรกที่เจอ */
+function zoneSideKey(s){
+  s = String(s || '');
+  if (s.indexOf('ซ้ายทาง') === 0) return 'L';
+  if (s.indexOf('ขวาทาง') === 0) return 'R';
+  return '';
+}
+function findZone(hw, km, side){
   if (!hw || km === null || km === undefined) return null;
-  return ZONES.find(z => String(z.highway) === String(hw) && km >= z.kmStart && km <= z.kmEnd) || null;
+  const candidates = ZONES.filter(z => String(z.highway) === String(hw) && km >= z.kmStart && km <= z.kmEnd);
+  if (!candidates.length) return null;
+  if (candidates.length === 1) return candidates[0];
+  const sk = zoneSideKey(side);
+  if (sk) {
+    const exact = candidates.find(z => zoneSideKey(z.side) === sk);
+    if (exact) return exact;
+  }
+  return candidates.find(z => !z.side) || candidates[0];
 }
 let zoneLastAuto = null; // ค่าที่ระบบเติมให้ล่าสุด — ถ้าเจ้าหน้าที่แก้เองแล้วจะไม่ถูกเขียนทับ
 function zoneFieldIds(){ return { station: 'f_policeStation', tambon: 'f_tambon', amphoe: 'f_amphoe', changwat: 'f_changwat' }; }
@@ -2743,7 +2805,8 @@ function refreshMooOptions(zone, selected){
 function updateZoneFields(fromRemote){
   const hw = document.getElementById('f_highway').value;
   const km = parseKm(document.getElementById('f_km').value);
-  const zone = (hw && km !== null) ? findZone(hw, km) : null;
+  const side = document.getElementById('f_side').value;
+  const zone = (hw && km !== null) ? findZone(hw, km, side) : null;
   const hint = document.getElementById('zoneHint');
   const curMoo = document.getElementById('f_moo').value;
   const ids = zoneFieldIds();
@@ -2755,7 +2818,7 @@ function updateZoneFields(fromRemote){
       if (!cur || (zoneLastAuto && cur === zoneLastAuto[k])) el.value = auto[k] || '';
     });
     zoneLastAuto = auto;
-    hint.textContent = 'พบเขตพื้นที่ตรงกับ กม. นี้ — เติมข้อมูลให้อัตโนมัติ (แก้เองได้)';
+    hint.textContent = '';
     hint.classList.remove('warn');
     refreshMooOptions(zone, curMoo);
   } else {
@@ -2800,15 +2863,20 @@ function clearForm(){
   document.querySelector('.tab-btn[data-view="form"]').textContent = '＋ บันทึกรายการใหม่';
   document.getElementById('btnClearForm').textContent = 'ล้างฟอร์ม';
   populateFiscalYearSelect();
-  ['f_dateIncident','f_dateFound','f_time','f_section','f_km','f_side','f_location',
+  ['f_dateFound','f_time','f_section','f_km','f_side','f_location',
    'f_policeStation','f_tambon','f_amphoe','f_changwat','f_moo',
    'f_caseNo','f_reportLetterNo','f_reportedDate','f_policeOfficer','f_policePhone','f_suspectStatus','f_suspectName',
-   'f_closedDate','f_note','f_assignLetterNo','f_assignDate','f_assignedToName','f_assignedToPosition','f_assignedToPhone'
+   'f_closedDate','f_note','f_assignDate','f_assignedToName','f_assignedToPosition','f_assignedToPhone'
   ].forEach(id => { document.getElementById(id).value = ''; });
   refreshHighwayOptions(); // ตัดตัวเลือกชั่วคราวของสายทางที่โอนแล้วออก (ถ้ามี)
   document.getElementById('f_highway').value = '';
   document.getElementById('f_status').value = 'แจ้งความเบื้องต้น';
   document.getElementById('f_assignedBy').value = 'แขวงทางหลวงระยอง';
+  document.getElementById('f_assignLetterNo').value = 'ที่ คค 06087/ส.3/'; // เลขหนังสือมอบหมายแจ้งความขึ้นต้นแบบนี้เสมอ เจ้าหน้าที่พิมพ์ต่อท้ายแค่เลขที่/ปี
+  // เติมผู้รับมอบหมายแจ้งความประจำหมวดให้อัตโนมัติจากค่าเริ่มต้นในตั้งค่า (แก้ทับรายเคสได้) — เคสเก่าที่แก้ไขจะไม่ถูกทับด้วยค่านี้ (ดู loadRecordIntoForm)
+  document.getElementById('f_assignedToName').value = DEFAULT_ASSIGNEE.name;
+  document.getElementById('f_assignedToPosition').value = DEFAULT_ASSIGNEE.position;
+  document.getElementById('f_assignedToPhone').value = DEFAULT_ASSIGNEE.phone;
   currentFallbackTotal = null;
   document.getElementById('itemsContainer').innerHTML = '';
   zoneLastAuto = null;
@@ -2828,8 +2896,8 @@ function loadRecordIntoForm(rec){
   document.querySelector('.tab-btn[data-view="form"]').textContent = '✏️ กำลังแก้ไขเคส';
   document.getElementById('btnClearForm').textContent = 'ยกเลิกการแก้ไข';
   document.getElementById('f_fiscalYear').value = rec.fiscalYear || thaiFiscalYearNow();
-  document.getElementById('f_dateIncident').value = rec.dateIncident || '';
-  document.getElementById('f_dateFound').value = rec.dateFound || '';
+  // เคสเก่าก่อนยุบรวมช่องวันที่อาจมีแค่ dateIncident — ใช้ค่านั้นเป็นสำรองถ้า dateFound ว่าง
+  document.getElementById('f_dateFound').value = rec.dateFound || rec.dateIncident || '';
   document.getElementById('f_time').value = rec.time || '';
   ensureHighwayOption(rec.highway); // เคสบนสายทางที่โอนแล้ว ต้องมีตัวเลือกนี้ชั่วคราวตอนแก้ไข
   document.getElementById('f_highway').value = rec.highway || '';
@@ -2910,12 +2978,15 @@ function doneButton(btn, text){
 }
 async function saveForm(){
   const fiscalYear = parseInt(document.getElementById('f_fiscalYear').value, 10);
-  const dateIncident = document.getElementById('f_dateIncident').value;
+  const dateFound = document.getElementById('f_dateFound').value;
+  // ยุบรวมช่อง "วันที่เกิดเหตุ" กับ "วันที่ตรวจพบ" เหลือช่องเดียว (งานตรวจพื้นที่ทางหลวงส่วนมากไม่ทราบวันที่เกิดเหตุจริง)
+  // บันทึกค่าเดียวกันลงทั้ง dateIncident/dateFound เพื่อให้ปีงบ/การเรียงลำดับ/รายงานเดิมที่อ้างอิง dateIncident ยังทำงานได้ปกติ
+  const dateIncident = dateFound;
   const highway = document.getElementById('f_highway').value;
   const kmText = document.getElementById('f_km').value;
   const km = parseKm(kmText);
 
-  if (!dateIncident) { showToast('กรุณากรอกวันที่เกิดเหตุ'); return; }
+  if (!dateFound) { showToast('กรุณากรอกวันที่ตรวจพบ'); return; }
   if (!highway) { showToast('กรุณาเลือกทางหลวง (ทล.)'); return; }
   if (km === null) { showToast('กรุณากรอก กม. ให้ถูกรูปแบบ เช่น 225+500'); return; }
   if (!recorderName) {
@@ -2938,7 +3009,7 @@ async function saveForm(){
   const rec = {
     id: editingId || uid(),
     fiscalYear, dateIncident,
-    dateFound: document.getElementById('f_dateFound').value,
+    dateFound,
     time: document.getElementById('f_time').value.trim(),
     highway, section: document.getElementById('f_section').value,
     km, side: document.getElementById('f_side').value,
@@ -3160,7 +3231,7 @@ async function startApp(){
   const overlay = document.getElementById('pageLoadingOverlay');
   if (overlay) overlay.classList.remove('hide');
   try {
-    await Promise.all([loadMaterialPrices(), loadRoutesData(), loadZonesData(), loadRecords()]);
+    await Promise.all([loadMaterialPrices(), loadRoutesData(), loadZonesData(), loadSettingsData(), loadRecords()]);
     populateHighwaySelect();
     populateYearFilter();
     updateWhoDisplay();
@@ -3518,7 +3589,6 @@ function openCaseDetailModal(id){
               <div class="cd-card"><div class="cd-sec">ข้อมูลเหตุโจรกรรม</div>
                 <dl class="cd-dl">
                   <dt>ตำแหน่ง</dt><dd>${escapeHtml(formatPosition(rec)) || '-'}</dd>
-                  <dt>วันที่พบ</dt><dd>${escapeHtml(formatThaiDate(rec.dateFound)) || '-'}</dd>
                   <dt>สภ.</dt><dd>${escapeHtml(rec.policeStation) || '-'}</dd>
                   <dt>พื้นที่</dt><dd>${escapeHtml(areaText) || '-'}</dd>
                   <dt>หมู่ที่</dt><dd>${escapeHtml(rec.moo) || '-'}</dd>
@@ -4082,8 +4152,7 @@ function buildCasesSheet(wb, rows, seqMap){
   const C = [
     ['เลขที่เคส', 0, 11, 'text', r => (r.fiscalYear || '') + '-' + (seqMap[r.id] || '')],
     ['ปีงบ', 0, 7, 'year', r => Number(r.fiscalYear) || null],
-    ['วันที่เกิดเหตุ', 0, 13, 'date', r => xlDate(r.dateIncident)],
-    ['วันที่ตรวจพบ', 0, 13, 'date', r => xlDate(r.dateFound)],
+    ['วันที่เกิดเหตุ/ตรวจพบ', 0, 13, 'date', r => xlDate(r.dateFound || r.dateIncident)],
     ['เวลา', 0, 8, 'text', r => r.time || ''],
     ['ทล.', 0, 7, 'text', r => String(r.highway || '')],
     ['ตอน', 0, 24, 'text', r => r.section || ''],
@@ -4982,24 +5051,43 @@ function updateAssetsUpdatedHint(){
 
 
 /* ============ เขตพื้นที่รับผิดชอบ (สภ. / ตำบล / อำเภอ / หมู่) ============
-   ใช้ค้นหาอัตโนมัติตอนบันทึกเคสใหม่: เลือก ทล. + กม. แล้วระบบเติม สภ./ตำบล/อำเภอ/จังหวัด/หมู่ให้ — ช่วง กม. เก็บเป็นเมตรเหมือนสายทาง */
+   ใช้ค้นหาอัตโนมัติตอนบันทึกเคสใหม่: เลือก ทล. + กม. แล้วระบบเติม สภ./ตำบล/อำเภอ/จังหวัด/หมู่ให้ — ช่วง กม. เก็บเป็นเมตรเหมือนสายทาง
+   ดูตาราง "ดูตาม" ได้ 2 แบบ: ทล. (เรียงตามสายทาง+กม. ค่าเริ่มต้น) หรือ สภ. (จัดกลุ่มตามสถานีตำรวจ มีหัวกลุ่มคั่น) */
+let zonesViewMode = 'highway';
 function renderZonesTable(){
   const tbody = document.getElementById('zonesTableBody');
   if (!tbody) return;
   const owner = isOwner();
-  const rows = ZONES;
+  const byStation = zonesViewMode === 'station';
+  const rows = ZONES.slice().sort((a, b) => byStation
+    ? ((a.station || '').localeCompare(b.station || '', 'th') || (parseFloat(a.highway) - parseFloat(b.highway)) || (a.kmStart - b.kmStart))
+    : ((parseFloat(a.highway) - parseFloat(b.highway)) || (a.kmStart - b.kmStart)));
   const rowHtml = (z, i) => `
     <tr data-idx="${i}" class="${owner ? 'route-editable' : ''}"${owner ? ' title="ดับเบิลคลิกเพื่อแก้ไข"' : ''}>
       <td class="mono" style="text-align:center">${escapeHtml(z.highway)}</td>
       <td class="mono" style="text-align:center;white-space:nowrap">${escapeHtml(formatKm(z.kmStart) + ' - ' + formatKm(z.kmEnd))}</td>
+      <td style="text-align:center">${escapeHtml(z.side || 'ทั้งสองฝั่ง')}</td>
       <td style="text-align:center">${escapeHtml(z.station || '-')}</td>
       <td style="text-align:center">${escapeHtml(z.tambon || '-')}</td>
       <td style="text-align:center">${escapeHtml(z.amphoe || '-')}</td>
       <td style="text-align:center">${escapeHtml(z.changwat || '-')}</td>
       <td style="text-align:center">${escapeHtml((z.moobans || []).join(', ') || '-')}</td>
     </tr>`;
-  tbody.innerHTML = rows.length ? rows.map(rowHtml).join('')
-    : `<tr><td colspan="7" class="hint" style="text-align:center;padding:20px">ยังไม่มีข้อมูลเขตพื้นที่${owner ? ' — กด "+ เพิ่มเขตพื้นที่" เพื่อเริ่มเพิ่ม' : ''}</td></tr>`;
+  let bodyHtml = '';
+  let lastGroup = null;
+  const groupCounts = byStation ? rows.reduce((m, z) => { const k = z.station || 'ไม่ระบุ สภ.'; m[k] = (m[k] || 0) + 1; return m; }, {}) : null;
+  rows.forEach((z, i) => {
+    if (byStation) {
+      const g = z.station || 'ไม่ระบุ สภ.';
+      if (g !== lastGroup) {
+        bodyHtml += `<tr class="zone-group-row"><td colspan="8" style="background:var(--paper-2,#f4efe6);font-weight:700;padding:9px 14px">${escapeHtml(g)} <span class="hint" style="font-weight:400">(${groupCounts[g]} เขต)</span></td></tr>`;
+        lastGroup = g;
+      }
+    }
+    bodyHtml += rowHtml(z, i);
+  });
+  tbody.innerHTML = rows.length ? bodyHtml
+    : `<tr><td colspan="8" class="hint" style="text-align:center;padding:20px">ยังไม่มีข้อมูลเขตพื้นที่${owner ? ' — กด "+ เพิ่มเขตพื้นที่" เพื่อเริ่มเพิ่ม' : ''}</td></tr>`;
   if (owner) {
     tbody.querySelectorAll('tr[data-idx]').forEach(tr => {
       tr.addEventListener('dblclick', () => openZoneEditModal(rows[Number(tr.dataset.idx)]));
@@ -5010,14 +5098,25 @@ function renderZonesTable(){
     addBtn.style.display = owner ? '' : 'none';
     addBtn.onclick = () => openZoneEditModal(null);
   }
+  const btnHw = document.getElementById('btnZonesByHighway');
+  const btnSt = document.getElementById('btnZonesByStation');
+  if (btnHw && btnSt) {
+    btnHw.classList.toggle('btn-outline', byStation);
+    btnHw.classList.toggle('btn-primary', !byStation);
+    btnSt.classList.toggle('btn-outline', !byStation);
+    btnSt.classList.toggle('btn-primary', byStation);
+    btnHw.onclick = () => { if (zonesViewMode !== 'highway') { zonesViewMode = 'highway'; renderZonesTable(); } };
+    btnSt.onclick = () => { if (zonesViewMode !== 'station') { zonesViewMode = 'station'; renderZonesTable(); } };
+  }
   const hint = document.getElementById('zonesCountHint');
   if (hint) hint.textContent = rows.length ? (rows.length + ' เขตพื้นที่') : '';
 }
 function openZoneEditModal(zone){
   const root = document.getElementById('modalRoot');
   const isNew = !zone;
-  const z = zone || { id: '', highway: '', kmStart: null, kmEnd: null, station: '', tambon: '', amphoe: '', changwat: '', moobans: [] };
+  const z = zone || { id: '', highway: '', kmStart: null, kmEnd: null, side: '', station: '', tambon: '', amphoe: '', changwat: '', moobans: [] };
   const hwOptions = ROUTES.map(r => `<option value="${escapeHtml(r.highway)}"${String(r.highway) === String(z.highway) ? ' selected' : ''}>ทล.${escapeHtml(r.highway)} (${escapeHtml(r.section)})</option>`).join('');
+  const sideOptions = ['', 'ซ้ายทาง', 'ขวาทาง'].map(v => `<option value="${escapeHtml(v)}"${v === (z.side || '') ? ' selected' : ''}>${v ? v : 'ทั้งสองฝั่ง / ไม่ระบุ'}</option>`).join('');
   root.innerHTML = `
     <div class="modal-backdrop"><div class="modal edit-modal em-route">
       <div class="modal-head em-head">
@@ -5031,6 +5130,10 @@ function openZoneEditModal(zone){
           <div class="field"><label>จาก กม.</label><input type="text" id="ze_kmStart" value="${z.kmStart == null ? '' : escapeHtml(formatKm(z.kmStart))}" placeholder="เช่น 0+000"></div>
           <div class="field"><label>ถึง กม.</label><input type="text" id="ze_kmEnd" value="${z.kmEnd == null ? '' : escapeHtml(formatKm(z.kmEnd))}" placeholder="เช่น 10+000"></div>
         </div>
+        <div class="grid grid-3 em-field">
+          <div class="field"><label>ด้าน</label><select id="ze_side">${sideOptions}</select></div>
+        </div>
+        <span class="hint">ถ้า กม. ช่วงนี้ฝั่งซ้าย/ขวาถนนอยู่คนละตำบล/สภ. ให้เพิ่มเป็น 2 เขตแยกกัน ระบุด้านให้ตรง — ระบบจะเลือกเขตที่ตรงกับ "ด้าน/ตำแหน่ง" ที่เลือกในฟอร์มบันทึกเคสให้อัตโนมัติ</span>
         <div class="em-sec"><span class="em-num">2</span> พื้นที่รับผิดชอบ</div>
         <div class="grid grid-2 em-field">
           <div class="field"><label>สถานีตำรวจ (สภ.)</label><input type="text" id="ze_station" value="${escapeHtml(z.station)}" placeholder="เช่น สภ.บ้านค่าย"></div>
@@ -5074,6 +5177,7 @@ function openZoneEditModal(zone){
     const payload = {
       id: z.id || ('z-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 6)),
       highway, kmStart, kmEnd,
+      side: document.getElementById('ze_side').value,
       station: document.getElementById('ze_station').value.trim(),
       tambon: document.getElementById('ze_tambon').value.trim(),
       amphoe: document.getElementById('ze_amphoe').value.trim(),
@@ -5148,9 +5252,10 @@ function fiscalYearOfDate(dateStr){
   if (!m) return null;
   return Number(m[1]) + 543 + (Number(m[2]) >= 10 ? 1 : 0);
 }
-// เลือกวันที่เกิดเหตุแล้วตั้งปีงบให้อัตโนมัติ (ยังแก้เองได้) — ไม่ทำตอนโหลดเคสเดิมเข้าฟอร์ม เพราะเป็นการตั้งค่าด้วยโค้ด ไม่ใช่การเปลี่ยนวันที่
+// เลือกวันที่เกิดเหตุ (หรือวันที่ตรวจพบ ถ้ายังไม่ทราบวันที่เกิดเหตุ) แล้วตั้งปีงบให้อัตโนมัติ (ยังแก้เองได้)
+// ไม่ทำตอนโหลดเคสเดิมเข้าฟอร์ม เพราะเป็นการตั้งค่าด้วยโค้ด ไม่ใช่การเปลี่ยนวันที่
 function syncFiscalYearFromDate(){
-  const fy = fiscalYearOfDate(document.getElementById('f_dateIncident').value);
+  const fy = fiscalYearOfDate(document.getElementById('f_dateFound').value);
   const sel = document.getElementById('f_fiscalYear');
   if (!fy || !sel) return;
   if (![...sel.options].some(o => Number(o.value) === fy)) {
@@ -5189,7 +5294,7 @@ async function runSeed(){
 async function init(){
   initModalScroll();
   initCustomSelects();
-  document.getElementById('f_dateIncident').addEventListener('change', syncFiscalYearFromDate);
+  document.getElementById('f_dateFound').addEventListener('change', syncFiscalYearFromDate);
   initTabs();
   initPasswordToggles();
   document.addEventListener('click', (e) => {
@@ -5229,6 +5334,7 @@ async function init(){
   // เลือก ทล./กม. → เติมเขตพื้นที่ (สภ./ตำบล/อำเภอ/หมู่) อัตโนมัติ
   document.getElementById('f_highway').addEventListener('change', () => updateZoneFields());
   document.getElementById('f_km').addEventListener('input', () => updateZoneFields());
+  document.getElementById('f_side').addEventListener('change', () => updateZoneFields());
   document.getElementById('f_suspectStatus').addEventListener('change', updateSuspectNameVisibility);
   document.getElementById('f_status').addEventListener('change', onStatusChange);
   document.getElementById('btnChangeWho').addEventListener('click', () => {
@@ -5259,6 +5365,20 @@ async function init(){
   document.getElementById('btnImport').addEventListener('click', runImport);
   document.getElementById('btnSeed').addEventListener('click', runSeed);
   document.getElementById('btnOpenTrash').addEventListener('click', openTrashModal);
+  document.getElementById('btnSaveAssignee').addEventListener('click', async () => {
+    if (!isOwner()) { showToast('เฉพาะเจ้าของระบบเท่านั้น'); return; }
+    const btn = document.getElementById('btnSaveAssignee');
+    busyButton(btn, 'กำลังบันทึก...');
+    try {
+      await apiSaveAssigneeDefault();
+      await doneButton(btn, '✓ บันทึกแล้ว');
+      showToast('บันทึกค่าเริ่มต้นผู้รับมอบหมายแล้ว');
+    } catch (e) {
+      console.error('save assignee default failed', e);
+      showToast('บันทึกไม่สำเร็จ: ' + FBL.errorText(e));
+      btn.disabled = false; btn.classList.remove('btn-loading'); btn.innerHTML = btn.dataset.originalHTML;
+    }
+  });
   populateMaterialCategorySelect();
   initItemEntryUi();
 
