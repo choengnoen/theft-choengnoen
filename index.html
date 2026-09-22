@@ -1043,8 +1043,8 @@ tr.route-editable:hover td{background:var(--amber-glow)}
       <div class="grid grid-3" style="margin-top:12px">
         <div class="field">
           <label>มอบให้ (ชื่อ-นามสกุล)</label>
-          <select id="f_assignedToPicker" style="margin-bottom:6px"><option value="">— เลือกจากรายชื่อ —</option></select>
-          <input type="text" id="f_assignedToName" placeholder="หรือพิมพ์ชื่อ-นามสกุลเอง">
+          <input type="text" id="f_assignedToName" list="assigneeNamesList" placeholder="พิมพ์ หรือเลือกจากรายชื่อ">
+          <datalist id="assigneeNamesList"></datalist>
         </div>
         <div class="field">
           <label>ตำแหน่ง</label>
@@ -1928,12 +1928,12 @@ async function apiSaveAssignees(){
   DEFAULT_ASSIGNEE = current ? { name: current.name, position: current.position || '', phone: current.phone || '' } : { name: '', position: '', phone: '' };
   populateAssigneePicker();
 }
-// ปุ่ม "เลือกจากรายชื่อ" ในฟอร์มบันทึกเคส — เลือกแล้วเติมตำแหน่ง/เบอร์โทรให้อัตโนมัติ (ช่องชื่อยังพิมพ์เองได้เสมอ เผื่อเป็นคนที่ไม่อยู่ในรายชื่อ เช่นคนที่เคยรับมอบหมายในปีก่อนๆ)
+// ช่อง "มอบให้" ในฟอร์มบันทึกเคส: พิมพ์เองได้ตามปกติ หรือเลือกจากรายชื่อที่ตั้งไว้ (คลิกช่องว่างๆ / พิมพ์บางส่วน จะมีรายชื่อให้เลือกจากเบราว์เซอร์)
+// พิมพ์/เลือกชื่อที่ตรงกับรายชื่อพอดี จะเติมตำแหน่ง/เบอร์โทรให้อัตโนมัติ — พิมพ์ชื่อที่ไม่อยู่ในรายชื่อ (เช่นคนที่เคยรับมอบหมายในปีก่อนๆ) ก็ทำได้ปกติ ไม่ถูกบล็อก
 function populateAssigneePicker(){
-  const sel = document.getElementById('f_assignedToPicker');
-  if (!sel) return;
-  sel.innerHTML = '<option value="">— เลือกจากรายชื่อ —</option>'
-    + ASSIGNEE_LIST.map((p, i) => `<option value="${i}">${escapeHtml(p.name)}${p.name === DEFAULT_ASSIGNEE.name ? ' (ใช้งานอยู่)' : ''}</option>`).join('');
+  const dl = document.getElementById('assigneeNamesList');
+  if (!dl) return;
+  dl.innerHTML = ASSIGNEE_LIST.map(p => `<option value="${escapeHtml(p.name)}">`).join('');
 }
 function applyRouteDocs(docs){
   const byHighway = {};
@@ -5506,15 +5506,13 @@ async function init(){
     }
   });
   document.getElementById('assigneesContainer').addEventListener('input', () => { assigneesEditedInSession = true; });
-  document.getElementById('f_assignedToPicker').addEventListener('change', () => {
-    const sel = document.getElementById('f_assignedToPicker');
-    const p = ASSIGNEE_LIST[Number(sel.value)];
+  document.getElementById('f_assignedToName').addEventListener('input', () => {
+    const val = document.getElementById('f_assignedToName').value.trim();
+    const p = ASSIGNEE_LIST.find(x => x.name === val);
     if (p) {
-      document.getElementById('f_assignedToName').value = p.name || '';
       document.getElementById('f_assignedToPosition').value = p.position || '';
       document.getElementById('f_assignedToPhone').value = p.phone || '';
     }
-    sel.value = ''; // เป็นปุ่มเลือกครั้งเดียว ไม่ใช่ค่าที่ค้างไว้ — ช่องชื่อด้านล่างคือค่าจริงที่จะบันทึก
   });
   populateMaterialCategorySelect();
   initItemEntryUi();
