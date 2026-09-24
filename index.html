@@ -2750,7 +2750,7 @@ function addItemRow(data){
   nameInput.addEventListener('input', () => markNonAssetCost(row));
   // พิมพ์ชื่อเองเสร็จ (ออกจากช่อง) และยังไม่ได้เลือกหน่วย → เติมหน่วยจากราคากลางให้
   nameInput.addEventListener('change', () => {
-    const sel = row.querySelector('.it-unit');
+    const sel = row.querySelector('select.it-unit');
     if (sel.value) return;
     const u = guessItemUnit(nameInput.value);
     if (u) { sel.innerHTML = itemUnitOptions(u); }
@@ -2823,7 +2823,7 @@ function collectItems(){
   rows.forEach(row => {
     const name = row.querySelector('.it-name').value.trim();
     const qty = row.querySelector('.it-qty').value.trim();
-    const unit = row.querySelector('.it-unit').value;
+    const unit = row.querySelector('select.it-unit').value;   // ต้องระบุ select — กล่องตกแต่ง (.dsel) ก็มี class it-unit และอยู่ก่อน
     const unitPriceRaw = row.querySelector('.it-unitprice').value.trim();
     const unitPrice = unitPriceRaw === '' ? null : parseFloat(unitPriceRaw.replace(/,/g,''));
     const priceRaw = row.querySelector('.it-price').value.trim();
