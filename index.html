@@ -729,6 +729,17 @@ tr.asset-frequent:hover td{background:#fbe9c9 !important}
 .em-price-big:focus{border-bottom-color:var(--amber)}
 .em-unit{width:110px;border:1px solid var(--line);border-radius:8px;padding:6px 10px;font:inherit;font-size:14.5px;background:#fff}
 .em-unit:focus{outline:none;border-color:var(--amber-500);box-shadow:0 0 0 3px rgba(224,98,15,.14)}
+.dq-hint{font-size:12px;color:var(--ink-mute);min-height:0}
+.dq-hint:empty{display:none}
+.dq-hint.bad{color:var(--rust);font-weight:600}
+.dq-hint.warn{color:var(--amber-deep);font-weight:600}
+.dq-hint a{color:inherit;text-decoration:underline}
+input.dq-bad{border-color:var(--rust)!important;background:var(--rust-bg)}
+.dq-badge{cursor:help;font-size:13px}
+.dq-box{background:var(--spot2-bg);border:1px solid #f1d49a;border-radius:10px;padding:10px 14px;margin-bottom:12px;color:var(--amber-deep);font-size:13.5px}
+.dq-box ul{margin:4px 0 0;padding-left:20px}
+.item-row.bad-cost .it-name{border-color:var(--rust);background:var(--rust-bg)}
+.item-row .it-cost-warn{grid-column:1/-1;font-size:12.5px;color:var(--rust);font-weight:600;margin-top:-4px}
 .em-hint{font-size:12.5px;color:var(--ink-mute);margin-top:8px;line-height:1.5}
 .em-switch-row{display:flex;align-items:center;gap:12px;cursor:pointer;margin-bottom:8px}
 .em-switch-row b{font-weight:600}
@@ -985,7 +996,7 @@ tr.route-editable:hover td{background:var(--amber-glow)}
         </div>
         <div class="field">
           <label>จังหวัด</label>
-          <input type="text" id="f_changwat">
+          <input type="text" id="f_changwat" value="ระยอง">
         </div>
       </div>
       <div class="grid grid-4" style="margin-top:12px">
@@ -1066,12 +1077,8 @@ tr.route-editable:hover td{background:var(--amber-glow)}
         <div class="party-block-title"><span>การแจ้งความ</span></div>
         <div class="grid grid-3">
           <div class="field">
-            <label>เลขคดีตำรวจ</label>
-            <input type="text" id="f_caseNo" placeholder="เช่น 123/2569">
-          </div>
-          <div class="field">
-            <label>เลขหนังสือแจ้งความ</label>
-            <input type="text" id="f_reportLetterNo" placeholder="เลขหนังสือของแขวงฯ">
+            <label>เลขคดี / เลขรับแจ้งความ</label>
+            <input type="text" id="f_reportLetterNo" placeholder="เช่น CC70129256914294B">
           </div>
           <div class="field">
             <label>แจ้งความเมื่อวันที่</label>
@@ -1131,7 +1138,7 @@ tr.route-editable:hover td{background:var(--amber-glow)}
         </div>
       </div>
 
-      <div class="party-block" data-role="interrogation" style="margin-top:14px">
+      <div class="party-block" data-role="interrogation" id="interrogationBlock" style="margin-top:14px;display:none">
         <div class="party-block-title"><span>บันทึกการเรียกสอบปากคำ (ถ้ามี — สภ.เรียกผู้รับมอบหมายเข้าให้ปากคำ)</span></div>
         <div id="interrogationsContainer"></div>
         <button class="btn btn-outline btn-sm" id="btnAddInterrogation" type="button">＋ เพิ่มบันทึกการสอบปากคำ</button>
@@ -1184,6 +1191,13 @@ tr.route-editable:hover td{background:var(--amber-glow)}
             <option value="unknown">ยังไม่ระบุ</option>
           </select>
         </div>
+        <div class="field">
+          <label style="text-align:center">ตรวจสอบข้อมูล</label>
+          <select id="filterIssues">
+            <option value="">ทั้งหมด</option>
+            <option value="yes">⚠️ ต้องตรวจสอบ</option>
+          </select>
+        </div>
       </div>
       <div class="list-count" id="listCount"></div>
       <div class="table-wrap">
@@ -1191,7 +1205,7 @@ tr.route-editable:hover td{background:var(--amber-glow)}
           <thead>
             <tr>
               <th style="width:11%">เลขที่เคส</th><th style="width:18%">สายทาง / กม.</th><th style="width:16%">สภ. / บริเวณ</th>
-              <th style="width:13%">เลขคดีตำรวจ</th><th style="width:12%">มูลค่าเสียหาย</th><th style="width:11%">ผู้ต้องสงสัย</th><th class="repair-th" style="width:19%">สถานะคดี</th>
+              <th style="width:13%">เลขคดี</th><th style="width:12%">มูลค่าเสียหาย</th><th style="width:11%">ผู้ต้องสงสัย</th><th class="repair-th" style="width:19%">สถานะคดี</th>
             </tr>
           </thead>
           <tbody id="tableBody"></tbody>
@@ -1741,7 +1755,7 @@ function showToast(msg){
   t.textContent = msg;
   t.classList.add('show');
   clearTimeout(showToast._t);
-  showToast._t = setTimeout(() => t.classList.remove('show'), 2400);
+  showToast._t = setTimeout(() => t.classList.remove('show'), Math.max(2400, String(msg).length * 70)); // ข้อความยาว (เช่น เหตุที่บันทึกไม่ได้) ค้างนานพอให้อ่านจบ
 }
 
 function showSaveSuccessModal(isEdit, rec){
@@ -2689,8 +2703,19 @@ function addItemDivider(text){
   wrap.appendChild(div);
   return id;
 }
+// เดาหน่วยจากชื่อรายการ: ตรงกับราคากลาง (หน้า "ข้อมูลทรัพย์สิน") หรือชุดวัสดุ → ใช้หน่วยนั้น, ชื่อต่างเล็กน้อย → ใช้ตัวที่ใกล้ที่สุด (≥92%)
+function guessItemUnit(name){
+  const n = String(name || '').trim();
+  if (!n) return '';
+  if (materialPriceMap[n] && materialPriceMap[n].unit) return materialPriceMap[n].unit;
+  const lib = getCatalogItems().find(it => it.name === n);
+  if (lib && lib.unit) return lib.unit;
+  const m = findMaterialPriceMatch(n);
+  return (m && m.unit) || '';
+}
 function addItemRow(data){
-  data = data || {name:'', qty:'', unit:'ชุด', unitPrice:'', price:''};
+  data = data || {name:'', qty:'', unit:'', unitPrice:'', price:''};
+  if (!data.unit && data.name) data = Object.assign({}, data, { unit: guessItemUnit(data.name) }); // เคสเก่าที่ไม่มีหน่วย
   itemRowCount++;
   const id = 'item-' + itemRowCount;
   const wrap = document.getElementById('itemsContainer');
@@ -2722,7 +2747,16 @@ function addItemRow(data){
     nameInput.style.height = nameInput.scrollHeight + 'px';
   }
   nameInput.addEventListener('input', autoResizeName);
+  nameInput.addEventListener('input', () => markNonAssetCost(row));
+  // พิมพ์ชื่อเองเสร็จ (ออกจากช่อง) และยังไม่ได้เลือกหน่วย → เติมหน่วยจากราคากลางให้
+  nameInput.addEventListener('change', () => {
+    const sel = row.querySelector('.it-unit');
+    if (sel.value) return;
+    const u = guessItemUnit(nameInput.value);
+    if (u) { sel.innerHTML = itemUnitOptions(u); }
+  });
   autoResizeName();
+  markNonAssetCost(row);
   row.querySelector('.del-item').addEventListener('click', () => {
     const dividerId = row.dataset.dividerId;
     row.remove();
@@ -2766,6 +2800,23 @@ function addItemRow(data){
   attachThousandsInput(priceInput, updateItemsSum);
 }
 
+// งานโจรกรรมนับเฉพาะราคาทรัพย์สินที่ถูกขโมย — รายการ "ค่า..." (ค่าดำเนินการ/ค่าแรง/ค่าเครื่องจักร ฯลฯ) และภาษี ห้ามใส่
+// ตรวจเฉพาะชื่อที่ขึ้นต้นด้วย "ค่า" เพื่อไม่ให้ชนชื่อวัสดุที่มีคำว่า "(ไม่รวมค่าติดตั้ง)" ต่อท้าย
+function isNonAssetCost(name){
+  const n = String(name || '').trim();
+  return /^ค่า/.test(n) || /ภาษีมูลค่าเพิ่ม|\bVAT\b/i.test(n);
+}
+function markNonAssetCost(row){
+  const bad = isNonAssetCost(row.querySelector('.it-name').value);
+  row.classList.toggle('bad-cost', bad);
+  let warn = row.querySelector('.it-cost-warn');
+  if (bad && !warn) {
+    warn = document.createElement('div');
+    warn.className = 'it-cost-warn';
+    warn.textContent = '⛔ ไม่ใช่ทรัพย์สินที่ถูกขโมย — งานโจรกรรมไม่นับค่าดำเนินการ/ค่าแรง/ค่าเครื่องจักร/ภาษี กรุณาลบรายการนี้';
+    row.appendChild(warn);
+  } else if (!bad && warn) warn.remove();
+}
 function collectItems(){
   const rows = document.querySelectorAll('#itemsContainer .item-row');
   const items = [];
@@ -2829,10 +2880,12 @@ function populateMaterialCategorySelect(){
 /* ===== ช่องกรอกรายการทรัพย์สินเสียหาย: ค้นหาจากรายการมาตรฐานแล้วเพิ่ม / ดึงชุดวัสดุ / พิมพ์เอง ===== */
 const ITEM_UNITS = ["ชุด","ต้น","อัน","แผ่น","ตัว","เมตร","ม.","จุด","แห่ง","ผืน","ท่อน","ฐาน","รายการ"];
 // ตัวเลือกหน่วย — ถ้าหน่วยของรายการมาตรฐาน/เคสเดิมไม่อยู่ในรายการมาตรฐาน (เช่น "ถุง") ให้เพิ่มเป็นตัวเลือกด้วย ไม่งั้นหน่วยจะกลายเป็น "ชุด"
+// หน่วยว่าง (เคสเก่า/รายการที่พิมพ์เอง) → แสดง "— เลือก —" และบังคับเลือกก่อนบันทึก แทนที่จะกลายเป็น "ชุด" เงียบ ๆ
 function itemUnitOptions(selected){
   const units = ITEM_UNITS.slice();
   if (selected && !units.includes(selected)) units.push(selected);
-  return units.map(u => `<option ${u === selected ? 'selected' : ''}>${escapeHtml(u)}</option>`).join('');
+  return `<option value="" ${selected ? '' : 'selected'}>— เลือก —</option>`
+    + units.map(u => `<option ${u === selected ? 'selected' : ''}>${escapeHtml(u)}</option>`).join('');
 }
 // รายการมาตรฐานทั้งหมดสำหรับค้นหา (ราคา/หน่วยตามหน้า "ข้อมูลทรัพย์สิน" ล่าสุด, ไม่รวมรายการที่ซ่อน)
 function getCatalogItems(){
@@ -3037,11 +3090,199 @@ function updateSuspectNameVisibility(){
   document.getElementById('f_suspectNameWrap').style.display = found ? '' : 'none';
   if (!found) document.getElementById('f_suspectName').value = '';
 }
+// ยุบรวม "เลขคดีตำรวจ" กับ "เลขหนังสือแจ้งความ" เหลือช่องเดียว (เจ้าหน้าที่กรอกเลขคดี CC/EV ลงช่องเลขหนังสือแจ้งความมาตลอด)
+// เก็บที่ reportLetterNo — เคสเก่าที่มีแค่ caseNo ยังแสดงได้
+function policeCaseNo(r){ return (r && (r.reportLetterNo || r.caseNo)) || ''; }
+// บันทึกการสอบปากคำ: แสดงเฉพาะเมื่อจับกุมผู้ต้องหาได้/ปิดคดีแล้ว หรือเคสมีบันทึกอยู่แล้ว
+function updateInterrogationVisibility(){
+  const st = document.getElementById('f_status').value;
+  const hasRows = document.querySelectorAll('#interrogationsContainer .interrogation-row').length > 0;
+  document.getElementById('interrogationBlock').style.display = (st === 'จับกุมผู้ต้องหาได้' || st === 'ปิดคดี' || hasRows) ? '' : 'none';
+}
+/* ============ ตรวจความถูกต้องของข้อมูล ============
+   - วันที่ผิด (ก่อนวันเกิดเหตุ / อยู่ในอนาคต) → ห้ามบันทึก
+   - เลขคดีซ้ำกับเคสอื่น → เตือนใต้ช่อง + ถามยืนยันตอนบันทึก (คดีเดียวกันจริงได้ เช่น แจ้งหลายจุดในเลขเดียว)
+   - เลขคดีแบบ CC/EV ผิดรูปแบบ, หนังสือมอบหมายยังไม่มีเลข/วันที่ → เตือนอย่างเดียว
+   - เคสเก่าที่ผิดเงื่อนไข → ป้าย ⚠️ ในตาราง + ตัวกรอง "ต้องตรวจสอบ" */
+const CHECK_DATE_FIELDS = [
+  ['f_reportedDate', 'วันแจ้งความ', 'reportedDate'],
+  ['f_assignDate', 'วันที่หนังสือมอบหมาย', 'assignDate'],
+  ['f_closedDate', 'วันปิดคดี', 'closedDate'],
+];
+const ISO_DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+function todayIso(){
+  const d = new Date();
+  return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+}
+function thaiDateFull(iso){
+  if (!ISO_DATE_RE.test(iso || '')) return iso || '';
+  const [y, m, d] = iso.split('-').map(Number);
+  return d + ' ' + THAI_MONTHS_SHORT[m - 1] + ' ' + (y + 543);
+}
+function daysBetween(a, b){ return Math.round((new Date(b + 'T00:00:00') - new Date(a + 'T00:00:00')) / 86400000); }
+// r ใช้ชื่อฟิลด์แบบเดียวกับเรคคอร์ด (dateFound/dateIncident, reportedDate, assignDate, closedDate)
+function dateIssues(r){
+  const out = [];
+  const inc = r.dateFound || r.dateIncident;
+  const today = todayIso();
+  if (ISO_DATE_RE.test(inc || '') && inc > today) out.push({ field: 'f_dateFound', msg: 'วันเกิดเหตุ/ตรวจพบ (' + thaiDateFull(inc) + ') อยู่ในอนาคต' });
+  CHECK_DATE_FIELDS.forEach(([id, label, key]) => {
+    const v = r[key];
+    if (!ISO_DATE_RE.test(v || '')) return;
+    if (v > today) out.push({ field: id, msg: label + ' (' + thaiDateFull(v) + ') อยู่ในอนาคต' });
+    else if (ISO_DATE_RE.test(inc || '') && v < inc) out.push({ field: id, msg: label + ' (' + thaiDateFull(v) + ') อยู่ก่อนวันเกิดเหตุ (' + thaiDateFull(inc) + ') — ตรวจสอบปี พ.ศ.' });
+  });
+  return out;
+}
+function normCaseNo(s){ return String(s || '').toUpperCase().replace(/[\s\-_.]/g, ''); }
+// เลขคดีจากระบบตำรวจ: อักษร 2 + ตัวเลข 14 + อักษร 1 (เช่น CC70129256914294B) — ตรวจเฉพาะเลขที่ขึ้นต้นด้วยอักษร 2 ตัว
+function caseNoFormatIssue(no){
+  const n = normCaseNo(no);
+  if (!/^[A-Z]{2}\d/.test(n) || /^[A-Z]{2}\d{14}[A-Z]$/.test(n)) return '';
+  return 'เลขคดีควรมี 17 ตัว (อักษร 2 + ตัวเลข 14 + อักษร 1) แต่มี ' + n.length + ' ตัว — ตรวจสอบกับใบแจ้งความ';
+}
+function findDupCases(no, selfId){
+  const n = normCaseNo(no);
+  if (!n) return [];
+  return records.filter(r => r.id !== selfId && normCaseNo(policeCaseNo(r)) === n);
+}
+// เคยกดยืนยันแล้วว่าเป็นคดีเดียวกันจริง (เก็บเลขที่ยืนยันไว้ที่เคสใดเคสหนึ่งในกลุ่ม)
+function isDupConfirmed(r, dups){
+  const n = normCaseNo(policeCaseNo(r));
+  return [r].concat(dups).some(x => x.dupConfirmedNo && x.dupConfirmedNo === n);
+}
+function caseBrief(r){
+  return caseLabelOf(r) + ' (ทล.' + (r.highway || '-') + ' กม.' + (formatKm(r.km) || '-') + ' · ' + thaiDateFull(r.dateFound || r.dateIncident) + ')';
+}
+function assignLetterIncomplete(r){
+  const no = String(r.assignLetterNo || '').trim();
+  return !no || /\/$/.test(no) || !r.assignDate;
+}
+// รายการปัญหาของเคสที่บันทึกแล้ว (ใช้กับป้าย ⚠️ / ตัวกรอง / หน้ารายละเอียด)
+function recordIssues(r){
+  const out = dateIssues(r).map(i => i.msg);
+  const no = policeCaseNo(r);
+  const dups = findDupCases(no, r.id);
+  if (dups.length && !isDupConfirmed(r, dups)) out.push('เลขคดีซ้ำกับเคส ' + dups.map(d => caseLabelOf(d)).join(', '));
+  const fmt = caseNoFormatIssue(no);
+  if (fmt) out.push(fmt);
+  if (assignLetterIncomplete(r)) out.push('หนังสือมอบหมายยังไม่มีเลขที่หรือวันที่');
+  return out;
+}
+function dqBadgeHtml(r){
+  const list = recordIssues(r);
+  return list.length ? ` <span class="dq-badge" title="${escapeHtml(list.join('\n'))}">⚠️</span>` : '';
+}
+function issuesBoxHtml(r){
+  const list = recordIssues(r);
+  if (!list.length) return '';
+  return '<div class="dq-box"><b>⚠️ ข้อมูลที่ต้องตรวจสอบ</b><ul>' + list.map(m => '<li>' + escapeHtml(m) + '</li>').join('') + '</ul></div>';
+}
+
+/* ----- ในฟอร์ม: ข้อความใต้ช่องวันที่ + เลขคดี ----- */
+function fieldHintEl(id){
+  let el = document.getElementById('dq_' + id);
+  if (!el) {
+    const input = document.getElementById(id);
+    el = document.createElement('div');
+    el.id = 'dq_' + id;
+    el.className = 'dq-hint';
+    input.insertAdjacentElement('afterend', el);
+  }
+  return el;
+}
+function setFieldHint(id, level, html){
+  const el = fieldHintEl(id);
+  el.className = 'dq-hint' + (level ? ' ' + level : '');
+  el.innerHTML = html || '';
+  document.getElementById(id).classList.toggle('dq-bad', level === 'bad');
+}
+function formDateValues(){
+  const v = id => document.getElementById(id).value;
+  return { dateFound: v('f_dateFound'), reportedDate: v('f_reportedDate'), assignDate: v('f_assignDate'), closedDate: v('f_closedDate') };
+}
+function refreshDateHints(){
+  const r = formDateValues();
+  const issues = dateIssues(r);
+  const inc = r.dateFound;
+  const ids = ['f_dateFound'].concat(CHECK_DATE_FIELDS.map(f => f[0]));
+  ids.forEach(id => {
+    const bad = issues.find(i => i.field === id);
+    const val = document.getElementById(id).value;
+    if (bad) { setFieldHint(id, 'bad', '❌ ' + escapeHtml(bad.msg)); return; }
+    if (!ISO_DATE_RE.test(val || '')) { setFieldHint(id, '', ''); return; }
+    // แสดงวันที่เป็น พ.ศ. + ห่างจากวันเกิดเหตุกี่วัน ให้เห็นทันทีถ้าพิมพ์ปีผิด
+    let txt = '= ' + thaiDateFull(val);
+    if (id !== 'f_dateFound' && ISO_DATE_RE.test(inc || '')) txt += ' · หลังวันเกิดเหตุ ' + daysBetween(inc, val).toLocaleString('th-TH') + ' วัน';
+    setFieldHint(id, '', escapeHtml(txt));
+  });
+  return issues;
+}
+// ในฟอร์ม: เคสใหม่ถามทุกครั้ง / เคสที่แก้ไข ถ้าเคสนี้หรือเคสคู่ซ้ำเคยยืนยันเลขนี้แล้ว ไม่ต้องถามอีก
+function formDupConfirmed(no, dups){
+  const self = editingId ? records.find(r => r.id === editingId) : null;
+  return !!self && isDupConfirmed(Object.assign({}, self, { reportLetterNo: no }), dups);
+}
+function refreshCaseNoHint(){
+  const no = document.getElementById('f_reportLetterNo').value;
+  const dups = findDupCases(no, editingId);
+  if (dups.length && !formDupConfirmed(no, dups)) {
+    setFieldHint('f_reportLetterNo', 'warn', '⚠️ เลขนี้ซ้ำกับเคส ' + dups.map(d =>
+      `<a href="#" class="dq-open" data-id="${escapeHtml(d.id)}">${escapeHtml(caseBrief(d))}</a>`).join(', '));
+    return;
+  }
+  const fmt = caseNoFormatIssue(no);
+  setFieldHint('f_reportLetterNo', fmt ? 'warn' : '', fmt ? '⚠️ ' + escapeHtml(fmt) : '');
+}
+function refreshFormChecks(){ refreshDateHints(); refreshCaseNoHint(); }
+function setupDataQualityChecks(){
+  ['f_dateFound'].concat(CHECK_DATE_FIELDS.map(f => f[0])).forEach(id =>
+    document.getElementById(id).addEventListener('change', refreshDateHints));
+  const cn = document.getElementById('f_reportLetterNo');
+  cn.addEventListener('change', refreshCaseNoHint);
+  cn.addEventListener('blur', refreshCaseNoHint);
+  fieldHintEl('f_reportLetterNo').addEventListener('click', e => {
+    const a = e.target.closest('.dq-open');
+    if (!a) return;
+    e.preventDefault();
+    openCaseDetailModal(a.dataset.id);
+  });
+}
+// ถามยืนยันเมื่อเลขคดีซ้ำ → resolve(true) = บันทึกต่อ, false = กลับไปแก้
+function confirmDupCaseNo(dups){
+  return new Promise(resolve => {
+    const root = document.getElementById('modalRoot');
+    root.innerHTML = `
+      <div class="modal-backdrop">
+        <div class="modal">
+          <div class="modal-head"><h3>⚠️ เลขคดีซ้ำกับเคสอื่น</h3><button class="modal-close" id="dupClose" type="button">×</button></div>
+          <p>เลขคดีนี้ถูกใช้แล้วในเคส:</p>
+          <ul>${dups.map(d => '<li>' + escapeHtml(caseBrief(d)) + '</li>').join('')}</ul>
+          <p class="hint">ถ้าพิมพ์หรือคัดลอกเลขผิด ให้กด "แก้เลขคดี" — ถ้าตำรวจรับแจ้งหลายจุดในเลขคดีเดียวกันจริง ให้กด "บันทึกต่อ"</p>
+          <div class="actions">
+            <button class="btn btn-outline" id="dupFix">แก้เลขคดี</button>
+            <button class="btn btn-primary" id="dupOk">บันทึกต่อ — เป็นคดีเดียวกันจริง</button>
+          </div>
+        </div>
+      </div>`;
+    const done = ok => {
+      root.innerHTML = '';
+      if (!ok) { const el = document.getElementById('f_reportLetterNo'); el.scrollIntoView({ behavior: 'smooth', block: 'center' }); el.focus(); }
+      resolve(ok);
+    };
+    document.getElementById('dupClose').onclick = () => done(false);
+    document.getElementById('dupFix').onclick = () => done(false);
+    document.getElementById('dupOk').onclick = () => done(true);
+  });
+}
+
 function onStatusChange(){
   const st = document.getElementById('f_status').value;
   const cd = document.getElementById('f_closedDate');
   if (st === 'ปิดคดี') { if (!cd.value) cd.value = new Date().toISOString().slice(0, 10); }
   else cd.value = '';
+  updateInterrogationVisibility();
+  refreshDateHints();
 }
 
 // เลขที่เคสแบบ "ปีงบ-ลำดับ" เช่น 2569-15
@@ -3060,13 +3301,14 @@ function clearForm(){
   populateFiscalYearSelect();
   ['f_dateFound','f_time','f_section','f_km','f_side','f_location',
    'f_policeStation','f_tambon','f_amphoe','f_changwat','f_moo',
-   'f_caseNo','f_reportLetterNo','f_reportedDate','f_policeOfficer','f_policePhone','f_suspectStatus','f_suspectName',
+   'f_reportLetterNo','f_reportedDate','f_policeOfficer','f_policePhone','f_suspectStatus','f_suspectName',
    'f_closedDate','f_note','f_assignDate','f_assignedToName','f_assignedToPosition','f_assignedToPhone'
   ].forEach(id => { document.getElementById(id).value = ''; });
   refreshHighwayOptions(); // ตัดตัวเลือกชั่วคราวของสายทางที่โอนแล้วออก (ถ้ามี)
   document.getElementById('f_highway').value = '';
   document.getElementById('f_status').value = 'แจ้งความเบื้องต้น';
   document.getElementById('f_assignedBy').value = 'แขวงทางหลวงระยอง';
+  document.getElementById('f_changwat').value = 'ระยอง'; // ทุกเคสอยู่ในจังหวัดระยอง — เติมไว้ก่อน (แก้เองได้)
   document.getElementById('f_assignLetterNo').value = 'ที่ คค 06087/ส.3/'; // เลขหนังสือมอบหมายแจ้งความขึ้นต้นแบบนี้เสมอ เจ้าหน้าที่พิมพ์ต่อท้ายแค่เลขที่/ปี
   // ไม่เติมชื่อผู้รับมอบหมายให้อัตโนมัติ — ให้ทีมงานเป็นคนกดเลือกเองจากรายชื่อ (ปุ่ม/ดรอปดาวน์ในช่องนี้)
   assignedToLastAuto = null;
@@ -3076,6 +3318,8 @@ function clearForm(){
   zoneLastAuto = null;
   mooLastAuto = null;
   updateSuspectNameVisibility();
+  updateInterrogationVisibility();
+  refreshFormChecks();
   updateZoneFields();
   updateItemsSum();
   updateKmHint();
@@ -3084,9 +3328,9 @@ function clearForm(){
 function loadRecordIntoForm(rec){
   editingId = rec.id;
   const label = caseLabelOf(rec);
-  document.getElementById('editingHint').textContent = 'กำลังแก้ไขรายการ: ' + (rec.caseNo || label);
+  document.getElementById('editingHint').textContent = 'กำลังแก้ไขรายการ: ' + label;
   document.getElementById('editModeSub').textContent =
-    'รายการ ' + (rec.caseNo || label) + (rec.dateIncident ? (' · ' + formatThaiDate(rec.dateIncident)) : '') + ' — กดบันทึก เพื่ออัปเดตข้อมูลรายการนี้';
+    'รายการ ' + label + (rec.dateIncident ? (' · ' + formatThaiDate(rec.dateIncident)) : '') + ' — กดบันทึก เพื่ออัปเดตข้อมูลรายการนี้';
   document.getElementById('editModeBanner').style.display = 'flex';
   document.querySelector('.tab-btn[data-view="form"]').textContent = '✏️ กำลังแก้ไขเคส';
   document.getElementById('btnClearForm').textContent = 'ยกเลิกการแก้ไข';
@@ -3108,8 +3352,7 @@ function loadRecordIntoForm(rec){
   mooLastAuto = null;
   assignedToLastAuto = null;
   refreshMooOptions(findZone(rec.highway, rec.km, rec.side), rec.moo || '');
-  document.getElementById('f_caseNo').value = rec.caseNo || '';
-  document.getElementById('f_reportLetterNo').value = rec.reportLetterNo || '';
+  document.getElementById('f_reportLetterNo').value = policeCaseNo(rec);
   document.getElementById('f_reportedDate').value = rec.reportedDate || '';
   document.getElementById('f_policeOfficer').value = rec.policeOfficer || '';
   document.getElementById('f_policePhone').value = rec.policePhone || '';
@@ -3128,7 +3371,7 @@ function loadRecordIntoForm(rec){
   document.getElementById('f_assignedToPhone').value = rec.assignedToPhone || '';
   currentFallbackTotal = rec.totalPrice || null;
   document.getElementById('itemsContainer').innerHTML = '';
-  (rec.items && rec.items.length ? rec.items : [{name:'',qty:'',unit:'ชุด',unitPrice:'',price:''}]).forEach(it => {
+  (rec.items && rec.items.length ? rec.items : [{name:'',qty:'',unit:'',unitPrice:'',price:''}]).forEach(it => {
     if ((it.unitPrice === undefined || it.unitPrice === null || it.unitPrice === '') && it.price != null && it.qty) {
       const qtyNum = parseFloat(String(it.qty).replace(/,/g,''));
       if (!isNaN(qtyNum) && qtyNum !== 0) it = {...it, unitPrice: Math.round((it.price / qtyNum) * 100) / 100};
@@ -3138,6 +3381,8 @@ function loadRecordIntoForm(rec){
   updateItemsSum();
   document.getElementById('interrogationsContainer').innerHTML = '';
   (rec.interrogations || []).forEach(it => addInterrogationRow(it));
+  updateInterrogationVisibility();
+  refreshFormChecks();
   updateKmHint();
   document.querySelector('.tab-btn[data-view="form"]').click();
   window.scrollTo({top:0, behavior:'smooth'});
@@ -3192,8 +3437,33 @@ async function saveForm(){
     openRecorderModal(() => saveForm());
     return;
   }
+  // วันที่ผิด (ก่อนวันเกิดเหตุ / อยู่ในอนาคต) → ห้ามบันทึก
+  const badDates = refreshDateHints();
+  if (badDates.length) {
+    document.getElementById(badDates[0].field).scrollIntoView({ behavior: 'smooth', block: 'center' });
+    showToast('บันทึกไม่ได้: ' + badDates[0].msg);
+    return;
+  }
+  // เลขคดีซ้ำ → ถามยืนยัน (ยืนยันแล้วจำไว้ ไม่ถามซ้ำ)
+  const caseNoVal = document.getElementById('f_reportLetterNo').value.trim();
+  const dupCases = findDupCases(caseNoVal, editingId);
+  const selfRec = editingId ? records.find(r => r.id === editingId) : null;
+  let dupConfirmedNo = (selfRec && selfRec.dupConfirmedNo) || '';
+  if (dupCases.length && !formDupConfirmed(caseNoVal, dupCases)) {
+    if (!(await confirmDupCaseNo(dupCases))) return;
+    dupConfirmedNo = normCaseNo(caseNoVal);
+  }
 
   const items = collectItems();
+  const badCost = items.filter(i => isNonAssetCost(i.name));
+  if (badCost.length) {
+    const first = document.querySelector('#itemsContainer .item-row.bad-cost');
+    if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    showToast('บันทึกไม่ได้: "' + badCost.map(i => i.name).join('", "') + '" ไม่ใช่ทรัพย์สินที่ถูกขโมย — ลบรายการนี้ก่อนบันทึก');
+    return;
+  }
+  const noUnit = items.find(i => !i.unit);
+  if (noUnit) { showToast('กรุณาเลือกหน่วยของ "' + noUnit.name + '"'); return; }
   const materialsTotal = items.reduce((s,i)=>s+(i.price||0),0);
   const oldRec = editingId ? records.find(r => r.id === editingId) : null;
   const totalPrice = (materialsTotal === 0 && oldRec && oldRec.totalPrice) ? oldRec.totalPrice : materialsTotal;
@@ -3218,8 +3488,9 @@ async function saveForm(){
     amphoe: document.getElementById('f_amphoe').value.trim(),
     changwat: document.getElementById('f_changwat').value.trim(),
     moo: document.getElementById('f_moo').value,
-    caseNo: document.getElementById('f_caseNo').value.trim(),
-    reportLetterNo: document.getElementById('f_reportLetterNo').value.trim(),
+    caseNo: '',
+    reportLetterNo: caseNoVal,
+    dupConfirmedNo,
     reportedDate: document.getElementById('f_reportedDate').value,
     policeOfficer: document.getElementById('f_policeOfficer').value.trim(),
     policePhone: document.getElementById('f_policePhone').value.trim(),
@@ -3514,10 +3785,10 @@ function renderTable(){
     const tr = document.createElement('tr');
     tr.style.cursor = 'pointer';
     tr.innerHTML = `
-      <td class="case-cell nowrap-cell"><b>${r.fiscalYear || ''}-${seqMap[r.id] || ''}</b><span class="c-sub">${formatThaiDate(r.dateIncident)}</span></td>
+      <td class="case-cell nowrap-cell"><b>${r.fiscalYear || ''}-${seqMap[r.id] || ''}</b>${dqBadgeHtml(r)}<span class="c-sub">${formatThaiDate(r.dateIncident)}</span></td>
       <td class="hw-cell nowrap-cell">ทล.${escapeHtml(r.highway)} · กม.${escapeHtml(formatKm(r.km))}<span class="c-sub">${escapeHtml(r.section)}</span></td>
       <td class="nowrap-cell violator-cell">${escapeHtml(r.policeStation || '-')}${r.location ? `<span class="c-sub">${escapeHtml(r.location)}</span>` : ''}</td>
-      <td class="mono nowrap-cell">${escapeHtml(r.caseNo || '-')}</td>
+      <td class="mono nowrap-cell">${escapeHtml(policeCaseNo(r) || '-')}</td>
       <td class="mono nowrap-cell">${formatMoney(r.totalPrice)}</td>
       <td class="nowrap-cell">${suspectCellHtml(r)}</td>
       <td class="repair-cell">${statusPill(r.status)}</td>
@@ -3597,7 +3868,7 @@ async function openTrashModal(){
   listEl.innerHTML = items.map(r => `
     <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)">
       <div>
-        <div><b>ทล.${escapeHtml(r.highway || '-')}</b> กม.${escapeHtml(formatKm(r.km) || '-')} — ${escapeHtml(r.caseNo || 'ไม่ระบุเลขคดี')}</div>
+        <div><b>ทล.${escapeHtml(r.highway || '-')}</b> กม.${escapeHtml(formatKm(r.km) || '-')} — ${escapeHtml(policeCaseNo(r) || 'ไม่ระบุเลขคดี')}</div>
         <div class="hint">ลบโดย ${escapeHtml(r.deletedBy || '-')} เมื่อ ${escapeHtml(normalizeDateStr(r.deletedAt) || String(r.deletedAt || '-'))}</div>
       </div>
       <div style="display:flex;gap:8px;flex-shrink:0">
@@ -3751,7 +4022,7 @@ function openCaseDetailModal(id){
 
   const tile = (cls, icon, label, value) => `<div class="cd-tile ${cls}"><div class="cd-ic">${icon}</div><div><span>${label}</span><b>${value}</b></div></div>`;
   const statusCls = rec.status === 'ปิดคดี' ? 'ok' : rec.status === 'จับกุมผู้ต้องหาได้' ? 'warn' : rec.status === 'อยู่ระหว่างสอบสวน' ? 'warn' : 'bad';
-  const tilesHtml = `<div class="cd-tiles">
+  const tilesHtml = `${issuesBoxHtml(rec)}<div class="cd-tiles">
       ${tile(statusCls, '📋', 'สถานะคดี', escapeHtml(rec.status || 'ไม่ระบุ'))}
       ${tile(rec.suspectStatus === 'พบ' ? 'warn' : 'n', '🕵️', 'ผู้ต้องสงสัย', rec.suspectStatus === 'พบ' ? 'พบ' + (rec.suspectName ? ' · ' + escapeHtml(rec.suspectName) : '') : escapeHtml(rec.suspectStatus || 'ไม่ระบุ'))}
       ${tile(isClosed ? 'ok' : 'bad', '📁', 'การปิดคดี', isClosed ? 'ปิดแล้ว' + (rec.closedDate ? ' ' + escapeHtml(formatThaiDate(rec.closedDate)) : '') : 'ยังไม่ปิดคดี')}
@@ -3796,8 +4067,7 @@ function openCaseDetailModal(id){
                 </dl></div>
               <div class="cd-card"><div class="cd-sec">การแจ้งความ</div>
                 <dl class="cd-dl">
-                  <dt>เลขคดีตำรวจ</dt><dd style="font-size:13px">${escapeHtml(rec.caseNo) || '-'}</dd>
-                  <dt>เลขหนังสือแจ้งความ</dt><dd style="font-size:13px">${escapeHtml(rec.reportLetterNo) || '-'}</dd>
+                  <dt>เลขคดี / เลขรับแจ้งความ</dt><dd style="font-size:13px">${escapeHtml(policeCaseNo(rec)) || '-'}</dd>
                   <dt>แจ้งความเมื่อ</dt><dd>${escapeHtml(formatThaiDate(rec.reportedDate)) || '-'}</dd>
                   <dt>ตำรวจผู้ลงบันทึก</dt><dd>${escapeHtml(rec.policeOfficer) || '-'}</dd>
                   <dt>โทร</dt><dd>${escapeHtml(rec.policePhone) || '-'}</dd>
@@ -4071,6 +4341,7 @@ function goToFilteredList(fiscalYear, status){
   document.getElementById('filterYear').value = (fiscalYear === 'ทั้งหมด') ? '' : String(fiscalYear);
   document.getElementById('filterStatus').value = status;
   document.getElementById('filterSuspect').value = '';
+  document.getElementById('filterIssues').value = '';
   document.getElementById('filterHighway').value = '';
   document.getElementById('searchBox').value = '';
   document.getElementById('searchWrap').classList.remove('has-text');
@@ -4145,10 +4416,12 @@ function listFilterState(){
     year: document.getElementById('filterYear').value,
     hw: document.getElementById('filterHighway').value,
     status: document.getElementById('filterStatus').value,
-    suspect: document.getElementById('filterSuspect').value
+    suspect: document.getElementById('filterSuspect').value,
+    issues: document.getElementById('filterIssues').value
   };
 }
 function recordMatchesList(r, f, seqMap){
+  if (f.issues === 'yes' && !recordIssues(r).length) return false;
   if (f.year && String(r.fiscalYear) !== f.year) return false;
   if (f.hw && String(r.highway) !== f.hw) return false;
   if (f.status === 'open' && isClosedCase(r)) return false;
@@ -4168,7 +4441,7 @@ function recordMatchesList(r, f, seqMap){
 }
 function hasListFilters(){
   const f = listFilterState();
-  return !!(f.q || f.year || f.hw || f.status || f.suspect);
+  return !!(f.q || f.year || f.hw || f.status || f.suspect || f.issues);
 }
 function getListRecords(scope){
   if (scope === 'all') return records.slice();
@@ -4369,8 +4642,7 @@ function buildCasesSheet(wb, rows, seqMap){
     ['อำเภอ', 1, 14, 'text', r => r.amphoe || ''],
     ['จังหวัด', 1, 12, 'text', r => r.changwat || ''],
     ['หมู่ที่', 1, 9, 'text', r => r.moo || ''],
-    ['เลขคดีตำรวจ', 2, 16, 'text', r => r.caseNo || ''],
-    ['เลขหนังสือแจ้งความ', 2, 20, 'text', r => r.reportLetterNo || ''],
+    ['เลขคดี / เลขรับแจ้งความ', 2, 20, 'text', r => policeCaseNo(r)],
     ['แจ้งความเมื่อ', 2, 13, 'date', r => xlDate(r.reportedDate)],
     ['ตำรวจผู้ลงบันทึก', 2, 24, 'text', r => r.policeOfficer || ''],
     ['เบอร์โทรตำรวจ', 2, 14, 'text', r => r.policePhone || ''],
@@ -4555,7 +4827,7 @@ function buildReportHtml(rows, meta){
       <td>ทล.${th(r.highway)}<div class="sub">${th(r.section)}</div></td>
       <td class="c nw">${th(formatKm(r.km))}</td>
       <td>${th(r.policeStation || '-')}${r.location ? `<div class="sub">${th(r.location)}</div>` : ''}</td>
-      <td class="nw">${th(r.caseNo || '-')}</td>
+      <td class="nw">${th(policeCaseNo(r) || '-')}</td>
       <td class="r nw">${th(formatMoney(m.total))}</td>
       <td class="c">${r.suspectStatus === 'พบ' ? 'พบ' + (r.suspectName ? `<div class="sub">${th(r.suspectName)}</div>` : '') : th(r.suspectStatus || '-')}</td>
       <td class="c">${pill(r.status)}</td>
@@ -5573,6 +5845,8 @@ async function init(){
   document.getElementById('filterHighway').addEventListener('change', renderTable);
   document.getElementById('filterStatus').addEventListener('change', renderTable);
   document.getElementById('filterSuspect').addEventListener('change', renderTable);
+  document.getElementById('filterIssues').addEventListener('change', renderTable);
+  setupDataQualityChecks();
   document.getElementById('btnExportXlsx').addEventListener('click', (e) => { e.stopPropagation(); openExportMenu('xlsx'); });
   document.getElementById('btnExportPdf').addEventListener('click', (e) => { e.stopPropagation(); openExportMenu('pdf'); });
   document.getElementById('exportMenu').addEventListener('click', (e) => {
