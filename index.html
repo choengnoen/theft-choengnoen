@@ -3119,18 +3119,17 @@ function thaiDateFull(iso){
   const [y, m, d] = iso.split('-').map(Number);
   return d + ' ' + THAI_MONTHS_SHORT[m - 1] + ' ' + (y + 543);
 }
-function daysBetween(a, b){ return Math.round((new Date(b + 'T00:00:00') - new Date(a + 'T00:00:00')) / 86400000); }
 // r ใช้ชื่อฟิลด์แบบเดียวกับเรคคอร์ด (dateFound/dateIncident, reportedDate, assignDate, closedDate)
 function dateIssues(r){
   const out = [];
   const inc = r.dateFound || r.dateIncident;
   const today = todayIso();
-  if (ISO_DATE_RE.test(inc || '') && inc > today) out.push({ field: 'f_dateFound', msg: 'วันเกิดเหตุ/ตรวจพบ (' + thaiDateFull(inc) + ') อยู่ในอนาคต' });
+  if (ISO_DATE_RE.test(inc || '') && inc > today) out.push({ field: 'f_dateFound', msg: 'วันเกิดเหตุ/ตรวจพบ อยู่ในอนาคต — ตรวจสอบ' });
   CHECK_DATE_FIELDS.forEach(([id, label, key]) => {
     const v = r[key];
     if (!ISO_DATE_RE.test(v || '')) return;
-    if (v > today) out.push({ field: id, msg: label + ' (' + thaiDateFull(v) + ') อยู่ในอนาคต' });
-    else if (ISO_DATE_RE.test(inc || '') && v < inc) out.push({ field: id, msg: label + ' (' + thaiDateFull(v) + ') อยู่ก่อนวันเกิดเหตุ (' + thaiDateFull(inc) + ') — ตรวจสอบปี พ.ศ.' });
+    if (v > today) out.push({ field: id, msg: label + ' อยู่ในอนาคต — ตรวจสอบ' });
+    else if (ISO_DATE_RE.test(inc || '') && v < inc) out.push({ field: id, msg: label + ' อยู่ก่อนวันเกิดเหตุ — ตรวจสอบ' });
   });
   return out;
 }
@@ -3204,17 +3203,11 @@ function formDateValues(){
 function refreshDateHints(){
   const r = formDateValues();
   const issues = dateIssues(r);
-  const inc = r.dateFound;
   const ids = ['f_dateFound'].concat(CHECK_DATE_FIELDS.map(f => f[0]));
+  // แสดงเฉพาะข้อความเตือนเมื่อผิด (ไม่แสดงบรรทัดช่วยอ่านวันที่ พ.ศ.)
   ids.forEach(id => {
     const bad = issues.find(i => i.field === id);
-    const val = document.getElementById(id).value;
-    if (bad) { setFieldHint(id, 'bad', '❌ ' + escapeHtml(bad.msg)); return; }
-    if (!ISO_DATE_RE.test(val || '')) { setFieldHint(id, '', ''); return; }
-    // แสดงวันที่เป็น พ.ศ. + ห่างจากวันเกิดเหตุกี่วัน ให้เห็นทันทีถ้าพิมพ์ปีผิด
-    let txt = '= ' + thaiDateFull(val);
-    if (id !== 'f_dateFound' && ISO_DATE_RE.test(inc || '')) txt += ' · หลังวันเกิดเหตุ ' + daysBetween(inc, val).toLocaleString('th-TH') + ' วัน';
-    setFieldHint(id, '', escapeHtml(txt));
+    setFieldHint(id, bad ? 'bad' : '', bad ? '❌ ' + escapeHtml(bad.msg) : '');
   });
   return issues;
 }
