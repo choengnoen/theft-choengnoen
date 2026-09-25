@@ -4058,14 +4058,6 @@ function openCaseDetailModal(id){
                   <dt>พื้นที่</dt><dd>${escapeHtml(areaText) || '-'}</dd>
                   <dt>หมู่ที่</dt><dd>${escapeHtml(rec.moo) || '-'}</dd>
                 </dl></div>
-              <div class="cd-card"><div class="cd-sec">การแจ้งความ</div>
-                <dl class="cd-dl">
-                  <dt>เลขคดี / เลขรับแจ้งความ</dt><dd style="font-size:13px">${escapeHtml(policeCaseNo(rec)) || '-'}</dd>
-                  <dt>แจ้งความเมื่อ</dt><dd>${escapeHtml(formatThaiDate(rec.reportedDate)) || '-'}</dd>
-                  <dt>ตำรวจผู้ลงบันทึก</dt><dd>${escapeHtml(rec.policeOfficer) || '-'}</dd>
-                  <dt>โทร</dt><dd>${escapeHtml(rec.policePhone) || '-'}</dd>
-                  <dt>ผู้ต้องสงสัย</dt><dd>${escapeHtml(rec.suspectStatus) || 'ไม่ระบุ'}${rec.suspectStatus === 'พบ' && rec.suspectName ? ' — ' + escapeHtml(rec.suspectName) : ''}</dd>
-                </dl></div>
               <div class="cd-card"><div class="cd-sec">การมอบหมายแจ้งความ</div>
                 <dl class="cd-dl">
                   <dt>มอบโดย</dt><dd>${escapeHtml(rec.assignedBy) || '-'}</dd>
@@ -4088,6 +4080,14 @@ function openCaseDetailModal(id){
             <div>
               <div class="cd-card"><div class="cd-sec">รายการทรัพย์สินที่ถูกขโมย <span class="cd-count">${items.length} รายการ</span></div>
                 ${itemsHtml}${receiptHtml}</div>
+              <div class="cd-card"><div class="cd-sec">การแจ้งความ</div>
+                <dl class="cd-dl">
+                  <dt>เลขคดี / เลขรับแจ้งความ</dt><dd style="font-size:13px">${escapeHtml(policeCaseNo(rec)) || '-'}</dd>
+                  <dt>แจ้งความเมื่อ</dt><dd>${escapeHtml(formatThaiDate(rec.reportedDate)) || '-'}</dd>
+                  <dt>ตำรวจผู้ลงบันทึก</dt><dd>${escapeHtml(rec.policeOfficer) || '-'}</dd>
+                  <dt>โทร</dt><dd>${escapeHtml(rec.policePhone) || '-'}</dd>
+                  <dt>ผู้ต้องสงสัย</dt><dd>${escapeHtml(rec.suspectStatus) || 'ไม่ระบุ'}${rec.suspectStatus === 'พบ' && rec.suspectName ? ' — ' + escapeHtml(rec.suspectName) : ''}</dd>
+                </dl></div>
             </div>
           </div>
         </div>
